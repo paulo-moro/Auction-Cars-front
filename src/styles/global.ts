@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
 }
 :root{
-    --color-white-fixed:  #FFFFFF;
+    --color-white-fixed: #FFFFFF;
     --color-brand-1: #4529E6;
     --color-brand-2: #5126EA;
     --color-brand-3: #B0A6F0;
