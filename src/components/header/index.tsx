@@ -7,7 +7,7 @@ import CloseMenu from "../../img/Close-Menu.svg";
 import { useState } from "react";
 
 
-const Header = () => {
+export const Header = () => {
 
     const [openMenu, setOpenMenu] = useState(false)
 
@@ -59,4 +59,3 @@ const Header = () => {
     )
 }
 
-export { Header };
