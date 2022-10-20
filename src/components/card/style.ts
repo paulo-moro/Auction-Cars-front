@@ -19,11 +19,11 @@ export const LiCard = styled.li`
     height: 152px;
     margin: 0;
 
-    background-color: var(--color-gray-7);
+    background-color: #E9ECEF;
 
   }
 
-  > img {
+  > figure > img {
 
     width: 262px;
     height: 150.28px;
@@ -93,7 +93,7 @@ export const SpanKm = styled.span`
   width: 50px;
   height: 32px;
 
-  background: var(--color-brand-4);
+  background: #EDEAFD;
   border-radius: 4px;
   box-sizing: border-box;
 
@@ -109,7 +109,7 @@ export const SpanKm = styled.span`
     font-size: 14px;
     line-height: 24px;
             
-    color: var(--color-brand-1);
+    color: #4529E6;
   }
 `;
 
@@ -126,7 +126,7 @@ export const SpanYear = styled.span`
   height: 32px;
   margin-left: 25px;
 
-  background: var(--color-brand-4);
+  background: #EDEAFD;
   border-radius: 4px;
   box-sizing: border-box;
 
@@ -142,7 +142,7 @@ export const SpanYear = styled.span`
     font-size: 14px;
     line-height: 24px;
             
-    color: var(--color-brand-1);
+    color: #4529E6;
   }
 `;
 
