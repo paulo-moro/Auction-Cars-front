@@ -78,22 +78,24 @@ export const DivCard = styled.div`
     flex-direction: row;
   }
 
-  > span {
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 8px;
-    gap: 10px;
+`;
 
-    width: 51px;
-    height: 32px;
+export const SpanKm = styled.span`
 
-    background: var(--color-brand-4);
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 10px;
+
+  width: 50px;
+  height: 32px;
+
+  background: var(--color-brand-4);
+  border-radius: 4px;
+  box-sizing: border-box;
 
   > p {
 
@@ -106,18 +108,50 @@ export const DivCard = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-
+            
     color: var(--color-brand-1);
   }
-
 `;
 
-export const SpanCard = styled.span`
+export const SpanYear = styled.span`
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 10px;
+
+  width: 51px;
+  height: 32px;
+  margin-left: 25px;
+
+  background: var(--color-brand-4);
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  > p {
+
+    margin: 0;
+    width: 35px;
+    height: 24px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+            
+    color: var(--color-brand-1);
+  }
+`;
+
+export const SpanPrice = styled.span`
 
   > p {
     width: 105px;
     height: 20px;
-    margin-left: 85px;
+    margin-left: 60px;
     margin-top: 4px;
    }
 `;

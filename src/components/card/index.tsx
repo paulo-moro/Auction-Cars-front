@@ -1,5 +1,5 @@
 import { VehiclesProps } from "../../interface"
-import { LiCard, DivCard, SpanCard } from "./style";
+import { LiCard, DivCard, SpanKm, SpanYear, SpanPrice } from "./style";
 
 const Card = ({vehicles}: VehiclesProps) => {
 
@@ -22,19 +22,19 @@ const Card = ({vehicles}: VehiclesProps) => {
 
             <div>
 
-              <span>
+              <SpanKm>
                 <p>{KM}</p>
-              </span>
+              </SpanKm>
 
-              <span>
+              <SpanYear>
                 <p>{year}</p>
-              </span>
+              </SpanYear>
               
             </div>
 
-            <SpanCard>
+            <SpanPrice>
               <p>{price}</p>
-            </SpanCard>
+            </SpanPrice>
 
           </DivCard>
 
