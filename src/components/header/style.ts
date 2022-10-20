@@ -32,6 +32,7 @@ export const HeaderStyled = styled.header`
 export const MenuStyled = styled.div`
         
         display: flex;
+        position: fixed;
         flex-direction: column;
         width: 100%;
         height: auto;
@@ -43,6 +44,7 @@ export const MenuStyled = styled.div`
         justify-content: space-around;
         width: 100%;
         height: auto;
+        background-color: var(--color-white-fixed);
         border-bottom:1.5px solid var(--color-gray-4);
         
         .nav--menu-mobile-button{
@@ -63,6 +65,7 @@ export const MenuStyled = styled.div`
         justify-content: space-around;
         width: 100%;
         height: 150px;
+        background-color: var(--color-white-fixed);
 
         h4{
             flex-direction: column;
