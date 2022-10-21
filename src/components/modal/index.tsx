@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Container } from "./style";
 
 function Modal() {
 
@@ -24,9 +25,9 @@ function Modal() {
 
     
     return (
-        <section>
+        <Container>
             <section className={modal}>
-                <div className="modal">
+            <div className="modal">
                     <div className="modalHeader">
                         <h1>Header Title</h1>
                         <button className="removedModal" onClick={() => removeModal()}>x</button>
@@ -36,8 +37,8 @@ function Modal() {
                     </div>
                 </div>
             </section>
-            <button onClick={() => showModal()}>+</button>
-        </section>
+            <button onClick={() => showModal()}>button</button>
+        </Container>
     )
 }
 
