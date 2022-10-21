@@ -19,7 +19,7 @@ export const Container = styled.section`
 
     .containerModal .modal {
 
-        width: 369px;
+        width: 371px;
         height: 342px;
         border: solid 1px;
         background-color: white;
@@ -79,8 +79,7 @@ export const Container = styled.section`
 
         width: 150px;
         height: 24px;
-        margin-top: 12px;
-        margin-left: 20px;
+        display: flex;
         align-items: center;
 
         font-family: "Inter", sans-serif;
