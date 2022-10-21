@@ -4,7 +4,7 @@ import { WelcomeCardStyle } from "./style"
 export const WelcomeHome = () => {
     return (
         <WelcomeCardStyle>
-            <h1>Velocidade e experiência em um lugar perfiero para você</h1>
+            <h1>Velocidade e experiência em um lugar perfieto para você</h1>
 
             <p>Um ambiente feito para você explorar o seu melhor</p>
 
