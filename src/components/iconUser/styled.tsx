@@ -4,23 +4,23 @@ const UserIconStyle = styled.div`
     
     display: flex;
     gap: 10px;
-    width: 100%;
     font-size: 15px;
 
     .icon-user{
+        color: ${props => props.color ? props.color : "#FFFFFF"};
         display: flex;
         align-items: center;
         justify-content: center;
         width: 35px;
         height: 35px;
-        background-color: red;
+        background-color: ${props => props.theme && props.theme};
         border-radius: 50%;
     }
 
     .name-user{
         display: flex;
         align-items: center;
-        color: white;
+        color: ${props => props.color && props.color};
     }
 
 `

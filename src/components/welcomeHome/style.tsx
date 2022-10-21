@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const WelcomeCardStyle = styled.footer`
 
+@media (min-width: 320px) {
+    
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -12,10 +14,11 @@ export const WelcomeCardStyle = styled.footer`
     gap: 50px;
     background: var(--color-brand-2);
     color: var(--color-gray-10);
-    font-family: "Lexend", sans-serif;
+    height: 470px;
 
     h1{
         width: 90%;
+        max-width: 680px;
         font-size: 25px;
         text-align: center;
     }
@@ -26,13 +29,48 @@ export const WelcomeCardStyle = styled.footer`
         align-items: center;
         text-align: center;
         width: 95%;
+        font-size: 18px;
     }
 
     .div--botoes{
         display: flex;
         flex-direction: column;
         width: 90%;
+        max-width: 400px;
         gap: 15px;
       
     }
+}
+
+@media (min-width: 640px) {
+
+    h1{
+        font-size: 30px;
+     
+    }
+
+    p{
+        font-size: 22px;
+    }
+
+    .div--botoes{
+        flex-direction: row;
+        max-width: 740px;
+        justify-content: space-around;
+    
+        button{
+            width: 200px;
+            height: 50px;
+        }    
+    }
+
+}
+
+@media (min-width: 640px) {
+
+    h1{
+        font-size: 40px;
+     }
+
+}
 `

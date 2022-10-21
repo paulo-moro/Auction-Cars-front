@@ -5,6 +5,7 @@ export const FooterStyle = styled.footer`
     width: 100%;
     justify-content: space-around;
     gap: 5px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     background: var(--color-grey-0);
@@ -30,9 +31,8 @@ export const FooterStyle = styled.footer`
     width: 15%;
     margin: 20px;
   }
-
+  }
   @media (min-width: 640px) {
     flex-direction: row;
-
   }
 `;

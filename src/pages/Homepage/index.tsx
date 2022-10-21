@@ -10,8 +10,8 @@ const HomePage = () => {
         <Header/>
         <WelcomeHome/>
         <ListAuction/>
-        <ListCard/>
-        <ListCard/>
+        <ListCard title={"Carros"}/>
+        <ListCard title={"Motos"}/>
         <Footer/>
         </>
     )

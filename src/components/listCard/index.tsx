@@ -2,9 +2,11 @@ import { useState } from "react";
 import Card from "../card";
 import { ListStyle } from "./style";
 
+interface ITitleSection{
+  title: String;
+}
 
-
-const ListCard = () => {
+const ListCard = ({title}: ITitleSection) => {
 
     const [listVehicle, setlistVehicle] = useState([
         {
@@ -67,7 +69,7 @@ const ListCard = () => {
   return (
     <ListStyle>
       <h2>
-        Carros
+      {title}
       </h2>
       <ul className="ul--list-cars">
       {listVehicle && listVehicle.map((vehicle) => (

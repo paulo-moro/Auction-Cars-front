@@ -3,17 +3,20 @@ import styled from "styled-components";
 export const ListStyle = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 30px 0px;
+    margin-top: 30px;
+    padding: 10px;
+    gap: 20px;
 
     .ul--list-cars{
         display: flex;
+        height: 420px;
         overflow-x: scroll;
-        height: 300px;
         gap: 20px;
-        padding: 50px 10px;
-        height: 450px;
     }
 
-
+    h2{
+        height: 10%;
+        margin: 20px;
+    }
 
 `
