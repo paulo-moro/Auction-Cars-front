@@ -1,12 +1,4 @@
-import { useState } from "react";
-import Card from "../card";
-import { ListStyle } from "./style";
-
-
-
-const ListCard = () => {
-
-    const [listVehicle, setlistVehicle] = useState([
+const dbFake: any[] = [
         {
             id: "1",
             name: "Douglas Ramires",
@@ -62,20 +54,6 @@ const ListCard = () => {
               year: "2019",
               price: "R$ 00.000,00"
           }
-    ]);
+    ];
 
-  return (
-    <ListStyle>
-      <h2>
-        Carros
-      </h2>
-      <ul className="ul--list-cars">
-      {listVehicle && listVehicle.map((vehicle) => (
-        <Card  key={vehicle.id} vehicles={vehicle} />
-      ))}
-      </ul>
-    </ListStyle>
-  );
-};
-
-export default ListCard;
+export default dbFake;

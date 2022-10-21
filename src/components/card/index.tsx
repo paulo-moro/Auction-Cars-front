@@ -7,7 +7,6 @@ const Card = ({vehicles}: VehiclesProps) => {
 
     return (
         <LiCard>
-
           <figure>
             <img src='https://th.bing.com/th/id/OIP.UQeKbZTigv91K96LGwGAZgHaE8?pid=ImgDet&rs=1' alt='' />
           </figure>

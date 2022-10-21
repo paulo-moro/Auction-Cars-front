@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
   display: flex;
+  position: fixed;
+  left: 0px;
+  top: 0px;
   align-items: center;
   justify-content: space-between;
   min-height: 80px;
   width: 100%;
   background-color: var(--color-gray-10);
   border-bottom: 1.5px solid var(--color-gray-5);
-  font-family: "Lexend", sans-serif;
 
   .div-line {
     display: none;

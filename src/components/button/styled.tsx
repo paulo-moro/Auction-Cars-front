@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ButtonStyled = styled.button`
-    max-width: 146px;
+    /* max-width: 146px; */
     max-height: 48px;
     min-width: 119px;
     min-height: 38px;

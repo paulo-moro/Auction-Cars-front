@@ -3,8 +3,8 @@ import styled from "styled-components"
 const UserIconStyle = styled.div`
     
     display: flex;
-    width: 80%;
     gap: 10px;
+    width: 100%;
     font-size: 15px;
 
     .icon-user{
@@ -20,6 +20,7 @@ const UserIconStyle = styled.div`
     .name-user{
         display: flex;
         align-items: center;
+        color: white;
     }
 
 `
