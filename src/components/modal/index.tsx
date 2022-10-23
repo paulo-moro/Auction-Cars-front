@@ -1,27 +1,30 @@
 import { useState } from "react";
+import { Modalprops } from "../../interface";
 import { Container } from "./style";
 
-function Modal() {
+function Modal({handleShow, handleHidden, statusModal}:Modalprops) {
+    
 
-    const [inOn, setInOn]   = useState(false);
-    const [modal, setModal] = useState("containerModal hidden");
+    const modal = statusModal? "modal containerModal" : "modal containerModal hidden";
 
+    /*Controle do estado do Modal (Show/Hidden)*/
+    // const [inOn, setInOn]   = useState(false);
+    
 
-    const showModal = () => {
-        if( inOn === false ) {
-            setInOn(true);
-            return setModal("containerModal")
-        } else {
-            setInOn(false);
-            return setModal("containerModal hidden")
-        }
-    }
+    /*Funções do Modal*/
+    // const showModal = () => {
+    //     console.log("ok : )")
+    //     setInOn(true);
+    //     return true
+    //   };
+    
+    //   const hideModal = () => {
+    //     setInOn(false);
+    //     return false
+    //   };
 
-    const removeModal = () => {
-        setInOn(false);
-        return setModal("containerModal hidden")
-    }
-
+    /*Chamando o componente Modal*/
+    // <Modal handleHidden={hideModal} handleShow={showModal} statusModal={inOn}/>
 
     
     return (
@@ -30,14 +33,14 @@ function Modal() {
             <div className="modal">
                     <div className="modalHeader">
                         <h1>Header Title</h1>
-                        <button className="removedModal" onClick={() => removeModal()}>x</button>
+                        <button className="removedModal" onClick={() => handleHidden()}>x</button>
                     </div>
                     <div className="modalBody">
                         <p>Estrutute o corpo do seu modal</p>
                     </div>
                 </div>
             </section>
-            <button onClick={() => showModal()}>button</button>
+            <button onClick={() => handleShow()}>button</button>
         </Container>
     )
 }
