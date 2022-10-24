@@ -1,14 +1,4 @@
-import { useState } from "react";
-import Card from "../card";
-import { ListStyle } from "./style";
-
-interface ITitleSection{
-  title: String;
-}
-
-const ListCard = ({title}: ITitleSection) => {
-
-    const [listVehicle, setlistVehicle] = useState([
+const dbFake: any[] = [
         {
             id: "1",
             name: "Douglas Ramires",
@@ -64,20 +54,6 @@ const ListCard = ({title}: ITitleSection) => {
               year: "2019",
               price: "R$ 00.000,00"
           }
-    ]);
+    ];
 
-  return (
-    <ListStyle>
-      <h2>
-      {title}
-      </h2>
-      <ul className="ul--list-cars">
-      {listVehicle && listVehicle.map((vehicle) => (
-        <Card  key={vehicle.id} vehicles={vehicle} />
-      ))}
-      </ul>
-    </ListStyle>
-  );
-};
-
-export default ListCard;
+export default dbFake;

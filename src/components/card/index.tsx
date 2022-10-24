@@ -1,4 +1,5 @@
 import { VehiclesProps } from "../../interface"
+import { UserIcon } from "../iconUser";
 import { LiCard, DivCard, SpanKm, SpanYear, SpanPrice } from "./style";
 
 const Card = ({vehicles}: VehiclesProps) => {
@@ -7,7 +8,6 @@ const Card = ({vehicles}: VehiclesProps) => {
 
     return (
         <LiCard>
-
           <figure>
             <img src='https://th.bing.com/th/id/OIP.UQeKbZTigv91K96LGwGAZgHaE8?pid=ImgDet&rs=1' alt='' />
           </figure>
@@ -16,7 +16,8 @@ const Card = ({vehicles}: VehiclesProps) => {
 
           <p>{description}</p>
           
-          <p>{name}</p>
+          <UserIcon color={""} theme={"red"} name={name} initials={name[0]} />
+          
           
           <DivCard>
 
