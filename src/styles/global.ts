@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
     border: 0;
     list-style: none;
+    font-family: "Lexend", sans-serif;
 }
 :root{
     --color-white-fixed: #FFFFFF;

@@ -34,7 +34,6 @@ export const LiCard = styled.li`
 
   > h2 {
 
-    font-family: 'Lexend', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;

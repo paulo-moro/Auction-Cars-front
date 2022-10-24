@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
   display: flex;
+  position: fixed;
+  left: 0px;
+  top: 0px;
   align-items: center;
   justify-content: space-between;
   min-height: 80px;
   width: 100%;
   background-color: var(--color-gray-10);
   border-bottom: 1.5px solid var(--color-gray-5);
-  font-family: "Lexend", sans-serif;
 
   .div-line {
     display: none;
@@ -22,6 +24,7 @@ export const HeaderStyled = styled.header`
 
   .nav-menu {
     display: flex;
+    width: 70px;
   }
 
   .icon-Menu {
@@ -96,14 +99,8 @@ export const HeaderStyled = styled.header`
   }
 
   @media (min-width: 1200px) {
-    .nav--menu-desktop-button {
-      font-size: 25px;
-    }
-    .nav--menu-desktop {
-      font-size: 25px;
-    }
+    
     .nav--menu-desktop-button-register {
-      font-size: 25px;
       width: 50%;
     }
   }
@@ -116,8 +113,7 @@ export const MenuStyled = styled.div`
     flex-direction: column;
     width: 100%;
     height: auto;
-    box-shadow: 0px 30px 10px 15px var(--color-gray-6);
-    font-family: "Lexend", sans-serif;
+    box-shadow: 0px 50px 55px var(--color-grey-1);
 
     .nav--menu-mobile {
       display: flex;
