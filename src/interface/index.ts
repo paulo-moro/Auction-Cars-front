@@ -13,3 +13,10 @@ export interface Vehicles {
 export interface VehiclesProps {
     vehicles: Vehicles
 }
+
+
+export interface Modalprops {
+    handleShow: () => Boolean
+    handleHidden: () => Boolean
+    statusModal?: Boolean
+}
