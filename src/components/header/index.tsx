@@ -3,10 +3,47 @@ import MotorShop from "../../img/Motors-shop.svg";
 import Menu from "../../img/Menu-Header.svg";
 import CloseMenu from "../../img/Close-Menu.svg";
 import { useState } from "react";
+import ModalLogin from "../Modals/modalLogin";
+import ModalRegister from "../Modals/modalRegister";
+import ModalSucess from "../Modals/modalSucess";
 
 export const Header = () => {
 
     const [openMenu, setOpenMenu] = useState(false)
+    const [inOnLogin, setInOnLogin]   = useState(false);
+    const [inOnRegister, setInOnRegister]   = useState(false);
+    const [inOnSucess, setInOnSucess]   = useState(false);
+    
+    const showModalLogin = () => {
+        setInOnLogin(true);
+        return true
+      };
+    
+      const hideModalLogin = () => {
+        setInOnLogin(false);
+        return false
+      };
+
+      const showModalRegister = () => {
+        setInOnRegister(true);
+        return true
+      };
+    
+      const hideModalRegister = () => {
+        setInOnRegister(false);
+        return false
+      };
+      
+      const showModalSucess = () => {
+        setInOnSucess(true);
+        return true
+      };
+    
+      const hideModalSucess = () => {
+        setInOnSucess(false);
+        return false
+      };
+
 
     return (
         <>
@@ -21,7 +58,6 @@ export const Header = () => {
                     }
                 </nav>
 
-
                 <nav className="nav--menu-desktop">
                     <button className="nav--menu-desktop-button">Carros</button>
                     <button className="nav--menu-desktop-button">Motos</button>
@@ -29,8 +65,8 @@ export const Header = () => {
 
                     <div className="nav--login-register-desktop">
                     <div id="div-line"></div>
-                        <h4 className="nav--menu-desktop-h4">Fazer Login</h4>
-                        <button className="nav--menu-desktop-button-register">Cadastrar</button>
+                        <h4 onClick={() => setInOnLogin(true)} className="nav--menu-desktop-h4">Fazer Login</h4>
+                        <button onClick={() => setInOnRegister(true)}className="nav--menu-desktop-button-register">Cadastrar</button>
                     </div>
                 </nav>
             </HeaderStyled>
@@ -43,11 +79,14 @@ export const Header = () => {
                         <button className="nav--menu-mobile-button">Leilão</button>
                     </nav>
                     <div className="nav--login-register-mobile">
-                        <h4 className="nav--menu-mobile-h4">Fazer Login</h4>
-                        <button className="nav--menu-mobile-button">Cadastrar</button>
+                        <h4 onClick={() => setInOnLogin(true)} className="nav--menu-mobile-h4">Fazer Login</h4>
+                        <button onClick={() => setInOnRegister(true)} className="nav--menu-mobile-button">Cadastrar</button>
                     </div>
                 </MenuStyled>
             }
+            <ModalLogin handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/>
+            <ModalRegister handleHidden={hideModalRegister} handleShow={showModalRegister} statusModal={inOnRegister}/>
+            <ModalSucess handleHidden={hideModalSucess} handleShow={showModalSucess} statusModal={inOnSucess}/>
         </>
     )
 }
