@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 const InputStyled = styled.div`
     width: 100%;
-    min-height: 30px;
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     
     label{
         color: var(--color-grey-0);
         font-size: 14px; 
     }
     
-    input{
+    /* TextField{
         padding: 12px;
         color: var(--color-gray-3);
         border: 1.5px solid var(--color-gray-5);
@@ -18,7 +20,7 @@ const InputStyled = styled.div`
         border-radius: 4px;
         font-size: 16px;
     }
-    
+     */
     
     
 `

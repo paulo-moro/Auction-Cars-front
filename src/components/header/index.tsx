@@ -6,6 +6,7 @@ import { useState } from "react";
 import ModalLogin from "../Modals/modalLogin";
 import ModalRegister from "../Modals/modalRegister";
 import ModalSucess from "../Modals/modalSucess";
+import { ModalAnnouncement } from "../Modals/modalAnnouncement";
 
 export const Header = () => {
 
@@ -84,9 +85,15 @@ export const Header = () => {
                     </div>
                 </MenuStyled>
             }
-            <ModalLogin handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/>
+            {/* <ModalLogin handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/> */}
+            
             <ModalRegister handleHidden={hideModalRegister} handleShow={showModalRegister} statusModal={inOnRegister}/>
-            <ModalSucess handleHidden={hideModalSucess} handleShow={showModalSucess} statusModal={inOnSucess}/>
+            
+            {/* <ModalSucess handleHidden={hideModalSucess} handleShow={showModalSucess} statusModal={inOnSucess}/> */}
+            
+            <ModalAnnouncement handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/>
+            
+            
         </>
     )
 }
