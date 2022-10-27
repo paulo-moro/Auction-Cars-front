@@ -28,7 +28,7 @@ export const ContainerStyled = styled.section`
         position: absolute;
         border-radius: 4px;
         padding: 15px;
-
+        
         box-shadow: 0px 4px 40px -10px 
         rgba(0, 0, 0, 0.25);
         border-radius: 4px;
@@ -96,7 +96,7 @@ export const ContainerStyled = styled.section`
 
         width: 100%;
         
-        gap: 15px;
+        gap: 20px;
         padding: 30px 0px;
 
         display: flex;
@@ -146,7 +146,6 @@ export const ContainerStyled = styled.section`
         .div--field{
             display: flex;
             flex-direction: column;
-            gap: 10px;
         }
 
     }
