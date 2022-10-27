@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@material-ui/core";
 import { Button } from "@mui/material";
-// import ButtonStyled from "./styled";
 
 interface ButtonProps{
     text?: string;
@@ -9,9 +8,11 @@ interface ButtonProps{
     color?: any;
     variant?: any;
     size?: any;
+    type: any;
+    setBoolean?: any;
 }
 
-const ButtonUI = ({text, name, color, variant, size}: ButtonProps) => {
+const ButtonUI = ({text, name, color, variant, size, type, setBoolean}: ButtonProps) => {
 
     const theme = createTheme({
         palette: {
@@ -29,7 +30,7 @@ const ButtonUI = ({text, name, color, variant, size}: ButtonProps) => {
     return(
         <ThemeProvider theme={theme}>
 
-            <Button name={name} color={color} variant={variant} > {text}  </Button>
+            <Button onClick={() => setBoolean()} type={type} name={name} color={color} variant={variant} > {text}  </Button>
             
         </ThemeProvider>
     )

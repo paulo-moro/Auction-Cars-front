@@ -11,17 +11,7 @@ const InputStyled = styled.div`
         color: var(--color-grey-0);
         font-size: 14px; 
     }
-    
-    /* TextField{
-        padding: 12px;
-        color: var(--color-gray-3);
-        border: 1.5px solid var(--color-gray-5);
-        width: 100%;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-     */
-    
+
     
 `
 
