@@ -85,13 +85,13 @@ export const Header = () => {
                     </div>
                 </MenuStyled>
             }
-            {/* <ModalLogin handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/> */}
+            <ModalLogin handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/>
             
             <ModalRegister handleHidden={hideModalRegister} handleShow={showModalRegister} statusModal={inOnRegister}/>
             
             {/* <ModalSucess handleHidden={hideModalSucess} handleShow={showModalSucess} statusModal={inOnSucess}/> */}
             
-            <ModalAnnouncement handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/>
+            {/* <ModalAnnouncement handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/> */}
             
             
         </>

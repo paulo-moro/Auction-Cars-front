@@ -6,7 +6,7 @@ import { ButtonUI } from "../../buttonUI/index";
 import { useState } from "react";
 
 
-function ModalAnnouncement({ handleHidden, statusModal }: Modalprops) {
+function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
 
   const modal = statusModal
     ? "modal containerModal"
@@ -50,9 +50,8 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops) {
     }
   }
   
-    const announcement = {title, age, km, price, description, imgCape, imgGalery1, imgGalery2, sale: sale || true, auction: auction || false, typeVehicle: typeVehicle || "car"}
-  
-  
+  const announcement = {title, age, km, price, description, imgCape, imgGalery1, imgGalery2, sale: sale || true, auction: auction || false, typeVehicle: typeVehicle || "car"}
+    
   return (
     <ContainerStyled>
       <section className={modal}>
@@ -100,16 +99,15 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops) {
               
               </div>
 
-              <InputText multiline label="Imagem da capa" placeholder="https://image.com" color="secondary"/>
+              <InputText multiline label="Imagem da capa" setFunction={setImgCape} placeholder="https://image.com" color="secondary"/>
 
-              <InputText multiline label="1ª Imagem da galeria" placeholder="https://image.com" color="secondary"/>
+              <InputText multiline label="1ª Imagem da galeria"  setFunction={setImgGalery1} placeholder="https://image.com" color="secondary"/>
 
-              <InputText multiline label="2ª Imagem da galeria" placeholder="https://image.com" color="secondary"/>
+              <InputText multiline label="2ª Imagem da galeria" setFunction={setImgGalery2} placeholder="https://image.com" color="secondary"/>
 
               <div className="div--field">
-                
-                <ButtonUI type="submit" text="Cancelar" color="primary" variant="outlined" />
-
+               
+                <ButtonUI setBoolean={handleHidden} type="submit" text="Cancelar" color="primary" variant="outlined" />
                 <ButtonUI type="submit" text="Criar anúncio" color="primary" variant="contained" />
               
               </div>
