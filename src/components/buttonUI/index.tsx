@@ -30,7 +30,7 @@ const ButtonUI = ({text, name, color, variant, size, type, setBoolean}: ButtonPr
     return(
         <ThemeProvider theme={theme}>
 
-            <Button onClick={() => setBoolean()} type={type} name={name} color={color} variant={variant} > {text}  </Button>
+            <Button size={size} onClick={() => setBoolean()} type={type} name={name} color={color} variant={variant} > {text}  </Button>
             
         </ThemeProvider>
     )

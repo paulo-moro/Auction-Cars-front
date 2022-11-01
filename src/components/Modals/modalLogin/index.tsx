@@ -1,9 +1,10 @@
 import { Modalprops } from "../../../interface/index";
 import { ContainerStyled } from "./style";
 import { useState } from "react";
-import { Button, ThemeProvider } from "@mui/material";
 import { createTheme } from "@material-ui/core/styles";
 import { FormContainer, TextFieldElement } from "react-hook-form-mui";
+import { InputText } from "../../input";
+import { ButtonUI } from "../../buttonUI";
 
 function ModalLogin({ handleHidden, statusModal }: Modalprops) {
   const theme = createTheme({
@@ -23,10 +24,14 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
     ? "modal containerModal"
     : "modal containerModal hidden";
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
   return (
     <ContainerStyled>
       <section className={modal}>
         <div className="modal">
+
           <div className="modalHeader">
             <h1>Login</h1>
             <button className="removedModal" onClick={() => handleHidden()}>x</button>
@@ -34,34 +39,15 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
 
           <FormContainer>
             <div className="modalBody">
-              <label>Usuário</label>
-              <TextFieldElement
-                name="username"
-                label="Usuário"
-                required
-                color="secondary"
-              />
-
-              <label>Senha</label>
-              <TextFieldElement
-                name="password"
-                label="Senha"
-                required
-                color="secondary"
-              />
-
+            
+              <InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
+              <InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
+            
               <a href="">Esqueci minha senha</a>
-              <ThemeProvider theme={theme}>
-                <Button color="primary" variant="contained" type="submit">
-                  Entrar
-                </Button>
-              </ThemeProvider>
+              <ButtonUI type="submit" text="Entrar" color="primary" variant="contained" />
 
               <label className="label--register">Ainda não possui conta?</label>
-              
-              <ThemeProvider theme={theme}>
-                <Button color="secondary" variant="outlined"> Cadastrar </Button>
-              </ThemeProvider>
+              <ButtonUI type="submit" text="Cadastrar" color="secondary" variant="outlined" />
               
             </div>
           

@@ -1,32 +1,62 @@
 import { Modalprops } from "../../../interface/index";
 import { ContainerStyled } from "./style";
-import { useState } from "react";
-import { Button, TextField, ThemeProvider } from "@mui/material";
-import { createTheme } from "@material-ui/core/styles";
-import { FormContainer, TextFieldElement } from "react-hook-form-mui";
+import { useContext, useState } from "react";
+import { Button } from "@mui/material";
+import { FormContainer } from "react-hook-form-mui";
 import { InputText } from "../../input";
+import { ButtonUI } from "../../buttonUI";
+import UserProvider from "../../../providers/user";
+import axios from "axios";
+
+// interface CreateUserProvider{
+//   user: any;
+// }
 
 function ModalRegister({ handleHidden, statusModal }: Modalprops) {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#4529E6",
-        contrastText: "#fff",
-      },
-      secondary: {
-        main: "#000000",
-        contrastText: "#ffffff",
-      },
-    },
-  });
   
-  const [userRegister, setUserRegister] = useState({});
-  console.log(userRegister)
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [celphone, setCellphone] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [description, setDescription] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
+  const [street, setStreet] = useState('');
+  const [numberAdress, setNumberAdress] = useState('');
+  const [complement, setComplement] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const modal = statusModal
-    ? "modal containerModal"
-    : "modal containerModal hidden";
+  // const { userCreate } = useContext(UserProvider);
+  
+  const [userBuyer, setUserBuyer] = useState(true);
+  const [userAnnunciate, setUserAnnunciate] = useState(false);
+  
+  const createUser = () => {
+    
+    const newUser = {name, email, celphone, password, 
+      // confirmPassword, cpf, birthDate, description, postalCode, country, city, street, numberAdress, complement, 
+    }
+    console.log(newUser);
+    
+    axios.post("http://localhost:3000/users/register", newUser)
+    .then((response) => console.log(response.data))
+    .catch((error)=> console.log(error));
+  }
+  
 
+  const isBuyer = () => {
+    return userBuyer ? setUserBuyer(false) : setUserBuyer(true);
+  }
+
+  const isAnnunciate = () => {
+    return userAnnunciate ? setUserAnnunciate(false) : setUserAnnunciate(true);
+  }
+  
+  const modal = statusModal ? "modal containerModal" : "modal containerModal hidden";
+  
   return (
     <ContainerStyled>
       <section className={modal}>
@@ -43,91 +73,76 @@ function ModalRegister({ handleHidden, statusModal }: Modalprops) {
           <FormContainer>
             <div className="modalBody">
 
-            <InputText label="Nome" placeholder="Ex: Samuel Leoão" required color="secondary"/>
+            <InputText setFunction={setName} label="Nome" placeholder="Ex: Samuel Leoão" required color="secondary"/>
               
-            <InputText label="Email" required placeholder="Ex: samuel@mail.com" color="secondary"/>
+            <InputText setFunction={setEmail} label="Email" required placeholder="Ex: samuel@mail.com" color="secondary"/>
 
-            <InputText label="CPF" placeholder="000.000.000-00" required color="secondary"/>
+            <InputText setFunction={setCpf} label="CPF" placeholder="000.000.000-00" required color="secondary"/>
 
-            <InputText label="Celular" placeholder="(DDD)99999-9999" required color="secondary"/>
+            <InputText setFunction={setCellphone} label="Celular" placeholder="(DDD)99999-9999" required color="secondary"/>
 
-            <InputText label="Data de nascimento" placeholder="00/00/00" required color="secondary"/>
+            <InputText setFunction={setBirthDate} label="Data de nascimento" placeholder="00/00/00" required color="secondary"/>
 
-            <InputText label="Descrição" placeholder="Digitar descrição" required color="secondary"/>
-
+            <InputText setFunction={setDescription} label="Descrição" placeholder="Digitar descrição" required color="secondary"/>
 
               <label>Informações de endereço</label>
 
-
-              <InputText label="CEP" placeholder="00000-000" required color="secondary"/>
+              <InputText setFunction={setPostalCode} label="CEP" placeholder="00000-000" required color="secondary"/>
 
               <div className="div--adress">
               
                 <div className="div--field">
 
 
-                  <InputText label="Estado" placeholder="Digitar estado" required color="secondary" />
+                  <InputText setFunction={setCountry} label="Estado" placeholder="Digitar estado" required color="secondary" />
 
                 </div>
                   
                 <div className="div--field">    
                 
-                  <InputText label="Cidade" placeholder="Digitar cidade" required color="secondary" />
+                  <InputText setFunction={setCity} label="Cidade" placeholder="Digitar cidade" required color="secondary" />
 
                 </div>
                 
               </div>
               
-              <InputText label="Rua" placeholder="Digitar rua" required color="secondary"/>
+              <InputText setFunction={setStreet} label="Rua" placeholder="Digitar rua" required color="secondary"/>
               
               <div className="div--adress">
               
                 <div className="div--field">
 
-                  <InputText label="Número" placeholder="ex: apart 307" required color="secondary"/>
+                  <InputText setFunction={setNumberAdress} label="Número" placeholder="ex: apart 307" required color="secondary"/>
 
                 </div>
                   
                 <div className="div--field">    
 
-                  <InputText label="Complemento" placeholder="Digitar complemento" required color="secondary"/>
+                  <InputText setFunction={setComplement} label="Complemento" placeholder="Digitar complemento" required color="secondary"/>
 
                 </div>
                 
               </div>
               
               <div className="div--adress">
-              
-                <ThemeProvider theme={theme}>
-              
-                  <Button color="primary" variant="contained" type="submit">
-                    Comprador
-                  </Button>
-              
-                </ThemeProvider>
-            
-            
-                <ThemeProvider theme={theme}>
-                
-                  <Button color="secondary" variant="outlined">
-                    Anunciante
-                  </Button>
-              
-                </ThemeProvider>
+
+                <ButtonUI setBoolean={isBuyer} type="submit" text="Comprador" color="primary" variant={userBuyer ? "contained" : "outlined"} />
+
+                <ButtonUI setBoolean={isAnnunciate} type="submit" text="Anunciante" color="primary" variant={userAnnunciate ? "contained" : "outlined"} />
+
               </div>
               
-              <InputText label="Senha" placeholder="Senha" required color="secondary" type="password"/>
+              <InputText setFunction={setPassword} label="Senha" placeholder="Senha" required color="secondary" type="password"/>
 
-              <InputText label="Confirmar senha" placeholder="Confirmar senha" required color="secondary" type="password"/>
+              <InputText setFunction={setConfirmPassword} label="Confirmar senha" placeholder="Confirmar senha" required color="secondary" type="password"/>
 
-              <ThemeProvider theme={theme}>
+              <Button onClick={()=> {
+                createUser()
+                }} color="primary" variant="contained" type="submit">
+                Finalizar Cadastro
+              </Button>
 
-                <Button onClick={()=> console.log(userRegister)} color="primary" variant="contained" type="submit">
-                  Finalizar Cadastro
-                </Button>
-
-              </ThemeProvider>
-
+        
             </div>
           </FormContainer>
         </div>
