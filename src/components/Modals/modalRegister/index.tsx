@@ -8,12 +8,13 @@ import { ButtonUI } from "../../buttonUI";
 import UserProvider from "../../../providers/user";
 import axios from "axios";
 
-// interface CreateUserProvider{
-//   user: any;
-// }
 
 function ModalRegister({ handleHidden, statusModal }: Modalprops) {
   
+  const { userCreate }: any = useContext(UserProvider);
+
+  console.log(userCreate)
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
@@ -29,7 +30,6 @@ function ModalRegister({ handleHidden, statusModal }: Modalprops) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // const { userCreate } = useContext(UserProvider);
   
   const [userBuyer, setUserBuyer] = useState(true);
   const [userAnnunciate, setUserAnnunciate] = useState(false);
@@ -39,7 +39,6 @@ function ModalRegister({ handleHidden, statusModal }: Modalprops) {
     const newUser = {name, email, celphone, password, 
       // confirmPassword, cpf, birthDate, description, postalCode, country, city, street, numberAdress, complement, 
     }
-    console.log(newUser);
     
     axios.post("http://localhost:3000/users/register", newUser)
     .then((response) => console.log(response.data))

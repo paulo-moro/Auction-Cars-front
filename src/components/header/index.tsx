@@ -62,7 +62,7 @@ export const Header = () => {
                 <nav className="nav--menu-desktop">
                     <button className="nav--menu-desktop-button">Carros</button>
                     <button className="nav--menu-desktop-button">Motos</button>
-                    <button className="nav--menu-desktop-button">Leilão</button>
+                    <button onClick={() => setInOnSucess(true)} className="nav--menu-desktop-button">Leilão</button>
 
                     <div className="nav--login-register-desktop">
                     <div id="div-line"></div>
@@ -91,7 +91,7 @@ export const Header = () => {
             
             {/* <ModalSucess handleHidden={hideModalSucess} handleShow={showModalSucess} statusModal={inOnSucess}/> */}
             
-            {/* <ModalAnnouncement handleHidden={hideModalLogin} handleShow={showModalLogin} statusModal={inOnLogin}/> */}
+            <ModalAnnouncement handleHidden={hideModalSucess} handleShow={showModalSucess} statusModal={inOnSucess}/>
             
             
         </>

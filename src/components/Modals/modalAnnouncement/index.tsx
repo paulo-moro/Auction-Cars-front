@@ -17,12 +17,12 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
   const [car, setCar] = useState(true);
   const [motorCycle, setMotorcycle] = useState(false);
   
-  const [title, setTitle] = useState("");
-  const [age, setAge] = useState("");
+  const [heading, setTitle] = useState("");
+  const [year, setAge] = useState("");
   const [km, setKm] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [imgCape, setImgCape] = useState("");
+  const [img, setImgCape] = useState("");
   const [imgGalery1, setImgGalery1] = useState("");
   const [imgGalery2, setImgGalery2] = useState("");
   const [typeVehicle, setTypeVehicle] =useState("");
@@ -50,7 +50,14 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
     }
   }
   
-  const announcement = {title, age, km, price, description, imgCape, imgGalery1, imgGalery2, sale: sale || true, auction: auction || false, typeVehicle: typeVehicle || "car"}
+  const announcement = {heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"}
+
+//   useEffect(() => {
+//     axios.post("http://localhost:3000/vehicle", announcement)
+//     .then((response) => console.log(response.data))
+// }, [])
+    
+
     
   return (
     <ContainerStyled>

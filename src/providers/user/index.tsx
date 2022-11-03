@@ -1,11 +1,11 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { Context, createContext, ReactNode, useEffect, useState } from "react";
 import axios from "axios";
 
 
 export const UserContext = createContext({});
 
 interface CreateUserProviderProps{
-    children: [];
+    children: any;
 }
 
 const UserProvider = ({ children }: CreateUserProviderProps) => {
