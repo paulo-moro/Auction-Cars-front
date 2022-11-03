@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Card from "../card";
 import { ListStyle } from "./style";
 
@@ -65,6 +66,17 @@ const ListCard = ({title}: ITitleSection) => {
               price: "R$ 00.000,00"
           }
     ]);
+
+//   const [cars, setCars] = useState([]);
+
+//     useEffect(() => {
+//     axios.get("http://localhost:3000/vehicle")
+//     .then((response) => {
+//         setCars(response.data);
+//         console.log(response.data)
+//     })
+// }, [])
+    
 
   return (
     <ListStyle>

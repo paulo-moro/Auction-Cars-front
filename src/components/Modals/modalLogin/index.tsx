@@ -2,9 +2,11 @@ import { Modalprops } from "../../../interface/index";
 import { ContainerStyled } from "./style";
 import { useState } from "react";
 import { createTheme } from "@material-ui/core/styles";
-import { FormContainer, TextFieldElement } from "react-hook-form-mui";
+import { FormContainer } from "react-hook-form-mui";
 import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI";
+import axios from "axios";
+import { Button } from "@mui/material";
 
 function ModalLogin({ handleHidden, statusModal }: Modalprops) {
   const theme = createTheme({
@@ -24,8 +26,19 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
     ? "modal containerModal"
     : "modal containerModal hidden";
 
-    const [username, setUsername] = useState("");
+    const [email, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const loginUser = () => {
+    
+      const loginUser = {email, password}
+      
+      axios.post("http://localhost:3000/login", loginUser)
+      .then((response) => {
+        sessionStorage.setItem("user", JSON.stringify(response.data));
+      })
+      .catch((error)=> console.log(error));
+    }
 
   return (
     <ContainerStyled>
@@ -44,7 +57,9 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
               <InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
             
               <a href="">Esqueci minha senha</a>
-              <ButtonUI type="submit" text="Entrar" color="primary" variant="contained" />
+              <Button 
+              onClick={()=> loginUser()}
+              type="submit" color="primary" variant="contained">Entrar</Button> 
 
               <label className="label--register">Ainda não possui conta?</label>
               <ButtonUI type="submit" text="Cadastrar" color="secondary" variant="outlined" />
