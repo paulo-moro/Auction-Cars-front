@@ -11,9 +11,9 @@ import axios from "axios";
 
 function ModalRegister({ handleHidden, statusModal }: Modalprops) {
   
-  const { userCreate }: any = useContext(UserProvider);
+  // const { userCreate }: any = useContext(UserProvider);
+  // console.log(userCreate)
 
-  console.log(userCreate)
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
