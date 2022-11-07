@@ -1,19 +1,21 @@
 import { Modalprops } from "../../../interface/index";
 import { ContainerStyled } from "./style";
-import { FormContainer } from "react-hook-form-mui";
 import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI/index";
 import { useState } from "react";
+import { useNewVehicle } from "../../../providers/newVehicle";
 
 
 function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
+
+  const {setNewVehicle} = useNewVehicle();
 
   const modal = statusModal
     ? "modal containerModal"
     : "modal containerModal hidden";
 
-  const [sale, setSale] = useState(true);
-  const [auction, setAuction] = useState(false);
+  const [sale, setSale] = useState(false);
+  const [auction, setAuction] = useState(true);
   const [car, setCar] = useState(true);
   const [motorCycle, setMotorcycle] = useState(false);
   
@@ -38,6 +40,7 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
   }
   
   const carOrMotorcycle = () => {
+    console.log("teste")
     if(car){ 
       setCar(false);
       setMotorcycle(true);
@@ -52,11 +55,9 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
   
   const announcement = {heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"}
 
-//   useEffect(() => {
-//     axios.post("http://localhost:3000/vehicle", announcement)
-//     .then((response) => console.log(response.data))
-// }, [])
-    
+const createVehicle = () => {
+  setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"})
+}
 
     
   return (
@@ -72,13 +73,20 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
             </button>
           </div>
 
-          <FormContainer onSuccess={() => console.log(announcement)}>
-            <div className="modalBody">
+          <form className="modalBody"
+           onSubmit={(e) => {  
+            console.log("form rodou")     
+            e.preventDefault();
+            createVehicle()
+          }}>
+          
               <p>Tipo de anúncio</p>
               
               <div className="div--field">
                 
-                <ButtonUI type="submit" setBoolean={saleOrAuction} text="Venda" color={"primary"} variant={sale ? "contained" : "outlined"}  />
+                <ButtonUI type="submit" 
+                setBoolean={saleOrAuction} 
+                text="Venda" color={"primary"} variant={sale ? "contained" : "outlined"}  />
 
                 <ButtonUI type="submit" setBoolean={saleOrAuction} text="Leilão" color={"primary"} variant={auction ? "contained" : "outlined"} />
               
@@ -115,12 +123,11 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
               <div className="div--field">
                
                 <ButtonUI setBoolean={handleHidden} type="submit" text="Cancelar" color="primary" variant="outlined" />
-                <ButtonUI type="submit" text="Criar anúncio" color="primary" variant="contained" />
+                <ButtonUI setBoolean={createVehicle} type="submit" text="Criar anúncio" color="primary" variant="contained" />
               
               </div>
-
-            </div>
-          </FormContainer>
+            
+          </form>
         </div>
       </section>
     </ContainerStyled>

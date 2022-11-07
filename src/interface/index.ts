@@ -1,17 +1,18 @@
-export interface Vehicles {
-    id:          String,
-    name:        String,
-    img:         String,
-    title:       String,
-    description: String,
-    KM:          String,
-    year:        String,
-    price:       String
+export interface Vehicle {
+    id:           string,
+    heading?:     string;
+    name?:        string,
+    img?:         string,
+    title?:       string,
+    description?: string,
+    km?:          string,
+    year?:        string,
+    price?:       string
 }
 
 
 export interface VehiclesProps {
-    vehicles: Vehicles
+    vehicle: Vehicle;
 }
 
 

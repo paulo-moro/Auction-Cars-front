@@ -35,7 +35,7 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
       
       axios.post("http://localhost:3000/login", loginUser)
       .then((response) => {
-        sessionStorage.setItem("user", JSON.stringify(response.data));
+        sessionStorage.setItem("user", JSON.stringify(response.data.token));
       })
       .catch((error)=> console.log(error));
     }
@@ -57,9 +57,9 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
               <InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
             
               <a href="">Esqueci minha senha</a>
-              <Button 
-              onClick={()=> loginUser()}
-              type="submit" color="primary" variant="contained">Entrar</Button> 
+              <ButtonUI 
+              setBoolean={loginUser}  text="Entrar"
+              type="submit" color="primary" variant="contained"/> 
 
               <label className="label--register">Ainda não possui conta?</label>
               <ButtonUI type="submit" text="Cadastrar" color="secondary" variant="outlined" />

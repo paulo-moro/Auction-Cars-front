@@ -8,7 +8,7 @@ interface ButtonProps{
     color?: any;
     variant?: any;
     size?: any;
-    type: any;
+    type?: any;
     setBoolean?: any;
 }
 
@@ -30,7 +30,11 @@ const ButtonUI = ({text, name, color, variant, size, type, setBoolean}: ButtonPr
     return(
         <ThemeProvider theme={theme}>
 
-            <Button size={size} onClick={() => setBoolean()} type={type} name={name} color={color} variant={variant} > {text}  </Button>
+            <Button size={size} onClick={(e) => {
+              e.preventDefault();
+              setBoolean()
+            }} 
+              type={type} name={name} color={color} variant={variant} > {text}  </Button>
             
         </ThemeProvider>
     )

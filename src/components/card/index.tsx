@@ -1,42 +1,37 @@
-import { VehiclesProps } from "../../interface"
+import { Vehicle, VehiclesProps } from "../../interface"
 import { UserIcon } from "../iconUser";
 import { LiCard, DivCard, SpanKm, SpanYear, SpanPrice } from "./style";
 
-const Card = ({vehicles}: VehiclesProps) => {
+const Card = ({vehicle}: VehiclesProps) => {
 
-    const {id, name, title, description, KM, img, year, price } = vehicles;
+    const {id, name, heading, description, km, img, year, price }:  Vehicle = vehicle;
 
     return (
         <LiCard>
           <figure>
-            <img src='https://th.bing.com/th/id/OIP.UQeKbZTigv91K96LGwGAZgHaE8?pid=ImgDet&rs=1' alt='' />
+            <img src={img} alt='' />
           </figure>
 
-          <h2>{title}</h2>
+          <h2>{heading}</h2>
 
           <p>{description}</p>
           
-          <UserIcon color={""} theme={"red"} name={name} initials={name[0]} />
-          
+          <UserIcon color={""} theme={"red"} name={name} initials={"P"} />
           
           <DivCard>
-
             <div>
-
               <SpanKm>
-                <p>{KM}</p>
+                <p>{km}</p>
               </SpanKm>
 
               <SpanYear>
                 <p>{year}</p>
               </SpanYear>
-              
             </div>
 
             <SpanPrice>
               <p>{price}</p>
             </SpanPrice>
-
           </DivCard>
 
         </LiCard>

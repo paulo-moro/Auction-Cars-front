@@ -97,7 +97,7 @@ export const ContainerStyled = styled.section`
         width: 100%;
         
         gap: 25px;
-        padding: 10px 0px 30px 0px;
+        padding: 30px;
 
         display: flex;
         flex-direction: column;

@@ -1,30 +1,41 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import {
+  useContext,
+  createContext,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import axios from "axios";
 
-
-export const UserContext = createContext({});
-
-interface CreateUserProviderProps{
-    children: any;
+export interface IRegisterState {
+  userCreate: Object;
+  setUserCreate: (data: Object) => void;
 }
 
-const UserProvider = ({ children }: CreateUserProviderProps) => {
+export const RegisterUserContext = createContext({} as IRegisterState);
 
-    const [userCreate, setUserCreate] = useState({});
-
-    const createUser = () => {
-        axios.post("http://localhost:3000/users/register", userCreate)
-    }
-
-    useEffect(() => {
-        createUser();
-    },[userCreate]);
-
-    return(
-        <UserContext.Provider value={{ userCreate, setUserCreate }}>
-            {children}
-        </UserContext.Provider>
-    )
+interface CreateRegisterUserProviderProps {
+  children: ReactNode;
 }
 
-export default UserProvider;
+export const RegisterUserProvider = ({
+  children,
+}: CreateRegisterUserProviderProps) => {
+  const [userCreate, setUserCreate] = useState({});
+
+  const createUser = () => {
+    axios.post("http://localhost:3000/users/register", userCreate);
+  };
+
+  useEffect(() => {
+    createUser();
+  }, [userCreate]);
+
+  return (
+    <RegisterUserContext.Provider value={{ userCreate, setUserCreate }}>
+      {children}
+    </RegisterUserContext.Provider>
+  );
+};
+
+export const useRegister = () => useContext(RegisterUserContext);
