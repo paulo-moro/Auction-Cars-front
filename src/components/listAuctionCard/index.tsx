@@ -1,10 +1,10 @@
+import { useListVehicle } from "../../providers/listAllVehicles";
 import { AuctionCard } from "../auctionCard"
 import { ListAuctionStyle } from "./style"
-import { useListVehicle } from "../../providers/listVehicle";
 
 export const ListAuction = () => {
             
-const { listVehicle } = useListVehicle();
+const { listVehicles } = useListVehicle();
 
     return(
         <ListAuctionStyle>
@@ -13,7 +13,7 @@ const { listVehicle } = useListVehicle();
             </h2>
             <ul className="ul--list-auction">
             {
-            listVehicle?.map((car: any, index) => {
+            listVehicles?.map((car: any, index: number) => {
                 return(
                 <AuctionCard key={index} car={car}/>
                 )

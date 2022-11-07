@@ -1,19 +1,6 @@
 import { createTheme, TextField } from "@mui/material";
+import { IPlaceholder } from "../../interface/propsComponents";
 import { InputStyled } from "./style";
-
-interface IPlaceholder {
-  label?: string;
-  placeholder?: string;
-  color: any;
-  rows?: number;
-  maxRows?: number;
-  multiline?: boolean;
-  variant?: any;
-  required?: boolean;
-  type?: string;
-  setFunction?: any;
-
-}
 
 const InputText = ({
   label,

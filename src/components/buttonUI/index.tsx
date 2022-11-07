@@ -1,16 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@material-ui/core";
 import { Button } from "@mui/material";
-
-interface ButtonProps{
-    text?: string;
-    name?: string;
-    color?: any;
-    variant?: any;
-    size?: any;
-    type?: any;
-    setBoolean?: any;
-}
+import { ButtonProps } from "../../interface/propsComponents";
 
 const ButtonUI = ({text, name, color, variant, size, type, setBoolean}: ButtonProps) => {
 

@@ -1,9 +1,9 @@
-import { Modalprops } from "../../../interface/index";
 import { ContainerStyled } from "./style";
 import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI/index";
 import { useState } from "react";
 import { useNewVehicle } from "../../../providers/newVehicle";
+import { Modalprops } from "../../../interface/modal";
 
 
 function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){

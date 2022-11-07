@@ -1,11 +1,5 @@
+import { IUser } from "../../interface/propsComponents";
 import { UserIconStyle } from "./styled";
-
-interface IUser {
-    name?: String;
-    initials?: String;
-    color?: string;
-    theme?: String;
-}
 
 const UserIcon = ({ name, initials, theme, color }: IUser) => {
     return (

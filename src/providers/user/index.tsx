@@ -1,22 +1,13 @@
 import {
   useContext,
   createContext,
-  ReactNode,
   useEffect,
   useState,
 } from "react";
+import { CreateRegisterUserProviderProps, IRegisterState } from "../../interface/user";
 import axios from "axios";
 
-export interface IRegisterState {
-  userCreate: Object;
-  setUserCreate: (data: Object) => void;
-}
-
 export const RegisterUserContext = createContext({} as IRegisterState);
-
-interface CreateRegisterUserProviderProps {
-  children: ReactNode;
-}
 
 export const RegisterUserProvider = ({
   children,

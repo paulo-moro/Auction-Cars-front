@@ -1,25 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useListVehicle } from "../../providers/listVehicle";
+import { ITitleSection } from "../../interface/propsComponents";
+import { useListVehicle } from "../../providers/listAllVehicles";
 import Card from "../card";
 import { ListStyle } from "./style";
 
-interface ITitleSection {
-  title: String;
-}
 
 const ListCard = ({ title }: ITitleSection) => {
   
-  const { listVehicle } = useListVehicle();
-
+  const { listVehicles } = useListVehicle();
 
   return (
     <ListStyle>
       <h2>{title}</h2>
       <ul className="ul--list-cars">
-        {listVehicle &&
-          listVehicle.map((vehicle, index) => (
-            
+        {listVehicles?.map((vehicle, index) => (
             <Card key={index} vehicle={vehicle} />
           ))}
       </ul>

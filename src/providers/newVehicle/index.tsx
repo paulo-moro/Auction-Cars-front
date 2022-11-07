@@ -5,18 +5,10 @@ import {
   useEffect,
   useState,
 } from "react";
+import { IVehicleRegister, NewVehicleProviderProps } from "../../interface/vehicle";
 import axios from "axios";
 
-export interface IVehicleRegister {
-  newVehicle: Object;
-  setNewVehicle: (vehicle: Object) => void;
-}
-
 export const NewVehicleContext = createContext({} as IVehicleRegister);
-
-interface NewVehicleProviderProps {
-  children: ReactNode;
-}
 
 export const NewVehicleProvider = ({ children }: NewVehicleProviderProps) => {
   const [newVehicle, setNewVehicle] = useState({});

@@ -1,4 +1,4 @@
-import { Vehicle, VehiclesProps } from "../../interface"
+import { Vehicle, VehiclesProps } from "../../interface/vehicle"
 import { UserIcon } from "../iconUser";
 import { LiCard, DivCard, SpanKm, SpanYear, SpanPrice } from "./style";
 

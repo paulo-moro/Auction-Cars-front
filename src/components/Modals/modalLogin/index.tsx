@@ -1,27 +1,13 @@
-import { Modalprops } from "../../../interface/index";
+import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
 import { useState } from "react";
-import { createTheme } from "@material-ui/core/styles";
 import { FormContainer } from "react-hook-form-mui";
 import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI";
 import axios from "axios";
-import { Button } from "@mui/material";
 
 function ModalLogin({ handleHidden, statusModal }: Modalprops) {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#4529E6",
-        contrastText: "#fff",
-      },
-      secondary: {
-        main: "#000000",
-        contrastText: "#ffffff",
-      },
-    },
-  });
-
+  
   const modal = statusModal
     ? "modal containerModal"
     : "modal containerModal hidden";

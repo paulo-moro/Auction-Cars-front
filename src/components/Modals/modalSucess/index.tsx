@@ -1,9 +1,7 @@
-import { Modalprops } from "../../../interface/index";
+import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
-import { useState } from "react";
 import { Button, ThemeProvider } from "@mui/material";
 import { createTheme } from "@material-ui/core/styles";
-import { FormContainer, TextFieldElement } from "react-hook-form-mui";
 
 function ModalLogin({ handleHidden, statusModal }: Modalprops) {
   const theme = createTheme({

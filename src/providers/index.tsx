@@ -1,6 +1,6 @@
 import { RegisterUserProvider } from "./user";
 import { NewVehicleProvider } from "./newVehicle";
-import { ListVehicleProvider } from "./listVehicle";
+import { ListVehicleProvider } from "./listAllVehicles";
 
 const AppProvider = ({ children }: any) => {
   return (
