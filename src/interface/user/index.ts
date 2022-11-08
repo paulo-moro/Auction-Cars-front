@@ -5,7 +5,6 @@ export interface IRegisterState {
     setUserCreate: (data: Object) => void;
   }
   
-  
   export interface CreateRegisterUserProviderProps {
     children: ReactNode;
   }

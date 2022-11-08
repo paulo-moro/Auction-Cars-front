@@ -42,16 +42,14 @@ export interface IVehicle {
   
   export interface ListVehicleProviderProps {
     children: ReactNode;
-  }
-  
+  } 
 
 export interface IVehicleRegister {
     newVehicle: Object;
     setNewVehicle: (vehicle: Object) => void;
   }
-  
 
 export interface NewVehicleProviderProps {
     children: ReactNode;
-  }
+}
   

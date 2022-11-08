@@ -1,3 +1,5 @@
+import { IVehicle } from "../vehicle";
+
 export interface ActionCardProps
     extends React.HTMLAttributes<HTMLOptionElement> {
     car?: {
@@ -8,6 +10,7 @@ export interface ActionCardProps
 
 export interface ITitleSection {
   title: String;
+  listVehicles?: IVehicle[];
 }
 
 export interface Label{

@@ -15,16 +15,15 @@ export const ListVehicleProvider = ({ children }: ListVehicleProviderProps) => {
 
   axios
     .get("http://localhost:3000/categorie/car")
-    .then((response) => setListCars(response.data));
+    .then((response) => setListCars(response.data.vehicles));
 
   axios
-    .get("http://localhost:3000/categorie/motorcycle")
-    .then((response) => setListMotorcycles(response.data));
+    .get("http://localhost:3000/categorie/motorCycle")
+    .then((response) => setListMotorcycles(response.data.vehicles));
 
   return (
     <ListVehicleContext.Provider
-      value={{ listVehicles, listCars, listMotorcycles }}
-    >
+      value={{ listVehicles, listCars, listMotorcycles }} >
       {children}
     </ListVehicleContext.Provider>
   );

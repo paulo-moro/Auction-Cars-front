@@ -4,10 +4,8 @@ import Card from "../card";
 import { ListStyle } from "./style";
 
 
-const ListCard = ({ title }: ITitleSection) => {
+const ListCard = ({ title, listVehicles }: ITitleSection) => {
   
-  const { listVehicles } = useListVehicle();
-
   return (
     <ListStyle>
       <h2>{title}</h2>

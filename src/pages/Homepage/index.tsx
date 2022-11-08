@@ -7,14 +7,15 @@ import { useListVehicle } from "../../providers/listAllVehicles";
 
 const HomePage = () => {
 
+    const { listCars, listMotorcycles } = useListVehicle();
 
     return(
         <>
         <Header/>
         <WelcomeHome/>
         <ListAuction/>
-        <ListCard title={"Carros"}/>
-        <ListCard title={"Motos"}/>
+        <ListCard title={"Carros"} listVehicles={listCars}/>
+        <ListCard title={"Motos"} listVehicles={listMotorcycles}/>
         <Footer/>
         </>
     )
