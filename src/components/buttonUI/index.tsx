@@ -23,7 +23,7 @@ const ButtonUI = ({text, name, color, variant, size, type, setBoolean}: ButtonPr
 
             <Button size={size} onClick={(e) => {
               e.preventDefault();
-              setBoolean()
+              setBoolean();
             }} 
               type={type} name={name} color={color} variant={variant} > {text}  </Button>
             
