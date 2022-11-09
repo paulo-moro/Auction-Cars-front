@@ -6,17 +6,44 @@ export const ListAuctionStyle = styled.div`
     gap: 20px;
     margin-top: 30px;
     
-    .ul--list-auction{
+    .div-carousel{
         display: flex;
-        overflow-x: scroll;
+        align-items: center;
+    }
+
+    .carousel-list{
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
         width: 100%;
         gap: 20px;
         padding: 10px;
     }
 
+    .carousel-list::-webkit-scrollbar{
+        display: none;
+    }
+
     h2{
         height: 10%;
         margin: 20px;
+    }
+
+    .asset--rigth{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        background: none;
+    }
+
+    .asset--left{
+        display: flex;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        transform: rotate(180deg);
+        background: none;
     }
 
 `

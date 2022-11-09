@@ -12,7 +12,6 @@ export const ModalUserProvider = ({ children }: UserProviderProps) => {
 
   const showModalAnnouncement = () => {
     setInOnAnnouncement(true);
-    console.log("showModalAnnouncement");
     return true;
   };
 

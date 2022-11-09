@@ -12,11 +12,11 @@ export const NewVehicleContext = createContext({} as IVehicleRegister);
 
 export const NewVehicleProvider = ({ children }: NewVehicleProviderProps) => {
   const [newVehicle, setNewVehicle] = useState({});
-
+  
   const createVehicle = () => {
     if(sessionStorage.getItem("user")){
-    const token = JSON.parse(sessionStorage.getItem("user") || "");
-
+      const token = JSON.parse(sessionStorage.getItem("user") || "");
+      
     axios
       .post("http://localhost:3000/vehicle", newVehicle, {
         headers: {
@@ -28,7 +28,7 @@ export const NewVehicleProvider = ({ children }: NewVehicleProviderProps) => {
       console.log("não tem token")
     }
   };
-
+  
   useEffect(() => {
     createVehicle();
   }, [newVehicle]);

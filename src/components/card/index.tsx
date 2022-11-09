@@ -9,14 +9,14 @@ const Card = ({vehicle}: VehiclesProps) => {
     return (
         <LiCard>
           <figure>
-            <img src={img} alt='' />
+            <img src={img} alt=''/>
           </figure>
 
           <h2>{heading}</h2>
 
           <p>{description}</p>
           
-          <UserIcon color={""} theme={"red"} name={name} initials={"P"} />
+          <UserIcon color={""} theme={"red"} name={"Nome de Teste"} initials={"P"} />
           
           <DivCard>
             <div>

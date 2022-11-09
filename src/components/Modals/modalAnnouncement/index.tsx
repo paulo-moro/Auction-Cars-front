@@ -41,7 +41,6 @@ function ModalAnnouncement(){
   }
   
   const carOrMotorcycle = () => {
-    console.log("teste")
     if(car){ 
       setCar(false);
       setMotorcycle(true);
@@ -74,7 +73,6 @@ const createVehicle = () => {
 
           <form className="modalBody"
            onSubmit={(e) => {  
-            console.log("form rodou")     
             e.preventDefault();
             createVehicle()
           }}>
