@@ -4,7 +4,7 @@ import { LiCard, DivCard, SpanKm, SpanYear, SpanPrice } from "./style";
 
 const Card = ({vehicle}: VehiclesProps) => {
 
-    const {id, name, heading, description, km, img, year, price }:  Vehicle = vehicle;
+    const {id, name, heading, description, km, img, year, price }: Vehicle = vehicle;
 
     return (
         <LiCard>

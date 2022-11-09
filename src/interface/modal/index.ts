@@ -22,12 +22,16 @@ export interface IModalState{
 
     handleShow?: () => Boolean;
     handleHidden?: () => Boolean;
+    
     hideModalAnnouncement: () => Boolean;
     showModalAnnouncement: () => Boolean;
+    
     showModalRegister: () => Boolean;
     hideModalRegister: () => Boolean;
+    
     showModalSucess: () => Boolean;
     hideModalSucess: () => Boolean;
+
     hideModalLogin: () => Boolean;
     showModalLogin: () => Boolean;
 }

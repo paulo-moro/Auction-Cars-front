@@ -2,10 +2,9 @@ import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
 import { Button, ThemeProvider } from "@mui/material";
 import { createTheme } from "@material-ui/core/styles";
-
 import { useModal } from "../../../providers/modal";
 
-function ModalSucess() {
+export function ModalSucess() {
   const theme = createTheme({
     palette: {
       primary: {
@@ -15,12 +14,10 @@ function ModalSucess() {
     },
   });
 
-
   const { 
     inOnSucess, 
-    setInOnSucess, 
-    showModalSucess, 
     hideModalSucess,
+    showModalLogin
 } = useModal();
 
   const modal = inOnSucess
@@ -41,7 +38,12 @@ function ModalSucess() {
           
           </div>
 
-          <div className="modalBody">
+          <form onSubmit={(e)=> {
+            e.preventDefault();
+            hideModalSucess();
+            showModalLogin();
+
+          }} className="modalBody">
           
             <h4>Sua conta foi criada com sucesso!</h4>
             
@@ -53,7 +55,7 @@ function ModalSucess() {
               </Button>
             </ThemeProvider>
             
-          </div>
+          </form>
           
         </div>
         
@@ -63,4 +65,3 @@ function ModalSucess() {
   );
 }
 
-export { ModalSucess };

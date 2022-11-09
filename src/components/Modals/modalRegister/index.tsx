@@ -22,6 +22,7 @@ function ModalRegister() {
 
   const createUser = () => {
     setUserCreate({ name, email, celphone, password });
+    hideModalRegister();
   };
 
   const isBuyer = () => {

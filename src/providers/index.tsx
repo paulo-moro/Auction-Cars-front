@@ -6,15 +6,15 @@ import { ModalUserProvider } from "./modal";
 
 const AppProvider = ({ children }: any) => {
   return (
-    <RegisterUserProvider>
-      <LoginUserProvider>
-         <ModalUserProvider> 
+    <ModalUserProvider>
+      <RegisterUserProvider>
+        <LoginUserProvider>
           <NewVehicleProvider>
             <ListVehicleProvider>{children}</ListVehicleProvider>
           </NewVehicleProvider>
-         </ModalUserProvider> 
-      </LoginUserProvider>
-    </RegisterUserProvider>
+        </LoginUserProvider>
+      </RegisterUserProvider>
+    </ModalUserProvider>
   );
 };
 

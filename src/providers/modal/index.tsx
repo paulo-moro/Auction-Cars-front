@@ -83,4 +83,3 @@ return (
 
 export const useModal = () => useContext(ModalContext);
 
-export {};

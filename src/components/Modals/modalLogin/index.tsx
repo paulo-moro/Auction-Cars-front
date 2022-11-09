@@ -13,7 +13,8 @@ function ModalLogin() {
     inOnLogin, 
     setInOnLogin, 
     showModalLogin, 
-    hideModalLogin
+    hideModalLogin,
+    showModalRegister
  } = useModal();
 
   const modal = inOnLogin
@@ -27,6 +28,11 @@ function ModalLogin() {
 
     const loginFunction = () => {
       setUser({email, password});
+    }
+
+    const registerFunction = () => {
+      hideModalLogin();
+      showModalRegister();
     }
 
   return (
@@ -51,7 +57,7 @@ function ModalLogin() {
               type="submit" color="primary" variant="contained"/> 
 
               <label className="label--register">Ainda não possui conta?</label>
-              <ButtonUI type="submit" text="Cadastrar" color="secondary" variant="outlined" />
+              <ButtonUI setBoolean={registerFunction} type="submit" text="Cadastrar" color="secondary" variant="outlined" />
               
             </div>
           
