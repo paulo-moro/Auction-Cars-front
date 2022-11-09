@@ -4,26 +4,29 @@ import { useState } from "react";
 import { FormContainer } from "react-hook-form-mui";
 import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI";
-import axios from "axios";
+import { useLogin } from "../../../providers/userLogin";
+import { useModal } from "../../../providers/modal";
 
-function ModalLogin({ handleHidden, statusModal }: Modalprops) {
+function ModalLogin() {
   
-  const modal = statusModal
+  const { 
+    inOnLogin, 
+    setInOnLogin, 
+    showModalLogin, 
+    hideModalLogin
+ } = useModal();
+
+  const modal = inOnLogin
     ? "modal containerModal"
     : "modal containerModal hidden";
+
+    const { user, setUser} = useLogin();
 
     const [email, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const loginUser = () => {
-    
-      const loginUser = {email, password}
-      
-      axios.post("http://localhost:3000/login", loginUser)
-      .then((response) => {
-        sessionStorage.setItem("user", JSON.stringify(response.data.token));
-      })
-      .catch((error)=> console.log(error));
+    const loginFunction = () => {
+      setUser({email, password});
     }
 
   return (
@@ -33,7 +36,7 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
 
           <div className="modalHeader">
             <h1>Login</h1>
-            <button className="removedModal" onClick={() => handleHidden()}>x</button>
+            <button className="removedModal" onClick={() => hideModalLogin()}>x</button>
           </div>
 
           <FormContainer>
@@ -42,9 +45,9 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
               <InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
               <InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
             
-              <a href="">Esqueci minha senha</a>
+              <a href=" ">Esqueci minha senha</a>
               <ButtonUI 
-              setBoolean={loginUser}  text="Entrar"
+              setBoolean={loginFunction}  text="Entrar"
               type="submit" color="primary" variant="contained"/> 
 
               <label className="label--register">Ainda não possui conta?</label>

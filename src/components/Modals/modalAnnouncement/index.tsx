@@ -5,12 +5,14 @@ import { useState } from "react";
 import { useNewVehicle } from "../../../providers/newVehicle";
 import { Modalprops } from "../../../interface/modal";
 
+import { useModal } from "../../../providers/modal";
 
-function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
+function ModalAnnouncement(){
 
   const {setNewVehicle} = useNewVehicle();
+  const { inOnAnnouncement, setInOnAnnouncement, hideModalAnnouncement } = useModal();
 
-  const modal = statusModal
+  const modal = inOnAnnouncement
     ? "modal containerModal"
     : "modal containerModal hidden";
 
@@ -18,7 +20,6 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
   const [auction, setAuction] = useState(true);
   const [car, setCar] = useState(true);
   const [motorCycle, setMotorcycle] = useState(false);
-  
   const [heading, setTitle] = useState("");
   const [year, setAge] = useState("");
   const [km, setKm] = useState("");
@@ -40,7 +41,6 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
   }
   
   const carOrMotorcycle = () => {
-    console.log("teste")
     if(car){ 
       setCar(false);
       setMotorcycle(true);
@@ -52,8 +52,6 @@ function ModalAnnouncement({ handleHidden, statusModal }: Modalprops){
       setTypeVehicle("car")
     }
   }
-  
-  const announcement = {heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"}
 
 const createVehicle = () => {
   setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"})
@@ -68,14 +66,13 @@ const createVehicle = () => {
         
           <div className="modalHeader">
             <h1>Criar anúncio</h1>
-            <button className="removedModal" onClick={() => handleHidden()}>
+            <button className="removedModal" onClick={() => hideModalAnnouncement()}>
               x
             </button>
           </div>
 
           <form className="modalBody"
            onSubmit={(e) => {  
-            console.log("form rodou")     
             e.preventDefault();
             createVehicle()
           }}>
@@ -122,7 +119,7 @@ const createVehicle = () => {
 
               <div className="div--field">
                
-                <ButtonUI setBoolean={handleHidden} type="submit" text="Cancelar" color="primary" variant="outlined" />
+                <ButtonUI setBoolean={hideModalAnnouncement} type="submit" text="Cancelar" color="primary" variant="outlined" />
                 <ButtonUI setBoolean={createVehicle} type="submit" text="Criar anúncio" color="primary" variant="contained" />
               
               </div>
@@ -134,4 +131,4 @@ const createVehicle = () => {
   );
 }
 
-export { ModalAnnouncement };
+export default ModalAnnouncement;

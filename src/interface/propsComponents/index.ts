@@ -45,4 +45,5 @@ export interface ButtonProps{
     size?: any;
     type?: any;
     setBoolean?: any;
+    
 }

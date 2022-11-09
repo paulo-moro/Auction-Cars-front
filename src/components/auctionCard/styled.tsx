@@ -30,7 +30,7 @@ const AuctionCardStyle = styled.div`
         color: var(--color-grey-1);
         margin: 10px 15px;
         background-color: var(--color-white-fixed);
-        width: 110px;
+        width: 150px;
         height: 30px;
         gap: 10px;
         border-radius: 32px;

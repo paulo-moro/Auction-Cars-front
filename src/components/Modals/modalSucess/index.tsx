@@ -3,7 +3,9 @@ import { ContainerStyled } from "./style";
 import { Button, ThemeProvider } from "@mui/material";
 import { createTheme } from "@material-ui/core/styles";
 
-function ModalLogin({ handleHidden, statusModal }: Modalprops) {
+import { useModal } from "../../../providers/modal";
+
+function ModalSucess() {
   const theme = createTheme({
     palette: {
       primary: {
@@ -13,7 +15,15 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
     },
   });
 
-  const modal = statusModal
+
+  const { 
+    inOnSucess, 
+    setInOnSucess, 
+    showModalSucess, 
+    hideModalSucess,
+} = useModal();
+
+  const modal = inOnSucess
     ? "modal containerModal"
     : "modal containerModal hidden";
 
@@ -27,7 +37,7 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
           <div className="modalHeader">
             
             <h1>Sucesso!</h1>
-            <button className="removedModal" onClick={() => handleHidden()}> x </button>
+            <button className="removedModal" onClick={() => hideModalSucess()}> x </button>
           
           </div>
 
@@ -53,4 +63,4 @@ function ModalLogin({ handleHidden, statusModal }: Modalprops) {
   );
 }
 
-export default ModalLogin;
+export { ModalSucess };

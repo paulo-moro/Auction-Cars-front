@@ -1,10 +1,15 @@
 import { ReactNode } from "react";
 
-export interface IRegisterState {
+export interface UserProviderProps {
+    children: ReactNode;
+}
+
+export interface IRegisterState{
     userCreate: Object;
     setUserCreate: (data: Object) => void;
-  }
-  
-  export interface CreateRegisterUserProviderProps {
-    children: ReactNode;
-  }
+}
+
+export interface ILoginState{
+    user: Object;
+    setUser: (data: Object) => void;
+}

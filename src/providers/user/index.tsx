@@ -1,25 +1,17 @@
-import {
-  useContext,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
-import { CreateRegisterUserProviderProps, IRegisterState } from "../../interface/user";
+import { useContext, createContext, useEffect, useState } from "react";
+import { UserProviderProps, IRegisterState } from "../../interface/user";
 import axios from "axios";
 
 export const RegisterUserContext = createContext({} as IRegisterState);
 
 export const RegisterUserProvider = ({
-  children,
-}: CreateRegisterUserProviderProps) => {
+  children
+}: UserProviderProps) => {
+  
   const [userCreate, setUserCreate] = useState({});
 
-  const createUser = () => {
-    axios.post("http://localhost:3000/users/register", userCreate);
-  };
-
   useEffect(() => {
-    createUser();
+    axios.post("http://localhost:3000/users/register", userCreate);
   }, [userCreate]);
 
   return (

@@ -7,15 +7,18 @@ export const LiCard = styled.li`
   align-items: flex-start;
   padding: 0;
   gap: 16px;
+  font-family: 'Lexend';
+  font-style: normal;
   
   width: 312px;
   height: 350px;
   cursor: pointer;
 
   > figure {
-
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
-    width: 312px;
+    width: 100%;
     height: 152px;
     margin: 0;
 
@@ -25,8 +28,7 @@ export const LiCard = styled.li`
 
   > figure > img {
 
-    width: 262px;
-    height: 150.28px;
+    height: 100%;
     margin-left: 25px;
     margin-top: 1px;
 
@@ -36,29 +38,27 @@ export const LiCard = styled.li`
 
     font-style: normal;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
 
-    width: 312px;
+    width: 100%;
     height: 22px;
     margin: 0;
 
   }
 
-  > P {
+  > p {
 
-    width: 312px;
+    width: 100%;
     height: 48px;
     margin: 0;
 
-    font-family: 'Inter';
+    font-family: 'Lexend';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
-
   }
-
 `;
 
 export const DivCard = styled.div`
