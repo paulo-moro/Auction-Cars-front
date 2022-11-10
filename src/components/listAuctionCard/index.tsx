@@ -23,7 +23,7 @@ export const ListAuction = ({listVehicles}: ITitleSection) => {
   return (
     <ListAuctionStyle>
       <h2>Leilão</h2>
-      <div className="div-carousel">
+      <div className="div-carousel" id="leilao">
         <button className="asset--left" onClick={(e) => handleLeftClick(e)}>
           <img src={asset} />
         </button>

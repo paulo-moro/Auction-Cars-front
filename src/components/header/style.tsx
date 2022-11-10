@@ -63,7 +63,8 @@ export const HeaderStyled = styled.header`
       display: flex;
       justify-content: space-around;
       align-items: center;
-      min-width: 50%;
+      width: 50%;
+      min-width: 200px;
       gap: 10px;
     }
 
@@ -84,9 +85,40 @@ export const HeaderStyled = styled.header`
       border-radius: 4px;
       background-color: var(--color-white-fixed);
     }
+
+    .nav--login-register-desktop > .initials{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        background-color: #4529E6;
+        color: var(--color-gray-10);
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    .nav--login-register-desktop > .name-profile{
+        color: #000000;
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        font-family: 'Lexend', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 25px;
+        display: flex;
+        width: 50%;
+        align-items: center;
+        gap: 10px;
+    }
   }
 
   @media (min-width: 920px) {
+
+    .nav--login-register-desktop{
+      min-width: 250px;
+    }
+
     .nav--menu-desktop-button {
       font-size: 20px;
     }
@@ -121,43 +153,47 @@ export const MenuStyled = styled.div`
       justify-content: space-around;
       width: 100%;
       background-color: var(--color-white-fixed);
-
-      .nav--menu-mobile-button {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 30px;
-        margin: 20px;
-        background: none;
-        color: var(--color-gray-2);
-      }
+      padding: 20px;
+    }
+    
+    .nav--menu-mobile > .nav--menu-mobile-button {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 30px;
+      margin: 20px;
+      background: none;
+      color: var(--color-gray-2);
     }
 
     .nav--login-register-mobile {
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: space-around;
       width: 100%;
       height: 170px;
       background-color: var(--color-white-fixed);
       border-top: 1.5px solid var(--color-gray-4);
-      padding: 5% 0;
+      padding: 20px;
 
       .nav--menu-mobile-h4 {
         flex-direction: column;
         width: 90%;
+        max-width: 341px;
+        margin: 20px;
         color: var(--color-gray-2);
       }
 
-      .nav--menu-mobile-button {
+      .mobile-button-register {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 12px 28px;
+        margin: 20px;
         gap: 10px;
         width: 90%;
-        height: 40px;
+        max-width: 341px;
+        min-height: 40px;
         border: 1.5px solid var(--color-gray-4);
         border-radius: 4px;
         background-color: var(--color-white-fixed);

@@ -6,7 +6,6 @@ export const ProfileWelcomeStyle = styled.footer`
     
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     width: 100%;
     margin-top: 80px;
@@ -14,13 +13,13 @@ export const ProfileWelcomeStyle = styled.footer`
     gap: 50px;
     background: linear-gradient(to bottom, var(--color-brand-2) 0, var(--color-brand-2) 50%, var(--color-gray-10) 50%);
     color: var(--color-gray-10);
-    /* min-height: 470px; */
+    
 
     .welcome-profile{
         display: flex;
         flex-direction: column;
         background-color: var(--color-gray-10);
-        border: solid 3px green;
+        /* border: solid 3px green; */
         width: 90%;
         height: auto;
         max-height: 480px; 
@@ -35,6 +34,7 @@ export const ProfileWelcomeStyle = styled.footer`
         align-items: center;
         font-size: 30px;
         background-color: #4529E6;
+        color: var(--color-gray-10);
         border-radius: 50%;
         width: 80px;
         height: 80px;
@@ -55,7 +55,6 @@ export const ProfileWelcomeStyle = styled.footer`
     .welcome-profile > .description{
         display: flex;
         width: 100%;
-        justify-content: center;
         max-height: 150px;
         font-family: 'Inter', sans-serif;
         font-style: normal;

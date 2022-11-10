@@ -4,22 +4,25 @@ import Menu from "../../img/Menu-Header.svg";
 import CloseMenu from "../../img/Close-Menu.svg";
 import { useState } from "react";
 import { useModal } from "../../providers/modal";
+import { useUser } from "../../providers/user/index";
+
 
 export const Header = () => {
+  const { user } = useUser();
 
-    const {
-        inOnSucess, 
-        setInOnSucess, 
-        showModalSucess, 
-        hideModalSucess,
-        showModalAnnouncement,
-        inOnLogin, 
-        setInOnLogin, 
-        showModalLogin, 
-        hideModalLogin,
-        setInOnRegister
-     } = useModal();
-    
+  const {
+    inOnSucess,
+    setInOnSucess,
+    showModalSucess,
+    hideModalSucess,
+    showModalAnnouncement,
+    inOnLogin,
+    setInOnLogin,
+    showModalLogin,
+    hideModalLogin,
+    setInOnRegister,
+  } = useModal();
+
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
@@ -43,28 +46,45 @@ export const Header = () => {
 
         <nav className="nav--menu-desktop">
           <button className="nav--menu-desktop-button">Carros</button>
-          <button className="nav--menu-desktop-button">Motos</button>
-          <button
-            onClick={() => showModalAnnouncement()}
-            className="nav--menu-desktop-button"
+          <button className="nav--menu-desktop-button"
+          onClick={() => {
+            setOpenMenu(false)
+          }}
+          >Motos</button>
+          
+          <button className="nav--menu-desktop-button"
+            onClick={() => {
+              showModalAnnouncement()
+              setOpenMenu(false)
+            }}
           >
             Leilão
           </button>
 
           <div className="nav--login-register-desktop">
             <div id="div-line"></div>
-            <h4
-              onClick={() => setInOnLogin(true)}
-              className="nav--menu-desktop-h4"
-            >
-              Fazer Login
-            </h4>
-            <button
-              onClick={() => setInOnRegister(true)}
-              className="nav--menu-desktop-button-register"
-            >
-              Cadastrar
-            </button>
+
+            {user.initialsName ? (
+              <>
+                <p className="initials">{user?.initialsName}</p>
+                <p className="name-profile">{user?.name}</p>{" "}
+              </>
+            ) : (
+              <>
+                <h4
+                  onClick={() => setInOnLogin(true)}
+                  className="nav--menu-desktop-h4"
+                >
+                  Fazer Login
+                </h4>
+                <button
+                  onClick={() => setInOnRegister(true)}
+                  className="nav--menu-desktop-button-register"
+                >
+                  Cadastrar
+                </button>
+              </>
+            )}
           </div>
         </nav>
       </HeaderStyled>
@@ -72,30 +92,47 @@ export const Header = () => {
       {openMenu && (
         <MenuStyled>
           <nav className="nav--menu-mobile">
-            <button className="nav--menu-mobile-button">Carros</button>
-            <button className="nav--menu-mobile-button">Motos</button>
-            <button 
-            onClick={() => showModalAnnouncement()}
-            className="nav--menu-mobile-button">Leilão</button>
+            <button className="nav--menu-mobile-button"
+            onClick={() => {
+              setOpenMenu(false)
+            }}
+            >Carros</button>
+            <button className="nav--menu-mobile-button"
+            onClick={() => {
+              setOpenMenu(false)
+            }}
+            >Motos</button>
+            
+            <button
+              onClick={() => {
+                setOpenMenu(false)
+              }}
+              className="nav--menu-mobile-button"
+            >
+              Leilão
+            </button>
           </nav>
           <div className="nav--login-register-mobile">
-            <h4
-              onClick={() => setInOnLogin(true)}
-              className="nav--menu-mobile-h4"
+            <h4 className="nav--menu-mobile-h4"
+              onClick={() => {
+                setInOnLogin(true)
+                setOpenMenu(false)
+              }}
             >
               Fazer Login
             </h4>
             <button
-              onClick={() => setInOnRegister(true)}
-              className="nav--menu-mobile-button"
+              className="mobile-button-register"
+              onClick={() => { 
+                setInOnRegister(true)
+                setOpenMenu(false)
+              }}
             >
               Cadastrar
             </button>
           </div>
         </MenuStyled>
       )}
-      
-
     </>
   );
 };

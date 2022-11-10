@@ -23,7 +23,7 @@ const ListCard = ({ title, listVehicles }: ITitleSection) => {
     <ListStyle>
       <h2>{title}</h2>
 
-      <div className="div-carousel">
+      <div className="div-carousel" id={`${title}`}>
         <button className="asset--left" onClick={(e) => handleLeftClick(e)}>
           <img src={asset} />
         </button>
