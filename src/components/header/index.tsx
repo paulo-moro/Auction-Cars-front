@@ -7,7 +7,7 @@ import { useModal } from "../../providers/modal";
 
 export const Header = () => {
 
-    const { 
+    const {
         inOnSucess, 
         setInOnSucess, 
         showModalSucess, 

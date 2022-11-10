@@ -14,16 +14,19 @@ export const ProfileWelcomeStyle = styled.footer`
     gap: 50px;
     background: linear-gradient(to bottom, var(--color-brand-2) 0, var(--color-brand-2) 50%, var(--color-gray-10) 50%);
     color: var(--color-gray-10);
-    min-height: 470px;
+    /* min-height: 470px; */
 
     .welcome-profile{
         display: flex;
         flex-direction: column;
         background-color: var(--color-gray-10);
-        /* border: solid 3px green; */
+        border: solid 3px green;
         width: 90%;
-        min-height: 360px;
+        height: auto;
+        max-height: 480px; 
         border-radius: 5px;
+        padding: 40px;
+        gap: 15px;
     }
 
     .welcome-profile > .initials{
@@ -31,7 +34,6 @@ export const ProfileWelcomeStyle = styled.footer`
         justify-content: center;
         align-items: center;
         font-size: 30px;
-        margin: 35px 25px 20px 25px;
         background-color: #4529E6;
         border-radius: 50%;
         width: 80px;
@@ -48,7 +50,6 @@ export const ProfileWelcomeStyle = styled.footer`
         width: 100%;
         align-items: center;
         gap: 10px;
-        padding: 0px 20px;
     }
 
     .welcome-profile > .description{
@@ -56,7 +57,6 @@ export const ProfileWelcomeStyle = styled.footer`
         width: 100%;
         justify-content: center;
         max-height: 150px;
-        padding: 5% 10%;
         font-family: 'Inter', sans-serif;
         font-style: normal;
         font-weight: 400;
@@ -67,11 +67,11 @@ export const ProfileWelcomeStyle = styled.footer`
     }
 
     .welcome-profile > button{
-        width: 50%;
+        width: 160px;
+        height: 48px;
         padding: 10px;
         height: auto;
         font-size: 14px;
-        margin: 10%;
         border: solid 2px #4529E6;
         text-transform: capitalize;
         font-weight: bold;

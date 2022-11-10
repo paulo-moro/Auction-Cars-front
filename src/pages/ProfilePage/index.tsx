@@ -14,7 +14,7 @@ const ProfilePage = () => {
         
     const { user } = useUser();
 
-    const motorCycles = user.vehicles?.filter((vehicle) => vehicle.category === "motorcycle")  || null;
+    const motorCycles = user.vehicles?.filter((vehicle) => vehicle.category === "motorcycle");
 
     const cars = user.vehicles?.filter((vehicle) => vehicle.category === "car");
     
