@@ -12,7 +12,7 @@ const ListCardComment = ({title, listComments}: ICommentProps) => {
             <h2>
                 {title}
             </h2>
-            <ul className="ul--list-cars">
+            <ul className="ul--list-comments">
             {listComments?.map((comment, index) => (
                 <CardComment  key={index} comments={comment} />
             ))}

@@ -16,7 +16,7 @@ export const ListStyle = styled.div`
     border-radius: 4px;
 
 
-    .ul--list-cars{
+    .ul--list-comments{
         display: flex;
         flex-direction: column;
         height: 420px;
