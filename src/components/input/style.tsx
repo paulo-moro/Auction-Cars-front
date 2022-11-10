@@ -10,8 +10,8 @@ const InputStyled = styled.div`
     label{
         color: var(--color-grey-0);
         font-size: 14px; 
-    }
-
+        overflow: hidden;
+   }
     
 `
 

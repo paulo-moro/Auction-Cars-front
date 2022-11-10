@@ -7,7 +7,7 @@ import { useListVehicle } from "../../providers/listAllVehicles";
 
 const HomePage = () => {
 
-    const { listCars, listMotorcycles } = useListVehicle();
+    const { listCars, listMotorcycles, listVehicles } = useListVehicle();
 
     return(
         <>

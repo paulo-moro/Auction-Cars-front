@@ -4,7 +4,7 @@ import { Button, ThemeProvider } from "@mui/material";
 import { createTheme } from "@material-ui/core/styles";
 import { useModal } from "../../../providers/modal";
 
-export function ModalSucess() {
+function ModalSucess() {
   const theme = createTheme({
     palette: {
       primary: {
@@ -42,7 +42,6 @@ export function ModalSucess() {
             e.preventDefault();
             hideModalSucess();
             showModalLogin();
-
           }} className="modalBody">
           
             <h4>Sua conta foi criada com sucesso!</h4>
@@ -65,3 +64,4 @@ export function ModalSucess() {
   );
 }
 
+export default ModalSucess;

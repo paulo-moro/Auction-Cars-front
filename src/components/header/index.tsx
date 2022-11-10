@@ -3,7 +3,6 @@ import MotorShop from "../../img/Motors-shop.svg";
 import Menu from "../../img/Menu-Header.svg";
 import CloseMenu from "../../img/Close-Menu.svg";
 import { useState } from "react";
-import { ModalSucess } from "../Modals/modalSucess";
 import { useModal } from "../../providers/modal";
 
 export const Header = () => {

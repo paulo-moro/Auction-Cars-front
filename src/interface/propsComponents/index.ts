@@ -9,7 +9,7 @@ export interface ActionCardProps
 }
 
 export interface ITitleSection {
-  title: String;
+  title?: String;
   listVehicles?: IVehicle[];
 }
 

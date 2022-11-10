@@ -137,6 +137,13 @@ export const ContainerStyled = styled.section`
             width: 90%;
             text-decoration: none;
         }
+
+
+        button{
+            text-transform: capitalize;
+            font-size: 16px;
+            font-weight: bold;
+        }
     }
 
     ::placeholder {

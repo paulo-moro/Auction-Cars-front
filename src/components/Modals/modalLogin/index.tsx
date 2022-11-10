@@ -57,7 +57,7 @@ function ModalLogin() {
               type="submit" color="primary" variant="contained"/> 
 
               <label className="label--register">Ainda não possui conta?</label>
-              <ButtonUI setBoolean={registerFunction} type="submit" text="Cadastrar" color="secondary" variant="outlined" />
+              <ButtonUI setBoolean={registerFunction} type="submit" text="Cadastrar" color="primary" variant="outlined" />
               
             </div>
           

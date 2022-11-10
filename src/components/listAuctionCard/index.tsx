@@ -4,10 +4,10 @@ import { ListAuctionStyle } from "./style";
 import { useRef } from "react";
 import asset from "../../img/icons/asset.png";
 import styled from 'styled-components';
+import { ITitleSection } from '../../interface/propsComponents/index';
 
-export const ListAuction = () => {
-  const { listVehicles } = useListVehicle();
-
+export const ListAuction = ({listVehicles}: ITitleSection) => {
+  
   const carousel: any = useRef(null);
 
   const handleLeftClick = (e: any) => {

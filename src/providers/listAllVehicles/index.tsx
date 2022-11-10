@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from 'react';
 import { IVehicleList, ListVehicleProviderProps } from "../../interface/vehicle/index"
 import axios from "axios";
 
@@ -9,6 +9,7 @@ export const ListVehicleProvider = ({ children }: ListVehicleProviderProps) => {
   const [listCars, setListCars] = useState([]);
   const [listMotorcycles, setListMotorcycles] = useState([]);
 
+  useEffect(() => {
   axios
     .get("http://localhost:3000/vehicle")
     .then((response) => setListVehicles(response.data));
@@ -20,6 +21,8 @@ export const ListVehicleProvider = ({ children }: ListVehicleProviderProps) => {
   axios
     .get("http://localhost:3000/categorie/motorCycle")
     .then((response) => setListMotorcycles(response.data.vehicles));
+  
+  },[])
 
   return (
     <ListVehicleContext.Provider

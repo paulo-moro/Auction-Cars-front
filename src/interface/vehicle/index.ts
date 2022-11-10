@@ -31,6 +31,7 @@ export interface IVehicle {
     updated_at: string;
     categorieId: string;
     userId: string;
+    category: string;
   }
   
   export interface IVehicleList {
