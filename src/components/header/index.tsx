@@ -5,6 +5,7 @@ import CloseMenu from "../../img/Close-Menu.svg";
 import { useState } from "react";
 import { useModal } from "../../providers/modal";
 import { useUser } from "../../providers/user/index";
+import { Redirect, useHistory } from 'react-router-dom';
 
 export const Header = () => {
   const { user } = useUser();
@@ -24,10 +25,12 @@ export const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
+  const history = useHistory();
 
   const openCloseMenuProfile = () => { 
     return !openMenuProfile ? setOpenMenuProfile(true) : setOpenMenuProfile(false);
   }
+
   return (
     <>
       <HeaderStyled>
@@ -176,7 +179,11 @@ export const Header = () => {
                   <button>Editar Perfil</button>
                   <button>Editar endereço</button>
                   <button>Minhas Compras</button>
-                  <button onClick={() => openCloseMenuProfile()}>Sair</button>
+                  <button onClick={() => {
+                  sessionStorage.clear();
+                  openCloseMenuProfile();
+                  history.push("/home");
+                  }}>Sair</button>
                 </MenuProfileStyled>
       ) }
     </>
