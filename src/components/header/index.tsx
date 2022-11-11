@@ -33,33 +33,7 @@ export const Header = () => {
       <HeaderStyled>
         <img className="logo-MotorsShop" src={MotorShop} alt="" />
 
-
-        <nav className="nav-menu">
-          {user.initialsName && (
-            <p className="initials" 
-              onClick={() => {
-                openCloseMenuProfile()
-                setOpenMenu(false)
-              }}
-            >{user?.initialsName}</p>)
-          }
-          {!openMenu ? (
-            <>
-              <button onClick={() => {
-                setOpenMenuProfile(false)
-                setOpenMenu(true)
-              }}>
-                <img src={Menu} alt=""/>
-              </button>
-            </>
-          ) : (
-            <button onClick={() => setOpenMenu(false)}>
-              {" "}
-              <img src={CloseMenu} alt="" />{" "}
-            </button>
-          )}
-        </nav>
-
+       
         <nav className="nav--menu-desktop">
           <button className="nav--menu-desktop-button">Carros</button>
           <button
@@ -112,6 +86,33 @@ export const Header = () => {
           }
           </div>
         </nav>
+
+        <nav className="nav-menu">
+          {user.initialsName && (
+            <p className="initials" 
+              onClick={() => {
+                openCloseMenuProfile()
+                setOpenMenu(false)
+              }}
+            >{user?.initialsName}</p>)
+          }
+          {!openMenu ? (
+            <>
+              <button onClick={() => {
+                setOpenMenuProfile(false)
+                setOpenMenu(true)
+              }}>
+                <img src={Menu} alt=""/>
+              </button>
+            </>
+          ) : (
+            <button onClick={() => setOpenMenu(false)}>
+              {" "}
+              <img src={CloseMenu} alt="" />{" "}
+            </button>
+          )}
+        </nav>
+
       </HeaderStyled>
 
       {openMenu && (

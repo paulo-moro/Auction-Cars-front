@@ -57,7 +57,7 @@ export const HeaderStyled = styled.header`
       align-items: center;
       justify-content: center;
       gap: 15%;
-      width: 140px;
+      width: 35%;
       height: auto;
     }
 
