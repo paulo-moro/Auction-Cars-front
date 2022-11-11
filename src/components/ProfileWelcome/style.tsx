@@ -19,7 +19,6 @@ export const ProfileWelcomeStyle = styled.footer`
         display: flex;
         flex-direction: column;
         background-color: var(--color-gray-10);
-        /* border: solid 3px green; */
         width: 90%;
         height: auto;
         max-height: 480px; 
@@ -80,12 +79,32 @@ export const ProfileWelcomeStyle = styled.footer`
 
 @media (min-width: 640px) {
 
+    .welcome-profile > .name-profile{
+        font-size: 18px;
+    }
+
+    .welcome-profile > .description{
+        font-size: 16px;
+    }
+
+    .welcome-profile > button{
+        font-size: 16px;
+    }
 
 }
 
-@media (min-width: 640px) {
+@media (min-width: 920px) {
 
+    .welcome-profile > .name-profile{
+        font-size: 20px;
+    }
 
+    .welcome-profile > .description{
+        font-size: 18px;
+    }
+    .welcome-profile > button{
+        font-size: 18px;
+    }
 
 }
 `

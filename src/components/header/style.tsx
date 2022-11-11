@@ -1,40 +1,105 @@
 import styled from "styled-components";
 
-export const HeaderStyled = styled.header`
-  display: flex;
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 80px;
-  width: 100%;
-  background-color: var(--color-gray-10);
-  border-bottom: 1.5px solid var(--color-gray-5);
-
-  .div-line {
-    display: none;
-  }
-
-  .logo-MotorsShop {
-    width: 10%;
-    min-width: 120px;
-    margin: 20px 10px 20px 20px;
-  }
-
-  .nav-menu {
+export const MenuProfileStyled = styled.div`
+  @media (min-width: 320px) {
+    position: fixed;
     display: flex;
-    width: 70px;
-  }
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--color-white-fixed);
+    width: 25%;
+    min-width: 200px;
+    max-width: 300px;
+    height: 252px;
+    border-radius: 4px;
+    right: 20px;
+    top: 0;
+    margin-top: 80px;
+    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
 
-  .icon-Menu {
-    width: 18px;
+    button {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      font-family: "Inter", sans-serif;
+      color: var(--color-gray-2);
+      font-weight: 400;
+    }
   }
+`;
 
-  .nav--menu-desktop {
-    display: none;
+export const HeaderStyled = styled.header`
+  @media (min-width: 320px) {
+    display: flex;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+    width: 100%;
+    background-color: var(--color-white-fixed);
+    border-bottom: 1.5px solid var(--color-gray-5);
+
+    .div-line {
+      display: none;
+    }
+
+    .logo-MotorsShop {
+      width: 10%;
+      min-width: 120px;
+      margin: 20px 10px 20px 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15%;
+      width: 140px;
+      height: auto;
+    }
+
+    .nav-menu > button {
+      width: auto;
+      height: auto;
+    }
+
+    .icon-Menu {
+      width: 30px;
+    }
+
+    .nav--menu-desktop {
+      display: none;
+    }
+
+    .initials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-color: #4529e6;
+      color: var(--color-gray-10);
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .name-profile {
+      color: #000000;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      font-family: "Lexend", sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 25px;
+      display: flex;
+      width: 50%;
+      align-items: center;
+      gap: 10px;
+    }
   }
-
   @media (min-width: 640px) {
     font-size: 16px;
     #div-line {
@@ -51,7 +116,8 @@ export const HeaderStyled = styled.header`
       display: flex;
       justify-content: space-around;
       align-items: center;
-      min-width: 50%;
+      width: 50%;
+      max-width: 600px;
       gap: 10px;
     }
 
@@ -85,37 +151,10 @@ export const HeaderStyled = styled.header`
       border-radius: 4px;
       background-color: var(--color-white-fixed);
     }
-
-    .nav--login-register-desktop > .initials{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        background-color: #4529E6;
-        color: var(--color-gray-10);
-        border-radius: 50%;
-        padding: 10px;
-    }
-
-    .nav--login-register-desktop > .name-profile{
-        color: #000000;
-        display: flex;
-        justify-content: center;
-        flex-wrap: nowrap;
-        font-family: 'Lexend', sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 25px;
-        display: flex;
-        width: 50%;
-        align-items: center;
-        gap: 10px;
-    }
   }
 
   @media (min-width: 920px) {
-
-    .nav--login-register-desktop{
+    .nav--login-register-desktop {
       min-width: 250px;
     }
 
@@ -131,7 +170,6 @@ export const HeaderStyled = styled.header`
   }
 
   @media (min-width: 1200px) {
-    
     .nav--menu-desktop-button-register {
       width: 50%;
     }
@@ -146,6 +184,7 @@ export const MenuStyled = styled.div`
     width: 100%;
     height: auto;
     box-shadow: 0px 50px 55px var(--color-grey-1);
+    background-color: var(--color-white-fixed);
 
     .nav--menu-mobile {
       display: flex;
@@ -155,7 +194,7 @@ export const MenuStyled = styled.div`
       background-color: var(--color-white-fixed);
       padding: 20px;
     }
-    
+
     .nav--menu-mobile > .nav--menu-mobile-button {
       display: flex;
       align-items: center;
@@ -175,29 +214,61 @@ export const MenuStyled = styled.div`
       background-color: var(--color-white-fixed);
       border-top: 1.5px solid var(--color-gray-4);
       padding: 20px;
+    }
+    .nav--menu-mobile-h4 {
+      flex-direction: column;
+      width: 90%;
+      max-width: 341px;
+      margin: 20px;
+      color: var(--color-gray-2);
+      background-color: var(--color-white-fixed);
+    }
 
-      .nav--menu-mobile-h4 {
-        flex-direction: column;
-        width: 90%;
-        max-width: 341px;
-        margin: 20px;
-        color: var(--color-gray-2);
-      }
+    .mobile-button-register {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 28px;
+      margin: 20px;
+      gap: 10px;
+      width: 90%;
+      max-width: 341px;
+      min-height: 40px;
+      border: 1.5px solid var(--color-gray-4);
+      border-radius: 4px;
+      background-color: var(--color-white-fixed);
+    }
 
-      .mobile-button-register {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 12px 28px;
-        margin: 20px;
-        gap: 10px;
-        width: 90%;
-        max-width: 341px;
-        min-height: 40px;
-        border: 1.5px solid var(--color-gray-4);
-        border-radius: 4px;
-        background-color: var(--color-white-fixed);
-      }
+    .user-logged-mobile {
+      padding: 12px 28px;
+      display: flex;
+      background-color: var(--color-white-fixed);
+    }
+
+    .initials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-color: #4529e6;
+      color: var(--color-gray-10);
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .name-profile {
+      color: #000000;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      font-family: "Lexend", sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 25px;
+      display: flex;
+      width: 100px;
+      align-items: center;
+      gap: 10px;
     }
   }
 

@@ -39,11 +39,11 @@ export const ListAuctionStyle = styled.div`
 
     .asset--left{
         display: flex;
-        align-items: center;
         width: 50px;
         height: 50px;
-        transform: rotate(180deg);
+        align-items: center;
         background: none;
+        transform: rotate(180deg);
     }
 
 `
