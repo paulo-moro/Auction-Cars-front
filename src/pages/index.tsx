@@ -22,7 +22,6 @@ const Pages = () => {
         <ProfilePage/>
       </Route>
 
-
     </Switch>
 
       <ModalLogin />

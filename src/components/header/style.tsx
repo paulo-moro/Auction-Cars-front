@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from 'framer-motion';
 
-export const MenuProfileStyled = styled.div`
+export const MenuProfileStyled = styled(motion.div)`
   @media (min-width: 320px) {
     position: fixed;
     display: flex;
@@ -10,13 +11,22 @@ export const MenuProfileStyled = styled.div`
     background: var(--color-white-fixed);
     width: 25%;
     min-width: 200px;
-    max-width: 300px;
+    max-width: 280px;
     height: 252px;
     border-radius: 4px;
-    right: 20px;
-    top: 0;
+    right: 0;
+    top: -400px;
     margin-top: 80px;
+    margin-right: 20px;
     box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+
+    div{
+      width: 80%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
 
     button {
       display: flex;
@@ -28,6 +38,7 @@ export const MenuProfileStyled = styled.div`
     }
   }
 `;
+
 
 export const HeaderStyled = styled.header`
   @media (min-width: 320px) {
@@ -99,7 +110,45 @@ export const HeaderStyled = styled.header`
       align-items: center;
       gap: 10px;
     }
+
+    
+  .teste-frame{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--color-white-fixed);
+    width: 25%;
+    min-width: 200px;
+    max-width: 300px;
+    height: 252px;
+    border-radius: 4px;
+    right: 20px;
+    margin-top: 80px;
+    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+
+      div{
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        font-family: "Inter", sans-serif;
+        color: var(--color-gray-2);
+        font-weight: 400;
+      }
+    }
+  
   }
+
+
   @media (min-width: 640px) {
     font-size: 16px;
     #div-line {

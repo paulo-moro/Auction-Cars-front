@@ -5,11 +5,10 @@ import CloseMenu from "../../img/Close-Menu.svg";
 import { useState } from "react";
 import { useModal } from "../../providers/modal";
 import { useUser } from "../../providers/user/index";
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from "react-router-dom";
 
 export const Header = () => {
   const { user } = useUser();
-
   const {
     inOnSucess,
     setInOnSucess,
@@ -23,20 +22,21 @@ export const Header = () => {
     setInOnRegister,
   } = useModal();
 
+  const [y, setY] = useState(-400);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
   const history = useHistory();
 
-  const openCloseMenuProfile = () => { 
-    return !openMenuProfile ? setOpenMenuProfile(true) : setOpenMenuProfile(false);
-  }
+  const openCloseMenuProfile = () => {
+    setOpenMenu(false);
+    return  y > 0 ? setY(-400) : setY(400);
+  };
 
   return (
     <>
       <HeaderStyled>
         <img className="logo-MotorsShop" src={MotorShop} alt="" />
 
-       
         <nav className="nav--menu-desktop">
           <button className="nav--menu-desktop-button">Carros</button>
           <button
@@ -63,49 +63,51 @@ export const Header = () => {
 
             {user.initialsName ? (
               <>
-                <p className="initials" 
-                onClick={() => openCloseMenuProfile()}
-                >{user?.initialsName}</p>
-                <p className="name-profile">
-                {user?.name}
+                <p className="initials" onClick={() => openCloseMenuProfile()}>
+                  {user?.initialsName}
                 </p>
+                <p className="name-profile">{user?.name}</p>
               </>
-              ) : (
-                <>
+            ) : (
+              <>
                 <h4
-                onClick={() => setInOnLogin(true)}
-                className="nav--menu-desktop-h4"
-              >
-                Fazer Login
-              </h4>
-              <button
-                onClick={() => setInOnRegister(true)}
-                className="nav--menu-desktop-button-register"
-              >
-                Cadastrar
-              </button>
+                  onClick={() => setInOnLogin(true)}
+                  className="nav--menu-desktop-h4"
+                >
+                  Fazer Login
+                </h4>
+                <button
+                  onClick={() => setInOnRegister(true)}
+                  className="nav--menu-desktop-button-register"
+                >
+                  Cadastrar
+                </button>
               </>
-            )
-          }
+            )}
           </div>
         </nav>
 
         <nav className="nav-menu">
           {user.initialsName && (
-            <p className="initials" 
+            <p
+              className="initials"
               onClick={() => {
-                openCloseMenuProfile()
-                setOpenMenu(false)
+                openCloseMenuProfile();
+                setOpenMenu(false);
               }}
-            >{user?.initialsName}</p>)
-          }
+            >
+              {user?.initialsName}
+            </p>
+          )}
           {!openMenu ? (
             <>
-              <button onClick={() => {
-                setOpenMenuProfile(false)
-                setOpenMenu(true)
-              }}>
-                <img src={Menu} alt=""/>
+              <button
+                onClick={() => {
+                  setOpenMenuProfile(false);
+                  setOpenMenu(true);
+                }}
+              >
+                <img src={Menu} alt="" />
               </button>
             </>
           ) : (
@@ -115,12 +117,10 @@ export const Header = () => {
             </button>
           )}
         </nav>
-
       </HeaderStyled>
 
       {openMenu && (
         <MenuStyled>
-          
           <nav className="nav--menu-mobile">
             <button
               className="nav--menu-mobile-button"
@@ -150,42 +150,44 @@ export const Header = () => {
           </nav>
 
           {!user.initialsName && (
-          <div className="nav--login-register-mobile">
-            <h4
-              className="nav--menu-mobile-h4"
-              onClick={() => {
-                setInOnLogin(true);
-                setOpenMenu(false);
-              }}
-            >
-              Fazer Login
-            </h4>
-            <button
-              className="mobile-button-register"
-              onClick={() => {
-                setInOnRegister(true);
-                setOpenMenu(false);
-              }}
-            >
-              Cadastrar
-            </button>
-          </div>
+            <div className="nav--login-register-mobile">
+              <h4
+                className="nav--menu-mobile-h4"
+                onClick={() => {
+                  setInOnLogin(true);
+                  setOpenMenu(false);
+                }}
+              >
+                Fazer Login
+              </h4>
+              <button
+                className="mobile-button-register"
+                onClick={() => {
+                  setInOnRegister(true);
+                  setOpenMenu(false);
+                }}
+              >
+                Cadastrar
+              </button>
+            </div>
           )}
         </MenuStyled>
       )}
 
-      {openMenuProfile && (
-                <MenuProfileStyled>
-                  <button>Editar Perfil</button>
-                  <button>Editar endereço</button>
-                  <button>Minhas Compras</button>
-                  <button onClick={() => {
-                  sessionStorage.clear();
-                  openCloseMenuProfile();
-                  history.push("/home");
-                  }}>Sair</button>
-                </MenuProfileStyled>
-      ) }
+     <MenuProfileStyled animate={{ y }} transition={{ type: "spring" }}>
+        <button>Editar Perfil</button>
+        <button>Editar endereço</button>
+        <button>Minhas Compras</button>
+        <button
+          onClick={() => {
+            sessionStorage.clear();
+            openCloseMenuProfile();
+            history.push("/home");
+          }}
+        >
+          Sair
+        </button>
+      </MenuProfileStyled>
     </>
   );
 };
