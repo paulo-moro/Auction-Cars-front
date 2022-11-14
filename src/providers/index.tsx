@@ -1,4 +1,4 @@
-import { RegisterUserProvider } from "./user";
+import { UserProvider } from "./user";
 import { NewVehicleProvider } from "./newVehicle";
 import { ListVehicleProvider } from "./listAllVehicles";
 import { LoginUserProvider } from "./userLogin";
@@ -6,15 +6,16 @@ import { ModalUserProvider } from "./modal";
 
 const AppProvider = ({ children }: any) => {
   return (
-    <RegisterUserProvider>
-      <LoginUserProvider>
-         <ModalUserProvider> 
+    
+    <ModalUserProvider>
+      <UserProvider>
+        <LoginUserProvider>
           <NewVehicleProvider>
             <ListVehicleProvider>{children}</ListVehicleProvider>
           </NewVehicleProvider>
-         </ModalUserProvider> 
-      </LoginUserProvider>
-    </RegisterUserProvider>
+        </LoginUserProvider>
+      </UserProvider>
+    </ModalUserProvider>
   );
 };
 

@@ -6,6 +6,7 @@ import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI";
 import { useLogin } from "../../../providers/userLogin";
 import { useModal } from "../../../providers/modal";
+import { motion } from 'framer-motion';
 
 function ModalLogin() {
   
@@ -13,7 +14,8 @@ function ModalLogin() {
     inOnLogin, 
     setInOnLogin, 
     showModalLogin, 
-    hideModalLogin
+    hideModalLogin,
+    showModalRegister
  } = useModal();
 
   const modal = inOnLogin
@@ -29,6 +31,11 @@ function ModalLogin() {
       setUser({email, password});
     }
 
+    const registerFunction = () => {
+      hideModalLogin();
+      showModalRegister();
+    }
+
   return (
     <ContainerStyled>
       <section className={modal}>
@@ -39,7 +46,7 @@ function ModalLogin() {
             <button className="removedModal" onClick={() => hideModalLogin()}>x</button>
           </div>
 
-          <FormContainer>
+          <motion.form>
             <div className="modalBody">
             
               <InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
@@ -51,11 +58,11 @@ function ModalLogin() {
               type="submit" color="primary" variant="contained"/> 
 
               <label className="label--register">Ainda não possui conta?</label>
-              <ButtonUI type="submit" text="Cadastrar" color="secondary" variant="outlined" />
+              <ButtonUI setBoolean={registerFunction} type="submit" text="Cadastrar" color="primary" variant="outlined" />
               
             </div>
           
-          </FormContainer>
+          </motion.form>
         
         </div>
       

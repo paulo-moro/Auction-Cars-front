@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from 'framer-motion';
 
-export const ContainerStyled = styled.section`
+export const ContainerStyled = styled(motion.div)`
 
     .containerModal {
 
@@ -136,6 +137,13 @@ export const ContainerStyled = styled.section`
             justify-content: flex-end;
             width: 90%;
             text-decoration: none;
+        }
+
+
+        button{
+            text-transform: capitalize;
+            font-size: 16px;
+            font-weight: bold;
         }
     }
 

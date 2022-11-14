@@ -152,6 +152,10 @@ export const ContainerStyled = styled.section`
             min-width: 30%;
         }
 
+        button{
+            text-transform: capitalize;
+            font-weight: bold;
+        }
     }
 
     ::placeholder {

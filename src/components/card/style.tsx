@@ -11,7 +11,7 @@ export const LiCard = styled.li`
   font-style: normal;
   
   width: 312px;
-  height: 350px;
+  height: 460px;
   cursor: pointer;
 
   > figure {
@@ -40,6 +40,7 @@ export const LiCard = styled.li`
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
+    overflow: hidden;
 
     width: 100%;
     height: 22px;
@@ -52,12 +53,31 @@ export const LiCard = styled.li`
     width: 100%;
     height: 48px;
     margin: 0;
-
+    overflow: hidden;
     font-family: 'Lexend';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
+  }
+
+  label{
+    font-size: 13px;
+  }
+  
+  .div-buttons{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+
+  }
+
+
+  .div-buttons > button{
+    text-transform: capitalize;
+    font-size: 13px;
+    padding: 15px;
+
   }
 `;
 
@@ -65,92 +85,44 @@ export const DivCard = styled.div`
 
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   padding: 0px;
-  gap: 28px;
+  width: 100%;
+  height: 32px;
+  gap: 10px;
+
+  font-size: 13px;
   
-  width: 309px;
-  height: 32px;
-
-  > div {
+  div{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    width: 65%;
   }
 
 
 `;
 
-export const SpanKm = styled.span`
+export const Span = styled.span`
 
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  padding: 4px 8px;
-  gap: 10px;
-
-  width: 50px;
   height: 32px;
+  padding: 5px;
 
   background: #EDEAFD;
   border-radius: 4px;
   box-sizing: border-box;
 
-  > p {
-
-    margin: 0;
-    width: 35px;
-    height: 24px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-            
-    color: #4529E6;
-  }
+  margin: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+          
+  color: #4529E6;
+  
 `;
 
-export const SpanYear = styled.span`
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 8px;
-  gap: 10px;
-
-  width: 51px;
-  height: 32px;
-  margin-left: 25px;
-
-  background: #EDEAFD;
-  border-radius: 4px;
-  box-sizing: border-box;
-
-  > p {
-
-    margin: 0;
-    width: 35px;
-    height: 24px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-            
-    color: #4529E6;
-  }
-`;
-
-export const SpanPrice = styled.span`
-
-  > p {
-    width: 105px;
-    height: 20px;
-    margin-left: 60px;
-    margin-top: 4px;
-   }
-`;

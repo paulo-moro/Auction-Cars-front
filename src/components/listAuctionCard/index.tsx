@@ -4,10 +4,10 @@ import { ListAuctionStyle } from "./style";
 import { useRef } from "react";
 import asset from "../../img/icons/asset.png";
 import styled from 'styled-components';
+import { ITitleSection } from '../../interface/propsComponents/index';
 
-export const ListAuction = () => {
-  const { listVehicles } = useListVehicle();
-
+export const ListAuction = ({listVehicles}: ITitleSection) => {
+  
   const carousel: any = useRef(null);
 
   const handleLeftClick = (e: any) => {
@@ -23,7 +23,7 @@ export const ListAuction = () => {
   return (
     <ListAuctionStyle>
       <h2>Leilão</h2>
-      <div className="div-carousel">
+      <div className="div-carousel" id="leilao">
         <button className="asset--left" onClick={(e) => handleLeftClick(e)}>
           <img src={asset} />
         </button>

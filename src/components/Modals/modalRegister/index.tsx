@@ -1,27 +1,34 @@
 import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI";
-import { useRegister } from "../../../providers/user";
+import { useUser } from "../../../providers/user";
 import { useModal } from "../../../providers/modal";
 
 function ModalRegister() {
 
   const { hideModalRegister, showModalRegister, inOnRegister } = useModal();
 
-  const { setUserCreate } = useRegister();
+  const { setUserCreate } = useUser();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [celphone, setCellphone] = useState("");
   const [password, setPassword] = useState("");
+  const [initialsName, setInitialsName] = useState("");
 
   const [userBuyer, setUserBuyer] = useState(true);
   const [userAnnunciate, setUserAnnunciate] = useState(false);
 
+  useEffect(() => {
+      const splitName = name?.split(" ");
+      splitName.length > 1 ? setInitialsName(splitName[0][0] + splitName[1][0]) : setInitialsName(splitName[0][0]);
+  }, [name]);
+
   const createUser = () => {
-    setUserCreate({ name, email, celphone, password });
+    setUserCreate({ name, email, initialsName, celphone, password });
+    hideModalRegister();
   };
 
   const isBuyer = () => {
