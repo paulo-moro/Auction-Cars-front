@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useModal } from "../../providers/modal";
 import { useUser } from "../../providers/user/index";
 import { Redirect, useHistory } from "react-router-dom";
+import { ButtonUI } from "../buttonUI/index";
 
 export const Header = () => {
   const { user } = useUser();
@@ -189,6 +190,7 @@ export const Header = () => {
       )} 
 
      <MenuProfileStyled animate={{ y }} transition={{ type: "spring", duration: 0.5 }} >
+        
         <button>Editar Perfil</button>
         <button>Editar endereço</button>
         <button>Minhas Compras</button>
