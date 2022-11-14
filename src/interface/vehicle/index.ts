@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export interface Vehicle {
     id:           string,
+    user_name?:   string;
     heading?:     string;
     name?:        string,
     img?:         string,

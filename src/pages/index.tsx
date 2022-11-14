@@ -10,25 +10,22 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 const Pages = () => {
   return (
-    <>
+    <AnimatePresence>
     <Switch>
-      <Route path="/home">
-        <HomePage/>
-      </Route>
-      <Route path="/profile">
-        <ProfilePage/>
-      </Route>
-
+      <Route exact path="/" component={HomePage}/>
+      <Route path="/profile" component={ProfilePage}/>
+        
     </Switch>
 
       <ModalLogin />
       <ModalRegister />
       <ModalSucess />
       <ModalAnnouncement />
-    </>
+    </AnimatePresence>
   );
 };
 

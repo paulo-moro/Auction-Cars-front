@@ -225,7 +225,7 @@ export const HeaderStyled = styled.header`
   }
 `;
 
-export const MenuStyled = styled.div`
+export const MenuStyled = styled(motion.div)`
   @media (min-width: 320px) {
     display: flex;
     position: fixed;
@@ -234,6 +234,8 @@ export const MenuStyled = styled.div`
     height: auto;
     box-shadow: 0px 50px 55px var(--color-grey-1);
     background-color: var(--color-white-fixed);
+    margin-top: 80px;
+    top: -600px;
 
     .nav--menu-mobile {
       display: flex;

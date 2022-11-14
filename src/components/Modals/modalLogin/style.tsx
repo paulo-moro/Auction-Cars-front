@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from 'framer-motion';
 
-export const ContainerStyled = styled(motion.section)`
+export const ContainerStyled = styled(motion.div)`
 
     .containerModal {
 

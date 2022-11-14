@@ -22,14 +22,25 @@ export const Header = () => {
     setInOnRegister,
   } = useModal();
 
+  const [yLoginRegister, setYLoginRegister] = useState(0);
   const [y, setY] = useState(-400);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
   const history = useHistory();
 
   const openCloseMenuProfile = () => {
-    setOpenMenu(false);
-    return  y > 0 ? setY(-400) : setY(400);
+    setYLoginRegister(0);
+    setTimeout(() => {
+      return  y > 0 ? setY(-400) : setY(400);
+    }, 500);
+  };
+
+  const openCloseMenuLoginRegister = () => {
+    
+    setOpenMenuProfile(false)
+    setTimeout(() => {
+      return  yLoginRegister > 0 ? setYLoginRegister(0) : setYLoginRegister(600);
+    }, 500);
   };
 
   return (
@@ -66,7 +77,9 @@ export const Header = () => {
                 <p className="initials" onClick={() => openCloseMenuProfile()}>
                   {user?.initialsName}
                 </p>
-                <p className="name-profile">{user?.name}</p>
+                <p className="name-profile"
+                onClick={() => history.push("/profile")}
+                >{user?.name}</p>
               </>
             ) : (
               <>
@@ -93,25 +106,26 @@ export const Header = () => {
               className="initials"
               onClick={() => {
                 openCloseMenuProfile();
-                setOpenMenu(false);
               }}
             >
               {user?.initialsName}
             </p>
           )}
-          {!openMenu ? (
+          {yLoginRegister === 0 ? (
             <>
               <button
                 onClick={() => {
-                  setOpenMenuProfile(false);
                   setOpenMenu(true);
+                  openCloseMenuLoginRegister();
                 }}
               >
                 <img src={Menu} alt="" />
               </button>
             </>
           ) : (
-            <button onClick={() => setOpenMenu(false)}>
+            <button onClick={() =>{ 
+              openCloseMenuLoginRegister();
+            }}>
               {" "}
               <img src={CloseMenu} alt="" />{" "}
             </button>
@@ -120,7 +134,7 @@ export const Header = () => {
       </HeaderStyled>
 
       {openMenu && (
-        <MenuStyled>
+        <MenuStyled  animate={{ y: yLoginRegister }} transition={{ type: "spring", duration: 0.5 }} >
           <nav className="nav--menu-mobile">
             <button
               className="nav--menu-mobile-button"
@@ -172,9 +186,9 @@ export const Header = () => {
             </div>
           )}
         </MenuStyled>
-      )}
+      )} 
 
-     <MenuProfileStyled animate={{ y }} transition={{ type: "spring" }}>
+     <MenuProfileStyled animate={{ y }} transition={{ type: "spring", duration: 0.5 }} >
         <button>Editar Perfil</button>
         <button>Editar endereço</button>
         <button>Minhas Compras</button>
@@ -182,7 +196,7 @@ export const Header = () => {
           onClick={() => {
             sessionStorage.clear();
             openCloseMenuProfile();
-            history.push("/home");
+            history.push("/");
           }}
         >
           Sair

@@ -14,11 +14,11 @@ const ProfilePage = () => {
         
     const { user } = useUser();
 
-    const motorCycles = user.vehicles?.filter((vehicle) => vehicle.category === "motorcycle");
+    const motorCycles = user.vehicles?.filter((vehicle) => vehicle.category === "motorCycle");
 
     const cars = user.vehicles?.filter((vehicle) => vehicle.category === "car");
     
-    if(!sessionStorage.getItem("user")){ return <Redirect to="/home"/>}
+    if(!sessionStorage.getItem("user")){ return <Redirect to="/"/>}
 
     return(
         <>

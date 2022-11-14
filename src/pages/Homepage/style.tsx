@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from 'framer-motion';
 
-const HomePageStyled = styled.body`
+const HomePageStyled = styled(motion.body)`
   @media (min-width: 320px) {
     .welcome {
       display: flex;

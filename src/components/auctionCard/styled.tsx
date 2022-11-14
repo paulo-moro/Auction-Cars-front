@@ -65,11 +65,27 @@ const AuctionCardStyle = styled.div`
         font-size: 15px;
     }
 
+    .ButtonAuction{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 36px 5%;
+        min-height: 50px;
+        color: var(--color-white-fixed);
+        background: var(--color-brand-1);
+        font-size: 10px;
+        font-weight: var(--font-body-2-400);
+    }
+
 }
 
 @media (min-width: 640px) {
     min-height: 360px;
     min-width: 735px;
+
+    .auction-time, h3, p, .tagets{
+        margin-left: 30px;
+    }
 
     .div--info-car{
         display: flex;

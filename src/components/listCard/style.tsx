@@ -25,7 +25,7 @@ export const ListStyle = styled.div`
         overflow-x: auto;
         scroll-behavior: smooth;
         width: 100%;
-        gap: 20px;
+        gap: 30px;
         padding: 10px;
     }
 
@@ -34,8 +34,7 @@ export const ListStyle = styled.div`
     }
 
     h2{
-        height: 10%;
-        margin: 20px;
+        margin: 20px 60px;
     }
 
     .asset--rigth{

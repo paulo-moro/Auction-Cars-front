@@ -6,6 +6,7 @@ import { InputText } from "../../input";
 import { ButtonUI } from "../../buttonUI";
 import { useLogin } from "../../../providers/userLogin";
 import { useModal } from "../../../providers/modal";
+import { motion } from 'framer-motion';
 
 function ModalLogin() {
   
@@ -36,11 +37,7 @@ function ModalLogin() {
     }
 
   return (
-    <ContainerStyled  
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5 }}
-    >
+    <ContainerStyled>
       <section className={modal}>
         <div className="modal">
 
@@ -49,7 +46,7 @@ function ModalLogin() {
             <button className="removedModal" onClick={() => hideModalLogin()}>x</button>
           </div>
 
-          <FormContainer>
+          <motion.form>
             <div className="modalBody">
             
               <InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
@@ -65,7 +62,7 @@ function ModalLogin() {
               
             </div>
           
-          </FormContainer>
+          </motion.form>
         
         </div>
       
