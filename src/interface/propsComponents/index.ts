@@ -47,3 +47,18 @@ export interface ButtonProps{
     setBoolean?: any;
     
 }
+
+export interface IComment {
+  id:          String,
+  comment:     String,
+  user_name:   String
+}
+
+export interface ICommentPropsCard {
+  comments: IComment
+}
+
+export interface ICommentProps {
+  title: String;
+  listComments: IComment[];
+}
