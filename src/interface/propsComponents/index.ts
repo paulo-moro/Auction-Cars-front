@@ -50,8 +50,8 @@ export interface ButtonProps{
 
 export interface IComment {
   id:          String,
+  username:   String,
   comment:     String,
-  user_name:   String
 }
 
 export interface ICommentPropsCard {

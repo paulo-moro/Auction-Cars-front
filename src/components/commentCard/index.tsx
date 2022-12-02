@@ -4,11 +4,11 @@ import { LiCard } from './style';
 
 const CardComment= ({comments}: ICommentPropsCard) => {
 
-    const {id, comment, user_name } = comments;
+    const {id, comment, username } = comments;
 
     return (
         <LiCard>
-            <UserIcon color={""} theme={"red"} name={user_name} initials={user_name[0]} />
+            <UserIcon color={""} theme={"red"} name={username} initials={username[0]} />
             <p>
                 {comment}
             </p>

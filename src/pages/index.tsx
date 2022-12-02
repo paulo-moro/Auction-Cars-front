@@ -1,4 +1,5 @@
 import HomePage from "./Homepage/index";
+import Product from "./Product/index";
 import ModalLogin from '../components/Modals/modalLogin/index';
 import ModalRegister from '../components/Modals/modalRegister/index';
 import ModalAnnouncement from '../components/Modals/modalAnnouncement/index';
@@ -18,7 +19,7 @@ const Pages = () => {
     <Switch>
       <Route exact path="/" component={HomePage}/>
       <Route path="/profile" component={ProfilePage}/>
-        
+      <Route path="/product" component={Product}/>
     </Switch>
 
       <ModalLogin />
