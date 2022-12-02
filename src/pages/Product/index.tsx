@@ -1,6 +1,6 @@
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
-import { ProductPageStyled } from "./style";
+import { ProductPageStyled, ContainerIMG, ContainerInfoProduct, ContainerDescription, ContainerGalery, ContainerOwnerProduct, ContainerComments, ContainerNewComments } from "./style";
 import { ButtonUI } from "../../components/buttonUI";
 import { LabelAgeKm } from "../../components/labelKmAgeCar";
 import { ProfileWelcome } from "../../components/ProfileWelcome";
@@ -73,11 +73,12 @@ const Product = () => {
   return (
     <ProductPageStyled>
       <Header />
-      <div className="container container--main--img">
-        <img src={motor?.img}/>
-      </div>
 
-      <div className="container container--user">
+      <ContainerIMG>
+        <img src={motor?.img}/>
+      </ContainerIMG>
+
+      <ContainerInfoProduct>
         <p>{motor?.heading}</p>
 
         <div>
@@ -90,19 +91,19 @@ const Product = () => {
         </label>
 
         <ButtonUI text="Comprar" color="primary" variant="contained" />
-      </div>
+      </ContainerInfoProduct>
 
-      <div className="container--description">
+      <ContainerDescription>
         <h3>Descrição</h3>
         <p>{motor?.description}</p>
-      </div>
+      </ContainerDescription>
 
-      <div className="container--galery">
+      <ContainerGalery>
         <h3>Fotos</h3>
         <ul>{motor && fotos?.map((foto) => <img src={foto} />)}</ul>
-      </div>
+      </ContainerGalery>
 
-      <div className="container--owner-product">
+      <ContainerOwnerProduct>
         <p className="initialsName">{user?.initialsName}</p>
 
         <h4>{user?.name}</h4>
@@ -118,31 +119,30 @@ const Product = () => {
           color="secondary"
           variant="contained"
         />
-      </div>
+      </ContainerOwnerProduct>
 
-      <ul className="container--comments">
+      <ContainerComments>
         {user &&
           comentarios?.map((comment) => <CardComment comments={comment} />)}
-      </ul>
+      </ContainerComments>
 
 
 
-      <div className="new-comments">
+      <ContainerNewComments>
         <p className="user-initialsName">
           {user?.initialsName} <span>{user?.name}</span>
         </p>
-
         <InputText color="primary" multiline rows={3} />
         <ButtonUI text="Comentar" color="primary" variant="contained" />
-
-        <div className="buttons">
+        <div>
           <label>Comentar</label>
           <label>Comentar</label>
           <label>Comentar</label>
         </div>
-      </div>
+      </ContainerNewComments>
 
       <Footer />
+
     </ProductPageStyled>
   );
 };
