@@ -1,6 +1,6 @@
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
-import { ProductPageStyled, ContainerIMG, ContainerInfoProduct, ContainerDescription, ContainerGalery, ContainerOwnerProduct, ContainerComments, ContainerNewComments } from "./style";
+import * as S from "./style";
 import { ButtonUI } from "../../components/buttonUI";
 import { LabelAgeKm } from "../../components/labelKmAgeCar";
 import { ProfileWelcome } from "../../components/ProfileWelcome";
@@ -9,11 +9,14 @@ import { InputText } from "../../components/input";
 import CardComment from "../../components/commentCard";
 
 import { useUser } from "../../providers/user/index";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IComment } from "../../interface/propsComponents";
+
+import Aside from "../../components/asideProduct";
 
 const Product = () => {
   const [motor, setMotor]: any = useState();
+  const isMobile = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const { user } = useUser();
 
@@ -71,79 +74,90 @@ const Product = () => {
   ];
 
   return (
-    <ProductPageStyled>
+    <>
       <Header />
 
-      <ContainerIMG>
-        <img src={motor?.img}/>
-      </ContainerIMG>
+      <S.ProductPageStyled ref={isMobile}>
+          <section className="div--main">
+            <S.ContainerIMG>
+              <img src={motor?.img} />
+            </S.ContainerIMG>
 
-      <ContainerInfoProduct>
-        <p>{motor?.heading}</p>
+            <S.ContainerInfoProduct>
+              <p>{motor?.heading}</p>
 
-        <div>
-          <LabelAgeKm info={motor?.year} />
-          <LabelAgeKm info={motor?.km} />
-        </div>
+              <div>
+                <LabelAgeKm info={motor?.year} />
+                <LabelAgeKm info={motor?.km} />
+              </div>
 
-        <label>
-          R$ {motor?.price},00
-        </label>
+              <label>R$ {motor?.price},00</label>
 
-        <ButtonUI text="Comprar" color="primary" variant="contained" />
-      </ContainerInfoProduct>
+              <ButtonUI text="Comprar" color="primary" variant="contained" />
+            </S.ContainerInfoProduct>
 
-      <ContainerDescription>
-        <h3>Descrição</h3>
-        <p>{motor?.description}</p>
-      </ContainerDescription>
+            <S.ContainerDescription>
+              <h3>Descrição</h3>
+              <p>{motor?.description}</p>
+            </S.ContainerDescription>
 
-      <ContainerGalery>
-        <h3>Fotos</h3>
-        <ul>{motor && fotos?.map((foto) => <img src={foto} />)}</ul>
-      </ContainerGalery>
+            <section className="aside--mobile">
+              <Aside />
+            </section>
 
-      <ContainerOwnerProduct>
-        <p className="initialsName">{user?.initialsName}</p>
+            {/* <S.Aside>
+            <S.ContainerGalery>
+              <h3>Fotos</h3>
+              <ul>{motor && fotos?.map((foto) => <img src={foto} />)}</ul>
+            </S.ContainerGalery>
 
-        <h4>{user?.name}</h4>
+            <S.ContainerOwnerProduct>
+              <p className="initialsName">{user?.initialsName}</p>
 
-        <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-          accusantium rerum minus eum et facilis esse sequi maiores ratione,
-          debitis quibusdam tenetur inventore voluptatibus ipsum.
-        </p>
+              <h4>{user?.name}</h4>
 
-        <ButtonUI
-          text="Ver todos os anúncios"
-          color="secondary"
-          variant="contained"
-        />
-      </ContainerOwnerProduct>
+              <p className="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+                accusantium rerum minus eum et facilis esse sequi maiores ratione,
+                debitis quibusdam tenetur inventore voluptatibus ipsum.
+              </p>
 
-      <ContainerComments>
-        {user &&
-          comentarios?.map((comment) => <CardComment comments={comment} />)}
-      </ContainerComments>
+              <ButtonUI
+                text="Ver todos os anúncios"
+                color="secondary"
+                variant="contained"
+              />
+            </S.ContainerOwnerProduct>
+          </S.Aside> */}
 
+            <S.ContainerComments>
+              {user &&
+                comentarios?.map((comment) => (
+                  <CardComment comments={comment} />
+                ))}
+            </S.ContainerComments>
 
+            <S.ContainerNewComments>
+              <p className="user-initialsName">
+                {user?.initialsName} <span>{user?.name}</span>
+              </p>
+              <InputText color="primary" multiline rows={3} />
+              <ButtonUI text="Comentar" color="primary" variant="contained" />
+              <div>
+                <label>Comentar</label>
+                <label>Comentar</label>
+                <label>Comentar</label>
+              </div>
+            </S.ContainerNewComments>
+          </section>
 
-      <ContainerNewComments>
-        <p className="user-initialsName">
-          {user?.initialsName} <span>{user?.name}</span>
-        </p>
-        <InputText color="primary" multiline rows={3} />
-        <ButtonUI text="Comentar" color="primary" variant="contained" />
-        <div>
-          <label>Comentar</label>
-          <label>Comentar</label>
-          <label>Comentar</label>
-        </div>
-      </ContainerNewComments>
+          <aside>
+            <Aside />
+          </aside>
+      </S.ProductPageStyled>
 
       <Footer />
-
-    </ProductPageStyled>
+    </>
   );
 };
 

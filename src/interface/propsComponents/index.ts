@@ -62,3 +62,9 @@ export interface ICommentProps {
   title: String;
   listComments: IComment[];
 }
+
+
+
+export interface IAsideProps {
+  vehicle: IVehicle;
+}

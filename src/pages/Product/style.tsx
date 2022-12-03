@@ -9,10 +9,45 @@ export const ProductPageStyled = styled(motion.div)`
     width: 100%;
     background: linear-gradient(
       to bottom,
-      var(--color-brand-2) 500px,
+      var(--color-brand-2) 550px,
       #f1f3f5 0
     );
-    gap: 30px;
+
+    .div--main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .div--main > .aside--mobile{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    aside{
+      display: none;
+    }
+  }
+
+  @media (min-width: 740px) {
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
+    
+
+    .div--main > .aside--mobile{
+      display: none;
+    }
+
+    aside{
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
@@ -20,17 +55,21 @@ export const ContainerIMG = styled(motion.div)`
   @media (min-width: 320px) {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
     background: var(--color-gray-10);
     width: 95%;
-    margin-top: 100px;
     min-height: 350px;
+    max-width: 751px;
+    max-height: 355px;
+    margin-top: 100px;
     border-radius: 4px;
+    padding: 30px 10px;
 
     img {
-      width: 80%;
-      padding: 20px;
-      min-width: 100%;
+      width: 100%;
+      padding: 10px;
+      max-height: 441px;
+      max-width: 441px;
     }
   }
 `;
@@ -42,6 +81,7 @@ export const ContainerInfoProduct = styled(motion.div)`
     flex-direction: column;
     background: var(--color-gray-10);
     width: 95%;
+    max-width: 751px;
     padding: 30px;
     gap: 30px;
     justify-content: space-around;
@@ -54,7 +94,8 @@ export const ContainerInfoProduct = styled(motion.div)`
     }
 
     div {
-      width: 50%;
+      /* max-width: 300px; */
+      width: 150px;
       height: 50px;
       display: flex;
       justify-content: space-between;
@@ -63,6 +104,8 @@ export const ContainerInfoProduct = styled(motion.div)`
 
     div > label {
       padding: 10px;
+      width: 60px;
+      text-align: center;
     }
 
     label {
@@ -78,8 +121,9 @@ export const ContainerInfoProduct = styled(motion.div)`
 
 export const ContainerDescription = styled(motion.div)`
   @media (min-width: 320px) {
-    gap: 50px;
+    gap: 20px;
     width: 95%;
+    max-width: 751px;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -96,15 +140,62 @@ export const ContainerDescription = styled(motion.div)`
   }
 `;
 
+
+export const ContainerComments = styled(motion.div)`
+  @media (min-width: 320px) {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-gray-10);
+    width: 95%;
+    max-width: 751px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+    gap: 40px;
+  }
+`;
+
+export const ContainerNewComments = styled(motion.div)`
+  @media (min-width: 320px) {
+    /* border: 1px solid red; */
+    display: flex;
+    width: 95%;
+    max-width: 751px;
+    flex-direction: column;
+    padding: 10px;
+    gap: 40px;
+    background: #ffffff;
+    border-radius: 4px;
+
+    input {
+      width: 90%;
+    }
+
+    button {
+      padding: 20px;
+      text-transform: none;
+    }
+
+    div {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+  }
+`;
+
+
 export const ContainerGalery = styled(motion.div)`
   @media (min-width: 320px) {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 10px;
     flex-wrap: wrap;
     background: var(--color-gray-10);
     width: 95%;
-    padding: 40px 20px;
+    max-width: 440px;
+    padding: 30px 15px;
 
     h3 {
       width: 90%;
@@ -114,16 +205,26 @@ export const ContainerGalery = styled(motion.div)`
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      padding: 10px;
     }
 
     img {
-      width: 70px;
-      height: 70px;
-      margin: 5px;
+      width: 30%;
+      margin: 20px 0px;
     }
   }
 `;
+
+
+export const Aside = styled(motion.aside)`
+  @media (min-width: 320px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    gap: 30px;
+}
+
+`
 
 export const ContainerOwnerProduct = styled(motion.div)`
   @media (min-width: 320px) {
@@ -131,6 +232,7 @@ export const ContainerOwnerProduct = styled(motion.div)`
     flex-direction: column;
     background: var(--color-gray-10);
     width: 95%;
+    max-width: 440px;
     align-items: center;
     height: auto;
     max-height: 480px;
@@ -176,47 +278,6 @@ export const ContainerOwnerProduct = styled(motion.div)`
       height: auto;
       font-size: 15px;
       text-transform: none;
-    }
-  }
-`;
-
-export const ContainerComments = styled(motion.div)`
-  @media (min-width: 320px) {
-    display: flex;
-    flex-direction: column;
-    background: var(--color-gray-10);
-    width: 95%;
-    align-items: center;
-    border-radius: 5px;
-    padding: 20px;
-    gap: 40px;
-  }
-`;
-
-export const ContainerNewComments = styled(motion.div)`
-  @media (min-width: 320px) {
-    border: 1px solid red;
-    display: flex;
-    width: 90%;
-    flex-direction: column;
-    padding: 10px;
-    gap: 40px;
-    background: #ffffff;
-
-    input {
-      width: 90%;
-    }
-
-    button {
-      padding: 20px;
-      text-transform: none;
-    }
-
-    div {
-      display: flex;
-      width: 100%;
-      flex-wrap: wrap;
-      gap: 30px;
     }
   }
 `;

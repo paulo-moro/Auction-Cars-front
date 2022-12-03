@@ -1,44 +1,6 @@
 import styled from "styled-components";
 import { motion } from 'framer-motion';
 
-export const MenuProfileStyled = styled(motion.div)`
-  @media (min-width: 320px) {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background: var(--color-white-fixed);
-    width: 25%;
-    min-width: 200px;
-    max-width: 280px;
-    height: 252px;
-    border-radius: 4px;
-    right: 0;
-    top: -400px;
-    margin-top: 80px;
-    margin-right: 20px;
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
-
-    div{
-      width: 80%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      width: 80%;
-      font-family: "Inter", sans-serif;
-      color: var(--color-gray-2);
-      font-weight: 400;
-    }
-  }
-`;
-
 
 export const HeaderStyled = styled.header`
   @media (min-width: 320px) {
@@ -203,6 +165,7 @@ export const HeaderStyled = styled.header`
   }
 
   @media (min-width: 920px) {
+    padding: 0 50px;
     .nav--login-register-desktop {
       min-width: 250px;
     }
@@ -224,6 +187,46 @@ export const HeaderStyled = styled.header`
     }
   }
 `;
+
+
+export const MenuProfileStyled = styled(motion.div)`
+  @media (min-width: 320px) {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--color-white-fixed);
+    width: 25%;
+    min-width: 200px;
+    max-width: 280px;
+    height: 252px;
+    border-radius: 4px;
+    right: 0;
+    top: -400px;
+    margin-top: 80px;
+    margin-right: 20px;
+    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+
+    div{
+      width: 80%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      font-family: "Inter", sans-serif;
+      color: var(--color-gray-2);
+      font-weight: 400;
+    }
+  }
+`;
+
 
 export const MenuStyled = styled(motion.div)`
   @media (min-width: 320px) {
