@@ -2,11 +2,10 @@ import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
 import { useState } from "react";
 import { FormContainer } from "react-hook-form-mui";
-import { InputText } from "../../input";
-import { ButtonUI } from "../../buttonUI";
 import { useLogin } from "../../../providers/userLogin";
 import { useModal } from "../../../providers/modal";
 import { motion } from 'framer-motion';
+import * as C from "../../index";
 
 function ModalLogin() {
   
@@ -49,16 +48,16 @@ function ModalLogin() {
           <motion.form>
             <div className="modalBody">
             
-              <InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
-              <InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
+              <C.InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
+              <C.InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
             
               <a href=" ">Esqueci minha senha</a>
-              <ButtonUI 
+              <C.ButtonUI 
               setBoolean={loginFunction}  text="Entrar"
               type="submit" color="primary" variant="contained"/> 
 
               <label className="label--register">Ainda não possui conta?</label>
-              <ButtonUI setBoolean={registerFunction} type="submit" text="Cadastrar" color="primary" variant="outlined" />
+              <C.ButtonUI setBoolean={registerFunction} type="submit" text="Cadastrar" color="primary" variant="outlined" />
               
             </div>
           

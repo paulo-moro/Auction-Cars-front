@@ -6,7 +6,7 @@ import { useRef } from "react";
 import asset from "../../img/icons/asset.png";
 import styled from "styled-components";
 
-const ListCard = ({ title, listVehicles }: ITitleSection) => {
+const ListCard = ({ owner, title, listVehicles }: ITitleSection) => {
   const carousel: any = useRef(null);
 
   const handleLeftClick = (e: any) => {
@@ -29,7 +29,7 @@ const ListCard = ({ title, listVehicles }: ITitleSection) => {
         </button>
         <ul className="carousel-list" ref={carousel}>
           {listVehicles?.map((vehicle, index) => (
-            <Card key={index} vehicle={vehicle} />
+            <Card owner={owner} key={index} vehicle={vehicle} />
           ))}
         </ul>
         <button className="asset--rigth" onClick={(e) => handleRigthClick(e)}>

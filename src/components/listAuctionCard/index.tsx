@@ -1,23 +1,22 @@
 import { useListVehicle } from "../../providers/listAllVehicles";
-import { AuctionCard } from "../auctionCard";
+import AuctionCard from "../auctionCard";
 import { ListAuctionStyle } from "./style";
 import { useRef } from "react";
 import asset from "../../img/icons/asset.png";
-import styled from 'styled-components';
-import { ITitleSection } from '../../interface/propsComponents/index';
+import styled from "styled-components";
+import { ITitleSection } from "../../interface/propsComponents/index";
 
-export const ListAuction = ({listVehicles}: ITitleSection) => {
-  
+const ListAuction = ({ listVehicles }: ITitleSection) => {
   const carousel: any = useRef(null);
 
   const handleLeftClick = (e: any) => {
     e.preventDefault();
-    carousel.current.scrollLeft -= carousel.current.offsetWidth/1.3;
+    carousel.current.scrollLeft -= carousel.current.offsetWidth / 1.3;
   };
 
   const handleRigthClick = (e: any) => {
     e.preventDefault();
-    carousel.current.scrollLeft += carousel.current.offsetWidth/1.3;
+    carousel.current.scrollLeft += carousel.current.offsetWidth / 1.3;
   };
 
   return (
@@ -27,7 +26,7 @@ export const ListAuction = ({listVehicles}: ITitleSection) => {
         <button className="asset--left" onClick={(e) => handleLeftClick(e)}>
           <img src={asset} />
         </button>
-        <ul className="carousel-list"  ref={carousel}>
+        <ul className="carousel-list" ref={carousel}>
           {listVehicles?.map((car: any, index: number) => {
             return <AuctionCard key={index} car={car} />;
           })}
@@ -39,3 +38,4 @@ export const ListAuction = ({listVehicles}: ITitleSection) => {
     </ListAuctionStyle>
   );
 };
+export default ListAuction;

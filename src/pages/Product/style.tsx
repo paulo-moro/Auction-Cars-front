@@ -7,6 +7,7 @@ export const ProductPageStyled = styled(motion.div)`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-bottom: 50px;
     background: linear-gradient(
       to bottom,
       var(--color-brand-2) 550px,
@@ -157,12 +158,11 @@ export const ContainerComments = styled(motion.div)`
 
 export const ContainerNewComments = styled(motion.div)`
   @media (min-width: 320px) {
-    /* border: 1px solid red; */
     display: flex;
     width: 95%;
     max-width: 751px;
     flex-direction: column;
-    padding: 10px;
+    padding: 40px;
     gap: 40px;
     background: #ffffff;
     border-radius: 4px;
@@ -281,3 +281,29 @@ export const ContainerOwnerProduct = styled(motion.div)`
     }
   }
 `;
+
+
+export const LiCard = styled.li`
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    box-sizing: content-box;
+    /* border: solid 1px red; */
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+
+    p {
+        color: #495057;
+        display: flex;
+        text-align: justify;
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+        font-size: 13px;
+        
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+    }
+`

@@ -1,14 +1,15 @@
-import { IVehicle } from "../vehicle";
+import { IVehicle, Vehicle } from "../vehicle";
 
 export interface ActionCardProps
     extends React.HTMLAttributes<HTMLOptionElement> {
     car?: {
-        name: string, user_name: string, heading: string, description: string, user: string, color: string, year: string, km: string, price: string, auctionTime: string, published: boolean, created_at: string, updated_at: string, userId: string,
+      id: string, name: string, user_name: string, heading: string, description: string, user: string, color: string, year: string, km: string, price: string, auctionTime: string, published: boolean, created_at: string, updated_at: string, userId: string,
         img: string, time?: string;
     }
 }
 
 export interface ITitleSection {
+  owner?: Boolean;
   title?: String;
   listVehicles?: IVehicle[];
 }
@@ -49,13 +50,15 @@ export interface ButtonProps{
 }
 
 export interface IComment {
-  id:          String,
-  username:   String,
-  comment:     String,
+  id:           String
+  comment:      String
+  created_at:   String
+  updated_at:   String
+  user_name:    String
 }
 
 export interface ICommentPropsCard {
-  comments: IComment
+  comments: IComment;
 }
 
 export interface ICommentProps {
@@ -63,8 +66,6 @@ export interface ICommentProps {
   listComments: IComment[];
 }
 
-
-
 export interface IAsideProps {
-  vehicle: IVehicle;
+  vehicle: Vehicle;
 }

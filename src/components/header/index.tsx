@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useModal } from "../../providers/modal";
 import { useUser } from "../../providers/user/index";
 import { Redirect, useHistory } from "react-router-dom";
-import { ButtonUI } from "../buttonUI/index";
+
 
 export const Header = () => {
   const { user } = useUser();

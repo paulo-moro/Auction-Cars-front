@@ -2,7 +2,7 @@ import { FooterStyle } from "./style"
 import MotorFooter from "../../img/icons/logo-footer.svg";
 import arrowFooter from "../../img/icons/arrow-footer.svg";
 
-export const Footer = () => {
+const Footer = () => {
     return(
         <FooterStyle>
             <img className="footer--logo" src={MotorFooter} alt="" />
@@ -11,3 +11,5 @@ export const Footer = () => {
         </FooterStyle>
     )
 }
+
+export default Footer;

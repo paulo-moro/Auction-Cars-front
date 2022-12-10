@@ -16,11 +16,11 @@ import { AnimatePresence } from "framer-motion";
 const Pages = () => {
   return (
     <AnimatePresence>
-    <Switch>
-      <Route exact path="/" component={HomePage}/>
-      <Route path="/profile" component={ProfilePage}/>
-      <Route path="/product" component={Product}/>
-    </Switch>
+      <Switch>
+        <Route exact path="/" component={HomePage}/>
+        <Route path="/profile" component={ProfilePage}/>
+        <Route path="/product/:id" component={Product}/>
+      </Switch>
 
       <ModalLogin />
       <ModalRegister />

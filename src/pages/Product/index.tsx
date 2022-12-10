@@ -1,32 +1,25 @@
-import { Header } from "../../components/header";
-import { Footer } from "../../components/footer";
 import * as S from "./style";
-import { ButtonUI } from "../../components/buttonUI";
-import { LabelAgeKm } from "../../components/labelKmAgeCar";
-import { ProfileWelcome } from "../../components/ProfileWelcome";
-import { InputText } from "../../components/input";
+import * as C from "../../components/index";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-import CardComment from "../../components/commentCard";
+import { convertInitialsName, getVehicle } from "../../utils/index";
+
 
 import { useUser } from "../../providers/user/index";
 import { useState, useEffect, useRef } from "react";
-import { IComment } from "../../interface/propsComponents";
-
-import Aside from "../../components/asideProduct";
+import { ICommentPropsCard, IComment } from "../../interface/propsComponents";
+import { Vehicle } from "../../interface/vehicle/index";
 
 const Product = () => {
   const [motor, setMotor]: any = useState();
-  const isMobile = useRef() as React.MutableRefObject<HTMLDivElement>;
-
-  const { user } = useUser();
-
-  useEffect(() => {
-    if (user.vehicles) {
-      setMotor(user?.vehicles[0]);
-    }
-    console.log(user);
-    console.log(motor);
-  });
+  const { id }: any = useParams();
+  
+  useEffect(()=> {
+    axios.get(`http://localhost:3000/vehicle/${id}`).then((res) => setMotor(res.data));
+  })
+    
+  const initialsName = convertInitialsName(motor.user_name || "");
 
   const fotos = [
     motor?.img,
@@ -37,126 +30,75 @@ const Product = () => {
     motor?.img,
   ];
 
-  const id = user;
-  const name = user;
-
-  const comentarios: Array<IComment> = [
-    {
-      id: "123",
-      username: "Paulo Vitor",
-      comment:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rerum minus eum et facilis esse sequi maiores ratione, debitis quibusdam tenetur inventore voluptatibus ipsum.",
-    },
-    {
-      id: "123",
-      username: "Paulo Vitor",
-      comment:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rerum minus eum et facilis esse sequi maiores ratione, debitis quibusdam tenetur inventore voluptatibus ipsum.",
-    },
-    {
-      id: "123",
-      username: "Paulo Vitor",
-      comment:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rerum minus eum et facilis esse sequi maiores ratione, debitis quibusdam tenetur inventore voluptatibus ipsum.",
-    },
-    {
-      id: "123",
-      username: "Paulo Vitor",
-      comment:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rerum minus eum et facilis esse sequi maiores ratione, debitis quibusdam tenetur inventore voluptatibus ipsum.",
-    },
-    {
-      id: "123",
-      username: "Paulo Vitor",
-      comment:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rerum minus eum et facilis esse sequi maiores ratione, debitis quibusdam tenetur inventore voluptatibus ipsum.",
-    },
-  ];
-
   return (
     <>
-      <Header />
+      <C.Header />
+      <S.ProductPageStyled>
+        <section className="div--main">
+          <S.ContainerIMG>
+            <img src={motor?.img} />
+          </S.ContainerIMG>
 
-      <S.ProductPageStyled ref={isMobile}>
-          <section className="div--main">
-            <S.ContainerIMG>
-              <img src={motor?.img} />
-            </S.ContainerIMG>
+          <S.ContainerInfoProduct>
+            <p>{motor?.heading}</p>
 
-            <S.ContainerInfoProduct>
-              <p>{motor?.heading}</p>
+            <div>
+              <C.LabelAgeKm info={motor?.year} />
+              <C.LabelAgeKm info={motor?.km} />
+            </div>
 
-              <div>
-                <LabelAgeKm info={motor?.year} />
-                <LabelAgeKm info={motor?.km} />
-              </div>
+            <label>R$ {motor?.price},00</label>
 
-              <label>R$ {motor?.price},00</label>
+            <C.ButtonUI text="Comprar" color="primary" variant="contained" />
+          </S.ContainerInfoProduct>
 
-              <ButtonUI text="Comprar" color="primary" variant="contained" />
-            </S.ContainerInfoProduct>
+          <S.ContainerDescription>
+            <h3>Descrição</h3>
+            <p>{motor?.description}</p>
+          </S.ContainerDescription>
 
-            <S.ContainerDescription>
-              <h3>Descrição</h3>
-              <p>{motor?.description}</p>
-            </S.ContainerDescription>
-
-            <section className="aside--mobile">
-              <Aside />
-            </section>
-
-            {/* <S.Aside>
-            <S.ContainerGalery>
-              <h3>Fotos</h3>
-              <ul>{motor && fotos?.map((foto) => <img src={foto} />)}</ul>
-            </S.ContainerGalery>
-
-            <S.ContainerOwnerProduct>
-              <p className="initialsName">{user?.initialsName}</p>
-
-              <h4>{user?.name}</h4>
-
-              <p className="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-                accusantium rerum minus eum et facilis esse sequi maiores ratione,
-                debitis quibusdam tenetur inventore voluptatibus ipsum.
-              </p>
-
-              <ButtonUI
-                text="Ver todos os anúncios"
-                color="secondary"
-                variant="contained"
-              />
-            </S.ContainerOwnerProduct>
-          </S.Aside> */}
-
-            <S.ContainerComments>
-              {user &&
-                comentarios?.map((comment) => (
-                  <CardComment comments={comment} />
-                ))}
-            </S.ContainerComments>
-
-            <S.ContainerNewComments>
-              <p className="user-initialsName">
-                {user?.initialsName} <span>{user?.name}</span>
-              </p>
-              <InputText color="primary" multiline rows={3} />
-              <ButtonUI text="Comentar" color="primary" variant="contained" />
-              <div>
-                <label>Comentar</label>
-                <label>Comentar</label>
-                <label>Comentar</label>
-              </div>
-            </S.ContainerNewComments>
+          <section className="aside--mobile">
+            <C.Aside vehicle={motor} />
           </section>
 
-          <aside>
-            <Aside />
-          </aside>
+          <S.ContainerComments>
+            {motor &&
+              motor?.comments.map((comment: any, index: number) => {
+
+                const initialsNameComment = convertInitialsName(comment.user_name);
+
+                return (<S.LiCard>
+                    <C.UserIcon key={index} color={""} theme={"red"} name={comment.user_name} initials={initialsNameComment} />
+                  <p>{comment.comment}</p>
+                </S.LiCard>)
+            })}
+          </S.ContainerComments>
+
+          <S.ContainerNewComments>
+          {motor &&
+
+           (<C.UserIcon
+              name={motor?.user_name}
+              initials={initialsName}
+              theme="black"
+            />)
+          }
+            <C.InputText color="primary" multiline rows={3} />
+            <C.ButtonUI text="Comentar" color="primary" variant="contained" />
+            <div>
+              <label>Comentar</label>
+              <label>Comentar</label>
+              <label>Comentar</label>
+            </div>
+          </S.ContainerNewComments>
+        </section>
+
+        <aside>
+          <C.Aside vehicle={motor} />
+        </aside>
       </S.ProductPageStyled>
 
-      <Footer />
+      <C.Footer />
     </>
   );
 };

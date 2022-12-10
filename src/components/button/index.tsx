@@ -14,5 +14,5 @@ const Button:React.FC<ButtonProps> = ({name, color, theme}: ButtonProps) => {
     )
 }
 
-export { Button };
+export default Button;
 

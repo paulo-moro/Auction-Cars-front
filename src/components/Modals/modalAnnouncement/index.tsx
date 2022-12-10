@@ -1,11 +1,9 @@
 import { ContainerStyled } from "./style";
-import { InputText } from "../../input";
-import { ButtonUI } from "../../buttonUI/index";
 import { useState } from "react";
 import { useNewVehicle } from "../../../providers/newVehicle";
 import { Modalprops } from "../../../interface/modal";
-
 import { useModal } from "../../../providers/modal";
+import * as C from "../../index";
 
 function ModalAnnouncement(){
 
@@ -81,46 +79,46 @@ const createVehicle = () => {
               
               <div className="div--field">
                 
-                <ButtonUI type="submit" 
+                <C.ButtonUI type="submit" 
                 setBoolean={saleOrAuction} 
                 text="Venda" color={"primary"} variant={sale ? "contained" : "outlined"}  />
 
-                <ButtonUI type="submit" setBoolean={saleOrAuction} text="Leilão" color={"primary"} variant={auction ? "contained" : "outlined"} />
+                <C.ButtonUI type="submit" setBoolean={saleOrAuction} text="Leilão" color={"primary"} variant={auction ? "contained" : "outlined"} />
               
               </div>
 
               <p>Informações do veículo</p>
               
-              <InputText setFunction={setTitle} label="Título" placeholder="Tipo de anúncio"  color="secondary"/>
+              <C.InputText setFunction={setTitle} label="Título" placeholder="Tipo de anúncio"  color="secondary"/>
               
               <div className="div--field">
-                <InputText setFunction={setAge} label="Ano" rows={1} placeholder="Digitar ano"  color="secondary"/>
+                <C.InputText setFunction={setAge} label="Ano" rows={1} placeholder="Digitar ano"  color="secondary"/>
 
-                <InputText setFunction={setKm} label="Quilometragem" rows={1}placeholder="0" color="secondary"/> 
+                <C.InputText setFunction={setKm} label="Quilometragem" rows={1}placeholder="0" color="secondary"/> 
                 
-                <InputText setFunction={setPrice} label="Preço" rows={1} placeholder="Digitar preço"  color="secondary"/>              
+                <C.InputText setFunction={setPrice} label="Preço" rows={1} placeholder="Digitar preço"  color="secondary"/>              
               </div>
               
-              <InputText multiline rows={3} setFunction={setDescription} label="Descrição" placeholder="Digitar descrição" color="secondary"/>
+              <C.InputText multiline rows={3} setFunction={setDescription} label="Descrição" placeholder="Digitar descrição" color="secondary"/>
 
               <div className="div--field">
                 
-                <ButtonUI setBoolean={carOrMotorcycle} type="submit" text="Carro" color="primary" variant={car ? "contained" : "outlined"} />
+                <C.ButtonUI setBoolean={carOrMotorcycle} type="submit" text="Carro" color="primary" variant={car ? "contained" : "outlined"} />
 
-                <ButtonUI setBoolean={carOrMotorcycle} type="submit" text="Moto" color="primary" variant={motorCycle ? "contained" : "outlined"}  />
+                <C.ButtonUI setBoolean={carOrMotorcycle} type="submit" text="Moto" color="primary" variant={motorCycle ? "contained" : "outlined"}  />
               
               </div>
 
-              <InputText multiline label="Imagem da capa" setFunction={setImgCape} placeholder="https://image.com" color="secondary"/>
+              <C.InputText multiline label="Imagem da capa" setFunction={setImgCape} placeholder="https://image.com" color="secondary"/>
 
-              <InputText multiline label="1ª Imagem da galeria"  setFunction={setImgGalery1} placeholder="https://image.com" color="secondary"/>
+              <C.InputText multiline label="1ª Imagem da galeria"  setFunction={setImgGalery1} placeholder="https://image.com" color="secondary"/>
 
-              <InputText multiline label="2ª Imagem da galeria" setFunction={setImgGalery2} placeholder="https://image.com" color="secondary"/>
+              <C.InputText multiline label="2ª Imagem da galeria" setFunction={setImgGalery2} placeholder="https://image.com" color="secondary"/>
 
               <div className="div--field">
                
-                <ButtonUI setBoolean={hideModalAnnouncement} type="submit" text="Cancelar" color="primary" variant="outlined" />
-                <ButtonUI setBoolean={createVehicle} type="submit" text="Criar anúncio" color="primary" variant="contained" />
+                <C.ButtonUI setBoolean={hideModalAnnouncement} type="submit" text="Cancelar" color="primary" variant="outlined" />
+                <C.ButtonUI setBoolean={createVehicle} type="submit" text="Criar anúncio" color="primary" variant="contained" />
               
               </div>
             

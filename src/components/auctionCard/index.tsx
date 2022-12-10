@@ -6,13 +6,20 @@ import { ActionCardProps } from "../../interface/propsComponents";
 import { Vehicle } from '../../interface/vehicle/index';
 import { useEffect, useState } from 'react';
 import ArrowAuctionIcon from "../../img/icons/arrow-auctionCard.svg";
+import { useHistory } from "react-router-dom";
+
+import { timeAuction } from "../../utils";
 
 
 const AuctionCard = ({ car }: ActionCardProps) => {
+    const history = useHistory();
 
     const [initialsName, setInitialsName] = useState("");
-
+    
     useEffect(() => {
+        
+        timeAuction();
+
         if (car?.user_name) {
           const splitName = car?.user_name.split(" ");
           splitName.length > 1
@@ -45,7 +52,9 @@ const AuctionCard = ({ car }: ActionCardProps) => {
 
             </div>
 
-            <button className="ButtonAuction">
+            <button 
+            onClick={() => history.push(`product/${car?.id}`)}
+            className="ButtonAuction">
            <p>Acessar página do leilão</p>
            <img src={ArrowAuctionIcon} alt=""/>
         </button>
@@ -54,4 +63,4 @@ const AuctionCard = ({ car }: ActionCardProps) => {
     )
 }
 
-export { AuctionCard };
+export default AuctionCard;
