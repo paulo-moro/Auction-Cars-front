@@ -17,10 +17,12 @@ const AuctionCard = ({ car }: ActionCardProps) => {
   const [timeForAuction, setTimeForAuction]: any = useState();
 
   useEffect(() => {
+    
     setInterval(()=>{
-        car && setTimeForAuction(timeAuction(car?.created_at));
+        car && setTimeForAuction(timeAuction(car.created_at));
     }, 1000)
-    if(car?.user_name){
+
+    if(car){
       const splitName = car?.user_name.split(" ");
       splitName.length > 1 ? setInitialsName(splitName[0][0] + splitName[1][0]) : setInitialsName(splitName[0][0]);
     }

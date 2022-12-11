@@ -31,97 +31,62 @@ export const postCommentVehicle = (id: string, comment: string) => {
   }
 };
 
-//Caso o leilão tenha data menor do que a do momento a função retorna expirado 
+//Caso o leilão tenha data menor do que a do momento a função retorna expirado - O ternário está invertido para testes
 export const timeAuction = (date: string) => {
   const paramsDateAuction = new Date(date);
   const timeNow = new Date();
 
-  const timeUntilAuction = stopWatchAuction(
-    paramsDateAuction.getDate(), 
-    paramsDateAuction.getMonth(), 
-    paramsDateAuction.getFullYear(), 
-    paramsDateAuction.getHours(), 
-    paramsDateAuction.getMinutes(), 
-    paramsDateAuction.getSeconds());
+  console.log(paramsDateAuction);
+  console.log(timeNow);
 
-  return timeNow < paramsDateAuction ?  "Expirado" : timeUntilAuction;
+  const timeUntilAuction = calculateTimeAuction(
+    // paramsDateAuction.getUTCMonth(),
+    // paramsDateAuction.getUTCFullYear(),
+    paramsDateAuction.getUTCDate(),
+    paramsDateAuction.getUTCHours(),
+    paramsDateAuction.getUTCMinutes()
+  );
+
+  return timeNow < paramsDateAuction ? "Expirado" : timeUntilAuction;
 };
 
-const stopWatchAuction = (
-  days: number,
-  months: number,
-  year: number,
-  hours: number,
+
+export const calculateTimeAuction = (
+  day: number,
+  hour: number,
   minutes: number,
-  seconds: number
-) => {
+  ) => {
+    const timeNow = new Date();
+    const seconds = 0;
 
-  if (seconds === 0) {
-    seconds = 59;
-    minutes = -1;
-  } else {
-    seconds -= 1;
-  }
-
-  if (minutes === 0) {
-    minutes = 59;
-    hours -= 1;
-  } else {
-    minutes -= 1;
-  }
-
-  if (hours === 0) {
-    hours = 23;
-    days -= 1;
-  } else {
-    hours -= 1;
-  }
-
-  if (days === 0) {
-    days = 30;
-    months -= 1;
-  } else {
-    days -= 1;
-  }
-
-  if (months === 0) {
-    months = 12;
-  } else {
-    months -= 1;
-  }
-    
-  const calculateTime = calculateTimeAuction(hours, minutes, seconds);
-  return `${calculateTime.hours}:${calculateTime.minutes}:${calculateTime.seconds}`;
-};
-
-export const calculateTimeAuction = (hour: number, minutes: number, seconds: number) => {
-  
-  const timeNow = new Date();
   let todayDateTime = {
-    hour: timeNow.getHours(),
-    minutes: timeNow.getMinutes(),
-    seconds: timeNow.getSeconds(),
+    day: timeNow.getUTCDate(),
+    hour: timeNow.getUTCHours(),
+    minutes: timeNow.getUTCMinutes(),
+    seconds: timeNow.getUTCSeconds(),
   };
 
-  let resultTime = { hours: 0, minutes: 0, seconds: 0 };
+  const convertDaysOfHours = 24 * (day - todayDateTime.day);
+  const resultTime = { hours: convertDaysOfHours, minutes: 0, seconds: 0 };
 
-  if (hour - timeNow.getHours() < 0) {
-    resultTime.hours = hour + (24 - timeNow.getHours());
+  if (seconds - todayDateTime.seconds < 0) {
+    resultTime.seconds = seconds + (59 - todayDateTime.seconds);
   } else {
-    resultTime.hours = hour - timeNow.getHours();
+    resultTime.seconds = seconds - todayDateTime.seconds;
   }
-
-  if (minutes - timeNow.getMinutes() < 0) {
-    resultTime.minutes = minutes + (59 - timeNow.getMinutes());
+  
+  if (minutes - todayDateTime.minutes < 0) {
+    resultTime.minutes = minutes + (59 - todayDateTime.minutes);
   } else {
-    resultTime.minutes = minutes - timeNow.getMinutes();
+    resultTime.minutes = minutes - todayDateTime.minutes;
   }
-
-  if (seconds - timeNow.getSeconds() < 0) {
-    resultTime.seconds = seconds + (59 - timeNow.getSeconds());
+  
+  if (hour - todayDateTime.hour < 0) {
+    resultTime.hours += hour + (24 - todayDateTime.hour);
   } else {
-    resultTime.seconds = seconds - timeNow.getSeconds();
+    resultTime.hours += hour - todayDateTime.hour;
   }
-
-  return resultTime;
+  
+  return `${resultTime.hours}:${resultTime.minutes}:${resultTime.seconds}`
 };
+
