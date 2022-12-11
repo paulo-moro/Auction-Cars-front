@@ -31,55 +31,97 @@ export const postCommentVehicle = (id: string, comment: string) => {
   }
 };
 
-const time = new Date(2023, 6, 10, 20, 1, 0);
-let auctionDate = {
-  date: time.getUTCDate(),
-  mounth: time.getMonth() + 1,
-  year: time.getFullYear(),
-  hour: time.getHours(),
-  minutes: time.getMinutes(),
+//Caso o leilão tenha data menor do que a do momento a função retorna expirado 
+export const timeAuction = (date: string) => {
+  const paramsDateAuction = new Date(date);
+  const timeNow = new Date();
+
+  const timeUntilAuction = stopWatchAuction(
+    paramsDateAuction.getDate(), 
+    paramsDateAuction.getMonth(), 
+    paramsDateAuction.getFullYear(), 
+    paramsDateAuction.getHours(), 
+    paramsDateAuction.getMinutes(), 
+    paramsDateAuction.getSeconds());
+
+  return timeNow < paramsDateAuction ?  "Expirado" : timeUntilAuction;
 };
 
+const stopWatchAuction = (
+  days: number,
+  months: number,
+  year: number,
+  hours: number,
+  minutes: number,
+  seconds: number
+) => {
 
-const timeNow = new Date();
-let todayDateTime = {
-  date: timeNow.getUTCDate(),
-  mounth: timeNow.getMonth() + 1,
-  year: timeNow.getFullYear(),
-  hour: timeNow.getHours(),
-  minutes: timeNow.getMinutes(),
+  if (seconds === 0) {
+    seconds = 59;
+    minutes = -1;
+  } else {
+    seconds -= 1;
+  }
+
+  if (minutes === 0) {
+    minutes = 59;
+    hours -= 1;
+  } else {
+    minutes -= 1;
+  }
+
+  if (hours === 0) {
+    hours = 23;
+    days -= 1;
+  } else {
+    hours -= 1;
+  }
+
+  if (days === 0) {
+    days = 30;
+    months -= 1;
+  } else {
+    days -= 1;
+  }
+
+  if (months === 0) {
+    months = 12;
+  } else {
+    months -= 1;
+  }
+    
+  const calculateTime = calculateTimeAuction(hours, minutes, seconds);
+  return `${calculateTime.hours}:${calculateTime.minutes}:${calculateTime.seconds}`;
 };
 
-
-
-
-export const timeAuction = () => {
+export const calculateTimeAuction = (hour: number, minutes: number, seconds: number) => {
   
-  let timeUntilAcouction = {
-    days: todayDateTime.date - auctionDate.date ,
-    mounths: todayDateTime.mounth - auctionDate.mounth,
-    years: todayDateTime.year  - auctionDate.year,
-    hours: auctionDate.hour - todayDateTime.hour,
-    minutes: auctionDate.minutes - todayDateTime.minutes
+  const timeNow = new Date();
+  let todayDateTime = {
+    hour: timeNow.getHours(),
+    minutes: timeNow.getMinutes(),
+    seconds: timeNow.getSeconds(),
   };
 
-  //colocar limitte de 30 ou 45 dias para disponibilidade do leilão
-  if(todayDateTime.date > auctionDate.date) {
-    timeUntilAcouction.days = auctionDate.date + (31 - todayDateTime.date);
+  let resultTime = { hours: 0, minutes: 0, seconds: 0 };
+
+  if (hour - timeNow.getHours() < 0) {
+    resultTime.hours = hour + (24 - timeNow.getHours());
+  } else {
+    resultTime.hours = hour - timeNow.getHours();
   }
 
-  if(todayDateTime.mounth > auctionDate.mounth) {
-    timeUntilAcouction.mounths = auctionDate.mounth + (12 - todayDateTime.mounth);
-    timeUntilAcouction.years = auctionDate.year - todayDateTime.year - 1;
+  if (minutes - timeNow.getMinutes() < 0) {
+    resultTime.minutes = minutes + (59 - timeNow.getMinutes());
+  } else {
+    resultTime.minutes = minutes - timeNow.getMinutes();
   }
 
-  if(todayDateTime.hour > auctionDate.hour ) {
-    timeUntilAcouction.hours = auctionDate.hour + (12 - todayDateTime.hour);
+  if (seconds - timeNow.getSeconds() < 0) {
+    resultTime.seconds = seconds + (59 - timeNow.getSeconds());
+  } else {
+    resultTime.seconds = seconds - timeNow.getSeconds();
   }
 
-  if (todayDateTime.minutes > auctionDate.minutes) {
-    timeUntilAcouction.minutes = auctionDate.minutes + (60 - todayDateTime.minutes);
-  }
-
-  console.log("O tempo calculado foi de: ", timeUntilAcouction);
+  return resultTime;
 };
