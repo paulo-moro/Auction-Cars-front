@@ -87,6 +87,12 @@ export const calculateTimeAuction = (
     resultTime.hours += hour - todayDateTime.hour;
   }
   
-  return `${resultTime.hours}:${resultTime.minutes}:${resultTime.seconds}`
+
+  const resultFormaded = { hours: '', minutes: '', seconds: '' };
+  resultTime.hours < 10 ? resultFormaded.hours =`0${resultTime.hours}` : resultFormaded.hours = resultTime.hours.toString();
+  resultTime.minutes < 10 ? resultFormaded.minutes =`0${resultTime.minutes}` : resultFormaded.minutes = resultTime.minutes.toString();
+  resultTime.seconds < 10 ? resultFormaded.seconds =`0${resultTime.seconds}` : resultFormaded.seconds = resultTime.seconds.toString();
+
+  return `${resultFormaded.hours}:${resultFormaded.minutes}:${resultFormaded.seconds}`
 };
 
