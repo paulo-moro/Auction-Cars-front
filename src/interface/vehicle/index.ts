@@ -39,11 +39,16 @@ export interface IVehicle {
   category: string;
 }
 
-export interface IVehicleList {
-  listVehicles?: IVehicle[];
-  listCars?: IVehicle[];
-  listMotorcycles?: IVehicle[];
+export interface IVehicleContext {
+  listVehicles: IVehicle[];
+  listCars: IVehicle[];
+  listMotorcycles: IVehicle[];
+  vehicle: Vehicle;
+  newVehicle: Object;
+  setNewVehicle: (vehicle: Object) => void;
+  setId: (id: String) => void;
   setListVehicles?: (vehicles: IVehicle[]) => void;
+  setNewComment: (comment: String) => void;
 }
 
 export interface ListVehicleProviderProps {

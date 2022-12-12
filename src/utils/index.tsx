@@ -11,7 +11,7 @@ export const convertInitialsName = (name: string) => {
 export const getVehicle = (id: string) => {
   let vehicle: any;
   axios
-    .get("http://localhost:3000/vehicle/c1ab2e7c-a33e-48bf-855e-c20d075edc4c")
+    .get(`http://localhost:3000/vehicle/${id}`)
     .then((res) => (vehicle = { ...res.data }));
   return vehicle;
 };
@@ -20,7 +20,7 @@ export const postCommentVehicle = (id: string, comment: string) => {
   if (sessionStorage.getItem("user")) {
     const token = JSON.parse(sessionStorage.getItem("user") || "");
     axios
-      .post(`http://localhost:3000/comment/${id}`, comment, {
+      .post(`http://localhost:3000/comment/${id}`, {comment}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,12 +36,7 @@ export const timeAuction = (date: string) => {
   const paramsDateAuction = new Date(date);
   const timeNow = new Date();
 
-  console.log(paramsDateAuction);
-  console.log(timeNow);
-
   const timeUntilAuction = calculateTimeAuction(
-    // paramsDateAuction.getUTCMonth(),
-    // paramsDateAuction.getUTCFullYear(),
     paramsDateAuction.getUTCDate(),
     paramsDateAuction.getUTCHours(),
     paramsDateAuction.getUTCMinutes()

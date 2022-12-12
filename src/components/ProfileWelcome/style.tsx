@@ -24,7 +24,7 @@ export const ProfileWelcomeStyle = styled.footer`
         max-height: 480px; 
         border-radius: 5px;
         padding: 40px;
-        gap: 15px;
+        gap: 25px;
     }
 
     .welcome-profile > .initials{

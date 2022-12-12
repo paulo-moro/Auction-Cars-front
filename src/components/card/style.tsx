@@ -10,12 +10,13 @@ export const LiCard = styled.li`
   font-style: normal;
   width: 312px;
   height: 460px;
+  padding: 0 10px;
   cursor: pointer;
 
   > figure {
     display: flex;
     justify-content: center;
-    width: 312px;
+    width: 100%;
     height: 152px;
     margin: 0;
 
@@ -23,19 +24,19 @@ export const LiCard = styled.li`
 
   > figure > img {
     max-height: 152px;
-    max-width: 312px;
     margin-top: 1px;
   }
 
   > h2 {
+    display: flex;
+    flex-wrap: nowrap;
     font-style: normal;
+    width: 100%;
     font-weight: 600;
     font-size: 16px;
-    line-height: 20px;
     overflow: hidden;
-    width: 100%;
-    height: 22px;
     margin: 0;
+    height: 20px;
   }
 
   > p {
@@ -60,9 +61,8 @@ export const LiCard = styled.li`
     align-items: center;
     width: 100%;
     height: 15%;
-    gap: 20px;
+    gap: 10px;
   }
-
 
   .div-buttons > button{
     text-transform: capitalize;
@@ -72,7 +72,6 @@ export const LiCard = styled.li`
 `;
 
 export const DivCard = styled.div`
-
   display: flex;
   flex-direction: row;
   align-items: center;

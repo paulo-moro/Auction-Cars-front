@@ -1,5 +1,5 @@
 import { ITitleSection } from "../../interface/propsComponents";
-import { useListVehicle } from "../../providers/listAllVehicles";
+import { useVehicle } from "../../providers/vehicles";
 import Card from "../card";
 import { ListStyle } from "./style";
 import { useRef } from "react";

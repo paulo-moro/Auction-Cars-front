@@ -2,7 +2,7 @@ import { Header } from "../../components/header";
 import ListAuction from "../../components/listAuctionCard";
 import ListCard from "../../components/listCard";
 import WelcomeHome from "../../components/welcomeHome";
-import { useListVehicle } from "../../providers/listAllVehicles";
+import { useVehicle } from "../../providers/vehicles";
 import Button from '../../components/button';
 import HomePageStyled from './style';
 import { motion } from 'framer-motion';
@@ -11,7 +11,7 @@ import * as C from "../../components/index";
 
 const HomePage = () => {
 
-    const { listCars, listMotorcycles, listVehicles } = useListVehicle();
+    const { listCars, listMotorcycles, listVehicles } = useVehicle();
 
     return(
         <HomePageStyled>

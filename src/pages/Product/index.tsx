@@ -3,7 +3,9 @@ import * as C from "../../components/index";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-import { convertInitialsName, getVehicle } from "../../utils/index";
+import { useVehicle } from "../../providers/vehicles";
+
+import { convertInitialsName, getVehicle, postCommentVehicle } from "../../utils/index";
 
 
 import { useUser } from "../../providers/user/index";
@@ -12,22 +14,29 @@ import { ICommentPropsCard, IComment } from "../../interface/propsComponents";
 import { Vehicle } from "../../interface/vehicle/index";
 
 const Product = () => {
-  const [motor, setMotor]: any = useState();
+  
+  const { listCars, listMotorcycles, listVehicles, vehicle, setId, setNewComment } = useVehicle();
+  const [newCommentState, setNewCommentState]:any = useState("");
   const { id }: any = useParams();
   
   useEffect(()=> {
-    axios.get(`http://localhost:3000/vehicle/${id}`).then((res) => setMotor(res.data));
-  })
-    
-  const initialsName = convertInitialsName(motor.user_name || "");
+    setId && setId(id);
+  }, [id])
+
+
+  const commentFunction = () => {
+    setNewComment(newCommentState)
+  }
+  
+  const initialsName = convertInitialsName(vehicle?.user_name || "");
 
   const fotos = [
-    motor?.img,
-    motor?.img,
-    motor?.img,
-    motor?.img,
-    motor?.img,
-    motor?.img,
+    vehicle?.img,
+    vehicle?.img,
+    vehicle?.img,
+    vehicle?.img,
+    vehicle?.img,
+    vehicle?.img,
   ];
 
   return (
@@ -36,34 +45,36 @@ const Product = () => {
       <S.ProductPageStyled>
         <section className="div--main">
           <S.ContainerIMG>
-            <img src={motor?.img} />
+            <img src={vehicle?.img} />
           </S.ContainerIMG>
 
           <S.ContainerInfoProduct>
-            <p>{motor?.heading}</p>
+            <p>{vehicle?.heading}</p>
 
             <div>
-              <C.LabelAgeKm info={motor?.year} />
-              <C.LabelAgeKm info={motor?.km} />
+              <C.LabelAgeKm info={vehicle?.year} />
+              <C.LabelAgeKm info={vehicle?.km} />
             </div>
 
-            <label>R$ {motor?.price},00</label>
+            <label>R$ {vehicle?.price},00</label>
 
             <C.ButtonUI text="Comprar" color="primary" variant="contained" />
           </S.ContainerInfoProduct>
 
           <S.ContainerDescription>
             <h3>Descrição</h3>
-            <p>{motor?.description}</p>
+            <p>{vehicle?.description}</p>
           </S.ContainerDescription>
 
           <section className="aside--mobile">
-            <C.Aside vehicle={motor} />
+          {vehicle &&
+            <C.Aside vehicle={vehicle} />
+          }
           </section>
 
           <S.ContainerComments>
-            {motor &&
-              motor?.comments.map((comment: any, index: number) => {
+            {vehicle &&
+              vehicle.comments?.map((comment: any, index: number) => {
 
                 const initialsNameComment = convertInitialsName(comment.user_name);
 
@@ -75,16 +86,16 @@ const Product = () => {
           </S.ContainerComments>
 
           <S.ContainerNewComments>
-          {motor &&
+          {vehicle &&
 
            (<C.UserIcon
-              name={motor?.user_name}
+              name={vehicle?.user_name}
               initials={initialsName}
-              theme="black"
+              theme="red"
             />)
           }
-            <C.InputText color="primary" multiline rows={3} />
-            <C.ButtonUI text="Comentar" color="primary" variant="contained" />
+            <C.InputText setFunction={setNewCommentState} color="primary" multiline rows={3} />
+            <C.ButtonUI setBoolean={commentFunction} text="Comentar" color="primary" variant="contained" />
             <div>
               <label>Comentar</label>
               <label>Comentar</label>
@@ -94,7 +105,9 @@ const Product = () => {
         </section>
 
         <aside>
-          <C.Aside vehicle={motor} />
+        {vehicle &&
+          <C.Aside vehicle={vehicle} />
+        }
         </aside>
       </S.ProductPageStyled>
 

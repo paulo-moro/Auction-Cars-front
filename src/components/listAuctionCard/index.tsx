@@ -1,4 +1,4 @@
-import { useListVehicle } from "../../providers/listAllVehicles";
+import { useVehicle } from "../../providers/vehicles";
 import AuctionCard from "../auctionCard";
 import { ListAuctionStyle } from "./style";
 import { useRef } from "react";

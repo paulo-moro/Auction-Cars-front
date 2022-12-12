@@ -1,13 +1,13 @@
 import { ContainerStyled } from "./style";
 import { useState } from "react";
-import { useNewVehicle } from "../../../providers/newVehicle";
+import { useVehicle } from "../../../providers/vehicles";
 import { Modalprops } from "../../../interface/modal";
 import { useModal } from "../../../providers/modal";
 import * as C from "../../index";
 
 function ModalAnnouncement(){
 
-  const {setNewVehicle} = useNewVehicle();
+  const {setNewVehicle} = useVehicle();
   const { inOnAnnouncement, setInOnAnnouncement, hideModalAnnouncement } = useModal();
 
   const modal = inOnAnnouncement

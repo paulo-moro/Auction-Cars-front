@@ -62,10 +62,6 @@ export const Header = () => {
 
           <button
             className="nav--menu-desktop-button"
-            onClick={() => {
-              showModalAnnouncement();
-              setOpenMenu(false);
-            }}
           >
             Leilão
           </button>

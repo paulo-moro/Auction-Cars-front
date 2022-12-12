@@ -20,16 +20,15 @@ const Aside = ({ vehicle }: IAsideProps) => {
     vehicle?.img,
   ];
 
+  console.log(vehicle)
+
   return (
     <S.AsideStyled>
       <S.ContainerGalery>
         <h3>Fotos</h3>
         <ul>
           {
-            // vehicle?.photos.map((foto: string) => <img src={foto} />)
-            fotos.map((foto) => (
-              <img src={foto} />
-            ))
+            vehicle.photos?.map((foto: any) => <img src={foto.url} />)
           }
         </ul>
       </S.ContainerGalery>

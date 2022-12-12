@@ -53,14 +53,14 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
         <span>R$ {price},00</span>
       </DivCard>
 
-      <div className="div-buttons">
       {owner && 
+      <div className="div-buttons">
         <>
           <ButtonUI text="Editar" color="secondary" variant="outlined" />
           <ButtonUI text="Ver como" color="secondary" variant="outlined" />
         </>
-      }
       </div>
+      }
     </LiCard>
   );
 };

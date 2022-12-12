@@ -51,7 +51,6 @@ const AuctionCard = ({ car }: ActionCardProps) => {
           <LabelAgeKm info={car?.year} />
           <LabelAgeKm info={car?.km} />
         </div>
-
         <span className="price">R$ {car?.price}</span>
       </div>
 
