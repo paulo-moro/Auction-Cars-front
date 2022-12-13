@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-const letterColor = [{"A": "azul escuro"},{"B": "azul"},{"C": "azul claro"},{"D": "verde escuro"},{"E": "verde"},{"F": "verde claro"},{"G": "amarelo escuro"},{"H": "amarelo"},{"I": "laranja claro"},{"J": "laranja"},{"K": "laranja escuro"},{"L": "rosa"},{"M": "rosa escuro"},{"N": "vermelho"},{"O": "vinho"},{"P": "lilas"},{"Q": "roxo"},{"R": "roxo escuro"},{"S": "Azul manteiga"},{"U": "Amarelo escuro"},{"V": "Água-marinha"},{"W": ""},{"X": ""},{"Y": "Azul petróleo"},{"Z": "Açafrão"}];
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -68,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
 
     --max-width: 1440px;
     --min-width: 360px;
+
 }
 
 input, textarea{

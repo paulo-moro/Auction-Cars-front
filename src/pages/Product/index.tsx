@@ -18,6 +18,7 @@ const Product = () => {
   const { listCars, listMotorcycles, listVehicles, vehicle, setId, setNewComment } = useVehicle();
   const [newCommentState, setNewCommentState]:any = useState("");
   const { id }: any = useParams();
+  const { user } = useUser();
   
   useEffect(()=> {
     setId && setId(id);
@@ -28,16 +29,9 @@ const Product = () => {
     setNewComment(newCommentState)
   }
   
-  const initialsName = convertInitialsName(vehicle?.user_name || "");
+  const initialsName = convertInitialsName(vehicle?.user_name);
+  const intialsProfile = convertInitialsName(user?.name);
 
-  const fotos = [
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-  ];
 
   return (
     <>
@@ -86,12 +80,11 @@ const Product = () => {
           </S.ContainerComments>
 
           <S.ContainerNewComments>
-          {vehicle &&
-
+          {
+          vehicle &&
            (<C.UserIcon
-              name={vehicle?.user_name}
-              initials={initialsName}
-              theme="red"
+              name={user.name}
+              initials={intialsProfile}
             />)
           }
             <C.InputText setFunction={setNewCommentState} color="primary" multiline rows={3} />

@@ -24,10 +24,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("##################################");
-      console.log(newComment);
-      console.log("##################################");
-
+      
       axios
         .post(
           `http://localhost:3000/comment/${id}`,

@@ -166,7 +166,7 @@ export const ContainerNewComments = styled(motion.div)`
     gap: 40px;
     background: #ffffff;
     border-radius: 4px;
-
+    
     input {
       width: 90%;
     }

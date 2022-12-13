@@ -1,11 +1,13 @@
 import { Vehicle } from "../interface/vehicle/index";
 import axios from "axios";
 
-export const convertInitialsName = (name: string) => {
+export const convertInitialsName = (name: any) => {
+  if(name){
   const splitName = name?.split(" ");
   return splitName.length > 1
     ? splitName[0][0] + splitName[1][0]
     : splitName[0][0];
+  }
 };
 
 export const getVehicle = (id: string) => {
@@ -82,7 +84,6 @@ export const calculateTimeAuction = (
     resultTime.hours += hour - todayDateTime.hour;
   }
   
-
   const resultFormaded = { hours: '', minutes: '', seconds: '' };
   resultTime.hours < 10 ? resultFormaded.hours =`0${resultTime.hours}` : resultFormaded.hours = resultTime.hours.toString();
   resultTime.minutes < 10 ? resultFormaded.minutes =`0${resultTime.minutes}` : resultFormaded.minutes = resultTime.minutes.toString();

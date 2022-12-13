@@ -39,6 +39,10 @@ export const HeaderStyled = styled.header`
       height: auto;
     }
 
+    .nav-menu > div > div > p {
+      display: none;
+    }
+
     .icon-Menu {
       width: 30px;
     }
@@ -72,7 +76,7 @@ export const HeaderStyled = styled.header`
       align-items: center;
       gap: 10px;
     }
-
+/* 
     
   .teste-frame{
     position: fixed;
@@ -106,7 +110,7 @@ export const HeaderStyled = styled.header`
         color: var(--color-gray-2);
         font-weight: 400;
       }
-    }
+    } */
   
   }
 
@@ -330,3 +334,4 @@ export const MenuStyled = styled(motion.div)`
     display: none;
   }
 `;
+
