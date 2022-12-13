@@ -106,7 +106,6 @@ export const Header = () => {
             <UserIcon 
               name={user.name}
             />
-            
           </div>
           )}
           {yLoginRegister === 0 ? (
