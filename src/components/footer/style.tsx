@@ -5,14 +5,12 @@ export const FooterStyle = styled.footer`
     width: 100%;
     justify-content: space-around;
     gap: 5px;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     background: var(--color-grey-0);
     align-items: center;
     color: var(--color-white-fixed);
   
-
   .footer--logo {
     max-width: 120px;
     width: 40%;

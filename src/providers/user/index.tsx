@@ -30,7 +30,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setUser(response.data);
       });
   }

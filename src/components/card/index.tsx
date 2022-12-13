@@ -1,10 +1,10 @@
 import { Vehicle, VehiclesProps } from "../../interface/vehicle";
 import { UserIcon } from "../iconUser";
-import { LiCard, DivCard, Span } from './style';
+import ButtonUI from "../buttonUI";
+import { LiCard, DivCard, Span } from "./style";
 import { useEffect, useState } from "react";
-import { ButtonUI } from "../buttonUI"
 
-const Card = ({ vehicle }: VehiclesProps) => {
+const Card = ({owner, vehicle }: VehiclesProps) => {
   const [initialsName, setInitialsName] = useState("");
   const {
     id,
@@ -15,8 +15,9 @@ const Card = ({ vehicle }: VehiclesProps) => {
     km,
     img,
     year,
-    price,
+    price
   }: Vehicle = vehicle;
+
 
   useEffect(() => {
     if (user_name) {
@@ -37,7 +38,7 @@ const Card = ({ vehicle }: VehiclesProps) => {
 
       <p>{description}</p>
 
-      <UserIcon
+      <UserIcon 
         color={""}
         theme={"red"}
         name={user_name}
@@ -46,24 +47,20 @@ const Card = ({ vehicle }: VehiclesProps) => {
 
       <DivCard>
         <div>
-          <Span>
-            {km} KM
-          </Span>
-
-          <Span>
-            {year}
-          </Span>
-          </div>
-
-          <span>R$ {price},00</span>
-        
+          <Span>{km} KM</Span>
+          <Span>{year}</Span>
+        </div>
+        <span>R$ {price},00</span>
       </DivCard>
 
+      {owner && 
       <div className="div-buttons">
-        <ButtonUI text="Editar" color="secondary" variant="outlined"/>
-
-        <ButtonUI text="Ver como" color="secondary" variant="outlined"/>
+        <>
+          <ButtonUI text="Editar" color="secondary" variant="outlined" />
+          <ButtonUI text="Ver como" color="secondary" variant="outlined" />
+        </>
       </div>
+      }
     </LiCard>
   );
 };

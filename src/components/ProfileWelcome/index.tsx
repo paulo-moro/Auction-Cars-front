@@ -1,10 +1,8 @@
-import { UserIcon } from "../iconUser";
 import { ProfileWelcomeStyle } from "./style";
-import { LabelAgeKm } from "../labelKmAgeCar/index";
-import { ButtonUI } from "../buttonUI/index";
 import { useUser } from "../../providers/user/index";
 import { useState, useEffect } from "react";
 import { useModal } from '../../providers/modal/index';
+import * as C from "../index";
 
 export const ProfileWelcome = () => {
   const { user } = useUser();
@@ -18,7 +16,7 @@ export const ProfileWelcome = () => {
         <p className="initials">{user?.initialsName}</p>
         <p className="name-profile">
           {user?.name}
-          <LabelAgeKm info={statusUser} />
+          <C.LabelAgeKm info={statusUser} />
         </p>
 
         <p className="description">
@@ -29,7 +27,7 @@ export const ProfileWelcome = () => {
         </p>
 
         {user?.is_active && (
-          <ButtonUI setBoolean={showModalAnnouncement} text="Criar anuncio" variant="outlined" size="large" />
+          <C.ButtonUI setBoolean={showModalAnnouncement} text="Criar anuncio" variant="outlined" size="large" />
         )}
       </div>
     </ProfileWelcomeStyle>

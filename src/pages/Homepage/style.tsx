@@ -57,10 +57,10 @@ const HomePageStyled = styled(motion.body)`
         max-width: 740px;
         justify-content: space-around;
 
-        button {
-          width: 200px;
-          height: 50px;
-        }
+      }
+      .div--botoes > button {
+        width: 200px;
+        height: 50px;
       }
     }
   }

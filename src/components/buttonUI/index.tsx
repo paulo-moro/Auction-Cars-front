@@ -31,5 +31,5 @@ const ButtonUI = ({text, name, color, variant, size, type, setBoolean}: ButtonPr
     )
 }
 
-export { ButtonUI };
+export default ButtonUI;
 

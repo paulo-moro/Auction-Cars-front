@@ -1,7 +1,7 @@
-import { Button } from "../button"
+import Button from "../button"
 import { WelcomeCardStyle } from "./style"
 
-export const WelcomeHome = () => {
+const WelcomeHome = () => {
     return (
         <WelcomeCardStyle>
             <h1>Velocidade e experiência em um lugar perfeito para você</h1>
@@ -16,3 +16,5 @@ export const WelcomeHome = () => {
         </WelcomeCardStyle>
     )
 }
+
+export default WelcomeHome;

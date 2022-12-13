@@ -1,10 +1,9 @@
 import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
 import { useState, useEffect } from 'react';
-import { InputText } from "../../input";
-import { ButtonUI } from "../../buttonUI";
 import { useUser } from "../../../providers/user";
 import { useModal } from "../../../providers/modal";
+import * as C from "../../index";
 
 function ModalRegister() {
 
@@ -61,7 +60,7 @@ function ModalRegister() {
               createUser();
             }}
           >
-            <InputText
+            <C.InputText
               setFunction={setName}
               label="Nome"
               placeholder="Ex: Samuel Leoão"
@@ -69,7 +68,7 @@ function ModalRegister() {
               color="secondary"
             />
 
-            <InputText
+            <C.InputText
               setFunction={setEmail}
               label="Email"
               required
@@ -77,7 +76,7 @@ function ModalRegister() {
               color="secondary"
             />
 
-            <InputText
+            <C.InputText
               setFunction={setCellphone}
               label="Telefone"
               placeholder="(00)0-0000-0000"
@@ -85,7 +84,7 @@ function ModalRegister() {
               color="secondary"
             />
             
-            <InputText
+            <C.InputText
               // setFunction={setCpf}
               label="CPF"
               placeholder="000.000.000-00"
@@ -93,7 +92,7 @@ function ModalRegister() {
               color="secondary"
             />
 
-            <InputText
+            <C.InputText
               // setFunction={setBirthDate}
               label="Data de nascimento"
               placeholder="00/00/00"
@@ -102,7 +101,7 @@ function ModalRegister() {
               color="secondary"
             />
 
-            <InputText
+            <C.InputText
               // setFunction={setDescription}
               label="Descrição"
               placeholder="Digitar descrição"
@@ -112,7 +111,7 @@ function ModalRegister() {
 
             <label>Informações de endereço</label>
 
-            <InputText
+            <C.InputText
               // setFunction={setPostalCode}
               label="CEP"
               placeholder="00000-000"
@@ -122,7 +121,7 @@ function ModalRegister() {
 
             <div className="div--adress">
               <div className="div--field">
-                <InputText
+                <C.InputText
                   // setFunction={setCountry}
                   label="Estado"
                   placeholder="Digitar estado"
@@ -132,7 +131,7 @@ function ModalRegister() {
               </div>
 
               <div className="div--field">
-                <InputText
+                <C.InputText
                   // setFunction={setCity}
                   label="Cidade"
                   placeholder="Digitar cidade"
@@ -142,7 +141,7 @@ function ModalRegister() {
               </div>
             </div>
 
-            <InputText
+            <C.InputText
               // setFunction={setStreet}
               label="Rua"
               placeholder="Digitar rua"
@@ -152,7 +151,7 @@ function ModalRegister() {
 
             <div className="div--adress">
               <div className="div--field">
-                <InputText
+                <C.InputText
                   // setFunction={setNumberAdress}
                   label="Número"
                   placeholder="ex: apart 307"
@@ -163,7 +162,7 @@ function ModalRegister() {
               </div>
 
               <div className="div--field">
-                <InputText
+                <C.InputText
                   // setFunction={setComplement}
                   label="Complemento"
                   placeholder="Digitar complemento"
@@ -174,7 +173,7 @@ function ModalRegister() {
             </div>
 
             <div className="div--adress">
-              <ButtonUI
+              <C.ButtonUI
                 setBoolean={isBuyer}
                 type="submit"
                 text="Comprador"
@@ -182,7 +181,7 @@ function ModalRegister() {
                 variant={userBuyer ? "contained" : "outlined"}
               />
 
-              <ButtonUI
+              <C.ButtonUI
                 setBoolean={isAnnunciate}
                 type="submit"
                 text="Anunciante"
@@ -191,7 +190,7 @@ function ModalRegister() {
               />
             </div>
 
-            <InputText
+            <C.InputText
               setFunction={setPassword}
               label="Senha"
               placeholder="Senha"
@@ -200,7 +199,7 @@ function ModalRegister() {
               type="password"
             />
 
-            <InputText
+            <C.InputText
               // setFunction={setConfirmPassword}
               label="Confirmar senha"
               placeholder="Confirmar senha"
@@ -209,7 +208,7 @@ function ModalRegister() {
               type="password"
             />
 
-            <ButtonUI
+            <C.ButtonUI
               setBoolean={createUser}
               text="Finalizar Cadastro"
               color="primary"

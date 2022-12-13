@@ -1,16 +1,17 @@
-import { Footer } from "../../components/footer";
 import { Header } from "../../components/header";
-import { ListAuction } from "../../components/listAuctionCard";
+import ListAuction from "../../components/listAuctionCard";
 import ListCard from "../../components/listCard";
-import { WelcomeHome } from "../../components/welcomeHome";
-import { useListVehicle } from "../../providers/listAllVehicles";
-import { Button } from '../../components/button';
+import WelcomeHome from "../../components/welcomeHome";
+import { useVehicle } from "../../providers/vehicles";
+import Button from '../../components/button';
 import HomePageStyled from './style';
 import { motion } from 'framer-motion';
 
+import * as C from "../../components/index";
+
 const HomePage = () => {
 
-    const { listCars, listMotorcycles, listVehicles } = useListVehicle();
+    const { listCars, listMotorcycles, listVehicles } = useVehicle();
 
     return(
         <HomePageStyled>
@@ -29,7 +30,7 @@ const HomePage = () => {
             <ListAuction listVehicles={listVehicles}/>
             <ListCard title={"Carros"} listVehicles={listCars}/>
             <ListCard title={"Motos"} listVehicles={listMotorcycles}/>
-            <Footer/>
+            <C.Footer/>
         </HomePageStyled>
         )
 }

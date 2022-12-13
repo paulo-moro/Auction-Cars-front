@@ -1,12 +1,13 @@
-import { HeaderStyled, MenuStyled, MenuProfileStyled } from "./style";
 import MotorShop from "../../img/Motors-shop.svg";
 import Menu from "../../img/Menu-Header.svg";
 import CloseMenu from "../../img/Close-Menu.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useModal } from "../../providers/modal";
 import { useUser } from "../../providers/user/index";
 import { Redirect, useHistory } from "react-router-dom";
-import { ButtonUI } from "../buttonUI/index";
+import { convertInitialsName } from "../../utils/index";
+import {UserIcon} from "../iconUser/index";
+import { HeaderStyled, MenuStyled, MenuProfileStyled } from "./style";
 
 export const Header = () => {
   const { user } = useUser();
@@ -27,20 +28,28 @@ export const Header = () => {
   const [y, setY] = useState(-400);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
+
+  const [initialsName, setInitialsName] = useState("");
+
+  useEffect(() => {
+    if (user.name) {
+      setInitialsName(convertInitialsName(user.name));
+    }
+  }, [user]);
+
   const history = useHistory();
 
   const openCloseMenuProfile = () => {
     setYLoginRegister(0);
     setTimeout(() => {
-      return  y > 0 ? setY(-400) : setY(400);
+      return y > 0 ? setY(-400) : setY(400);
     }, 500);
   };
 
   const openCloseMenuLoginRegister = () => {
-    
-    setOpenMenuProfile(false)
+    setOpenMenuProfile(false);
     setTimeout(() => {
-      return  yLoginRegister > 0 ? setYLoginRegister(0) : setYLoginRegister(600);
+      return yLoginRegister > 0 ? setYLoginRegister(0) : setYLoginRegister(600);
     }, 500);
   };
 
@@ -60,28 +69,18 @@ export const Header = () => {
             Motos
           </button>
 
-          <button
-            className="nav--menu-desktop-button"
-            onClick={() => {
-              showModalAnnouncement();
-              setOpenMenu(false);
-            }}
-          >
-            Leilão
-          </button>
+          <button className="nav--menu-desktop-button">Leilão</button>
 
           <div className="nav--login-register-desktop">
             <div id="div-line"></div>
 
-            {user.initialsName ? (
-              <>
-                <p className="initials" onClick={() => openCloseMenuProfile()}>
-                  {user?.initialsName}
-                </p>
-                <p className="name-profile"
-                onClick={() => history.push("/profile")}
-                >{user?.name}</p>
-              </>
+            {initialsName ? (
+              <div onClick={() => openCloseMenuProfile()}>
+                <UserIcon 
+                  name={user.name}
+                  initials={initialsName}
+                />
+              </div>
             ) : (
               <>
                 <h4
@@ -103,14 +102,11 @@ export const Header = () => {
 
         <nav className="nav-menu">
           {user.initialsName && (
-            <p
-              className="initials"
-              onClick={() => {
-                openCloseMenuProfile();
-              }}
-            >
-              {user?.initialsName}
-            </p>
+            <div onClick={() => openCloseMenuProfile()}>
+            <UserIcon 
+              name={user.name}
+            />
+          </div>
           )}
           {yLoginRegister === 0 ? (
             <>
@@ -124,9 +120,11 @@ export const Header = () => {
               </button>
             </>
           ) : (
-            <button onClick={() =>{ 
-              openCloseMenuLoginRegister();
-            }}>
+            <button
+              onClick={() => {
+                openCloseMenuLoginRegister();
+              }}
+            >
               {" "}
               <img src={CloseMenu} alt="" />{" "}
             </button>
@@ -135,7 +133,10 @@ export const Header = () => {
       </HeaderStyled>
 
       {openMenu && (
-        <MenuStyled  animate={{ y: yLoginRegister }} transition={{ type: "spring", duration: 0.5 }} >
+        <MenuStyled
+          animate={{ y: yLoginRegister }}
+          transition={{ type: "spring", duration: 0.5 }}
+        >
           <nav className="nav--menu-mobile">
             <button
               className="nav--menu-mobile-button"
@@ -187,10 +188,12 @@ export const Header = () => {
             </div>
           )}
         </MenuStyled>
-      )} 
+      )}
 
-     <MenuProfileStyled animate={{ y }} transition={{ type: "spring", duration: 0.5 }} >
-        
+      <MenuProfileStyled
+        animate={{ y }}
+        transition={{ type: "spring", duration: 0.5 }}
+      >
         <button>Editar Perfil</button>
         <button>Editar endereço</button>
         <button>Minhas Compras</button>
