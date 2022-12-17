@@ -56,7 +56,8 @@ export const Header = () => {
   return (
     <>
       <HeaderStyled>
-        <img className="logo-MotorsShop" src={MotorShop} alt="" />
+        <img className="logo-MotorsShop" src={MotorShop} 
+        onClick={()=> history.push("/")} alt="" />
 
         <nav className="nav--menu-desktop">
           <button className="nav--menu-desktop-button">Carros</button>

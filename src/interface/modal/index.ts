@@ -13,12 +13,15 @@ export interface IModalState{
     inOnSucess: Boolean;
     inOnLogin: Boolean;
     inOnAnnouncement: Boolean;
+
+    inOnModalGalery: Boolean;
     
     setOpenModal?: (data: boolean) => void;
     setInOnRegister: (data: boolean) => void;
     setInOnSucess: (data: boolean) => void;
     setInOnLogin: (data: boolean) => void;
     setInOnAnnouncement: (data: boolean) => void;
+    setInOnModalGalery: (data: boolean) => void;
 
     handleShow?: () => Boolean;
     handleHidden?: () => Boolean;
@@ -34,4 +37,7 @@ export interface IModalState{
 
     hideModalLogin: () => Boolean;
     showModalLogin: () => Boolean;
+
+    showModalImageGalery: () => Boolean;
+    hidenModalImageGalery: () => Boolean;
 }

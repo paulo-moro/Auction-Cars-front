@@ -186,6 +186,18 @@ export const ContainerNewComments = styled(motion.div)`
       flex-wrap: wrap;
       gap: 30px;
     }
+    
+    .comments-standart{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .comments-standart > label{
+      color: #868E96;
+      background: #E9ECEF;
+      border-radius: 24px;
+      padding: 5px 12px;
+    }
   }
 `;
 

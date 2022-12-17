@@ -53,7 +53,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
     axios
       .get("http://localhost:3000/categorie/motorCycle")
       .then((response) => setListMotorcycles(response.data.vehicles));
-  }, [id, newComment]);
+  }, [id, newComment, newVehicle]);
 
   return (
     <VehicleContext.Provider

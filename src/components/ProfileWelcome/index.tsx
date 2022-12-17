@@ -7,6 +7,7 @@ import * as C from "../index";
 export const ProfileWelcome = () => {
   const { user } = useUser();
   const { showModalAnnouncement } = useModal();
+
   
   const statusUser = user?.is_active ? "Anunciante" : "Comprador";
   
@@ -26,7 +27,7 @@ export const ProfileWelcome = () => {
           quo quidem!
         </p>
 
-        {user?.is_active && (
+        {user && (
           <C.ButtonUI setBoolean={showModalAnnouncement} text="Criar anuncio" variant="outlined" size="large" />
         )}
       </div>

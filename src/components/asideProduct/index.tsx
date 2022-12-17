@@ -1,47 +1,65 @@
 import * as S from "./styled";
+import { useHistory } from "react-router-dom";
 import ButtonUI from "../../components/buttonUI";
 import { IComment, IAsideProps } from "../../interface/propsComponents";
 import { useState, useEffect } from "react";
 import { useUser } from "../../providers/user/index";
 import { convertInitialsName } from "../../utils/index";
 import { UserIcon } from "../iconUser";
+import { useModal } from "../../providers/modal";
+import ModalGalery from "../Modals/modalImage/index";
 import * as C from "../";
 
 const Aside = ({ vehicle }: IAsideProps) => {
   const [motor, setMotor]: any = useState();
-  const initialsName = convertInitialsName(vehicle?.user_name || "");
+  const { showModalImageGalery, inOnModalGalery } = useModal();
+  const initialsName = convertInitialsName(vehicle?.user_name);
+  const [photo, setPhoto]: any = useState("");
+  const history = useHistory();
+
+  const openModalImage = (url: any) => {
+    showModalImageGalery();
+    setPhoto(url);
+  };
+
+  const toHomePage = () => {
+    history.push("/");
+  };
 
   return (
-    <S.AsideStyled>
-      <S.ContainerGalery>
-        <h3>Fotos</h3>
-        <ul>
-          {
-            vehicle.photos?.map((foto: any) => {
-              console.log(foto);
-             return(<img src={foto.url} />)
-          })
-          }
-        </ul>
-      </S.ContainerGalery>
+    <>
+      {inOnModalGalery && <ModalGalery photo={photo} />}
+      <S.AsideStyled>
+        <S.ContainerGalery>
+          <h3>Fotos</h3>
+          <ul>
+            {vehicle.photos?.map((photo: any) => {
+              return (
+                <img
+                  src={photo.url}
+                  onClick={() => openModalImage(photo.url)}
+                />
+              );
+            })}
+          </ul>
+        </S.ContainerGalery>
 
-      <S.ContainerOwnerProduct>
-        <UserIcon
-            name={vehicle?.user_name}
-            initials={initialsName}
+        <S.ContainerOwnerProduct>
+          <UserIcon name={vehicle?.user_name} initials={initialsName} />
+
+          <h4>{vehicle?.user_name}</h4>
+
+          <p className="description">{vehicle?.description}</p>
+
+          <C.ButtonUI
+            setBoolean={toHomePage}
+            text="Ver todos os anúncios"
+            color="secondary"
+            variant="contained"
           />
-
-        <h4>{vehicle?.user_name}</h4>
-
-        <p className="description">{vehicle?.description}</p>
-
-        <C.ButtonUI
-          text="Ver todos os anúncios"
-          color="secondary"
-          variant="contained"
-        />
-      </S.ContainerOwnerProduct>
-    </S.AsideStyled>
+        </S.ContainerOwnerProduct>
+      </S.AsideStyled>
+    </>
   );
 };
 
