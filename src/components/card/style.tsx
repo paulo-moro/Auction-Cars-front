@@ -68,6 +68,7 @@ export const LiCard = styled.li`
     text-transform: capitalize;
     font-size: 13px;
     padding: 15px;
+    position: static;
   }
 `;
 

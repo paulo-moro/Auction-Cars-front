@@ -35,7 +35,7 @@ export const ListAuctionStyle = styled.div`
     height: 50px;
     align-items: center;
     background: none;
-    position: static;
+    /* position: static; */
   }
 
   .asset--left {
@@ -44,7 +44,7 @@ export const ListAuctionStyle = styled.div`
     height: 50px;
     align-items: center;
     background: none;
-    transform: rotate(180deg);
     position: static;
+    /* transform: rotate(180deg); */
   }
 `;

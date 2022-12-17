@@ -7,14 +7,6 @@ export const ListStyle = styled.div`
     padding: 10px;
     gap: 20px;
 
-    /* .ul--list-cars{
-        display: flex;
-        height: 420px;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        gap: 20px;
-    } */
-
     .div-carousel{
         display: flex;
         align-items: center;
@@ -50,7 +42,7 @@ export const ListStyle = styled.div`
         align-items: center;
         width: 50px;
         height: 50px;
-        transform: rotate(180deg);
+        /* transform: rotate(180deg); */
         background: none;
     }
 

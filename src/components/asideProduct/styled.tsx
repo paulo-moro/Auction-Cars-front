@@ -7,6 +7,7 @@ export const AsideStyled = styled(motion.section)`
     flex-direction: column;
     width: 100%;
     gap: 30px;
+    align-items: center;
   }
 
   @media (min-width: 740px) {
@@ -57,16 +58,14 @@ export const ContainerOwnerProduct = styled(motion.div)`
     padding: 40px 20px;
     gap: 30px;
 
-    .initialsName {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      background-color: #4529e6;
-      color: var(--color-gray-10);
-      border-radius: 50%;
+    div > .name-user{
+      display: none;
+    }
+
+    div > .icon-user{
       width: 70px;
       height: 70px;
+      font-size: 25px;
     }
 
     h4 {

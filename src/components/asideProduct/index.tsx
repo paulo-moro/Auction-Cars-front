@@ -4,23 +4,12 @@ import { IComment, IAsideProps } from "../../interface/propsComponents";
 import { useState, useEffect } from "react";
 import { useUser } from "../../providers/user/index";
 import { convertInitialsName } from "../../utils/index";
+import { UserIcon } from "../iconUser";
 import * as C from "../";
 
 const Aside = ({ vehicle }: IAsideProps) => {
   const [motor, setMotor]: any = useState();
-
   const initialsName = convertInitialsName(vehicle?.user_name || "");
-
-  const fotos = [
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-    vehicle?.img,
-  ];
-
-  console.log(vehicle)
 
   return (
     <S.AsideStyled>
@@ -28,13 +17,19 @@ const Aside = ({ vehicle }: IAsideProps) => {
         <h3>Fotos</h3>
         <ul>
           {
-            vehicle.photos?.map((foto: any) => <img src={foto.url} />)
+            vehicle.photos?.map((foto: any) => {
+              console.log(foto);
+             return(<img src={foto.url} />)
+          })
           }
         </ul>
       </S.ContainerGalery>
 
       <S.ContainerOwnerProduct>
-        <p className="initialsName">{initialsName}</p>
+        <UserIcon
+            name={vehicle?.user_name}
+            initials={initialsName}
+          />
 
         <h4>{vehicle?.user_name}</h4>
 

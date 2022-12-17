@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header`
     align-items: center;
     justify-content: space-between;
     min-height: 80px;
-    width: 100%;
+    width: 100vw;
     background-color: var(--color-white-fixed);
     border-bottom: 1.5px solid var(--color-gray-5);
 

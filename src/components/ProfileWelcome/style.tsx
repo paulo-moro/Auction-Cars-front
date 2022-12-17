@@ -73,6 +73,7 @@ export const ProfileWelcomeStyle = styled.footer`
         border: solid 2px #4529E6;
         text-transform: capitalize;
         font-weight: bold;
+        position: static;
     }
     
 }
