@@ -13,7 +13,6 @@ const ButtonStyled = styled.button`
     padding: 12px 28px;
     box-sizing: border-box;
     text-transform: capitalize;
-    
 `
 
 export default ButtonStyled;

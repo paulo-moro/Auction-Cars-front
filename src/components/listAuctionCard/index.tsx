@@ -6,6 +6,7 @@ import asset from "../../img/icons/asset.png";
 import styled from "styled-components";
 import { ITitleSection } from "../../interface/propsComponents/index";
 
+
 const ListAuction = ({ listVehicles }: ITitleSection) => {
   const carousel: any = useRef(null);
 
@@ -18,6 +19,8 @@ const ListAuction = ({ listVehicles }: ITitleSection) => {
     e.preventDefault();
     carousel.current.scrollLeft += carousel.current.offsetWidth / 1.3;
   };
+
+  
 
   return (
     <ListAuctionStyle>

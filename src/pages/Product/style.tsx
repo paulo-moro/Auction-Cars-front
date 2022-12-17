@@ -30,6 +30,10 @@ export const ProductPageStyled = styled(motion.div)`
     aside{
       display: none;
     }
+
+    div > button{
+      position: static;
+    }
   }
 
   @media (min-width: 740px) {
@@ -95,7 +99,6 @@ export const ContainerInfoProduct = styled(motion.div)`
     }
 
     div {
-      /* max-width: 300px; */
       width: 150px;
       height: 50px;
       display: flex;
@@ -151,7 +154,7 @@ export const ContainerComments = styled(motion.div)`
     max-width: 751px;
     align-items: center;
     border-radius: 5px;
-    padding: 20px;
+    padding: 20px 0;
     gap: 40px;
   }
 `;
@@ -162,8 +165,8 @@ export const ContainerNewComments = styled(motion.div)`
     width: 95%;
     max-width: 751px;
     flex-direction: column;
-    padding: 40px;
-    gap: 40px;
+    padding: 30px;
+    gap: 20px;
     background: #ffffff;
     border-radius: 4px;
     
@@ -174,6 +177,7 @@ export const ContainerNewComments = styled(motion.div)`
     button {
       padding: 20px;
       text-transform: none;
+      position: static;
     }
 
     div {

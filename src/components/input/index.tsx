@@ -12,6 +12,7 @@ const InputText = ({
   variant,
   required,
   type,
+  disabled,
   setFunction
 }: IPlaceholder) => {
   const theme = createTheme({
@@ -39,6 +40,7 @@ const InputText = ({
         variant={variant}
         multiline={multiline}
         type={type}
+        disabled={disabled}
         onChange={(e) => setFunction(e.target.value)}
 
       />

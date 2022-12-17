@@ -29,6 +29,7 @@ export interface IPlaceholder {
   required?: boolean;
   type?: string;
   setFunction?: any;
+  disabled?: boolean;
 }
 
 export interface IUser {

@@ -5,8 +5,11 @@ import { useParams } from "react-router-dom";
 
 import { useVehicle } from "../../providers/vehicles";
 
-import { convertInitialsName, getVehicle, postCommentVehicle } from "../../utils/index";
-
+import {
+  convertInitialsName,
+  getVehicle,
+  postCommentVehicle,
+} from "../../utils/index";
 
 import { useUser } from "../../providers/user/index";
 import { useState, useEffect, useRef } from "react";
@@ -14,24 +17,30 @@ import { ICommentPropsCard, IComment } from "../../interface/propsComponents";
 import { Vehicle } from "../../interface/vehicle/index";
 
 const Product = () => {
-  
-  const { listCars, listMotorcycles, listVehicles, vehicle, setId, setNewComment } = useVehicle();
-  const [newCommentState, setNewCommentState]:any = useState("");
+  const {
+    listCars,
+    listMotorcycles,
+    listVehicles,
+    vehicle,
+    setId,
+    setNewComment,
+  } = useVehicle();
+  const [newCommentState, setNewCommentState] = useState("");
+  const [inputDisabled, setInputDisabled] = useState(true);
   const { id }: any = useParams();
   const { user } = useUser();
   
-  useEffect(()=> {
+  useEffect(() => {
     setId && setId(id);
-  }, [id])
-
+    user.email ? setInputDisabled(false) : setInputDisabled(true);
+  }, [id, user]);
 
   const commentFunction = () => {
-    setNewComment(newCommentState)
-  }
-  
+    setNewComment(newCommentState);
+  };
+
   const initialsName = convertInitialsName(vehicle?.user_name);
   const intialsProfile = convertInitialsName(user?.name);
-
 
   return (
     <>
@@ -61,47 +70,57 @@ const Product = () => {
           </S.ContainerDescription>
 
           <section className="aside--mobile">
-          {vehicle &&
-            <C.Aside vehicle={vehicle} />
-          }
+            {vehicle && <C.Aside vehicle={vehicle} />}
           </section>
 
           <S.ContainerComments>
             {vehicle &&
               vehicle.comments?.map((comment: any, index: number) => {
+                const initialsNameComment = convertInitialsName(
+                  comment.user_name
+                );
 
-                const initialsNameComment = convertInitialsName(comment.user_name);
-
-                return (<S.LiCard>
-                    <C.UserIcon key={index} color={""} theme={"red"} name={comment.user_name} initials={initialsNameComment} />
-                  <p>{comment.comment}</p>
-                </S.LiCard>)
-            })}
+                return (
+                  <S.LiCard>
+                    <C.UserIcon
+                      key={index}
+                      color={""}
+                      theme={"red"}
+                      name={comment.user_name}
+                      initials={initialsNameComment}
+                    />
+                    <p>{comment.comment}</p>
+                  </S.LiCard>
+                );
+              })}
           </S.ContainerComments>
 
           <S.ContainerNewComments>
-          {
-          vehicle &&
-           (<C.UserIcon
-              name={user.name}
-              initials={intialsProfile}
-            />)
-          }
-            <C.InputText setFunction={setNewCommentState} color="primary" multiline rows={3} />
-            <C.ButtonUI setBoolean={commentFunction} text="Comentar" color="primary" variant="contained" />
-            <div>
-              <label>Comentar</label>
-              <label>Comentar</label>
-              <label>Comentar</label>
-            </div>
+            {user && <C.UserIcon name={user.name} initials={intialsProfile} />}
+            <C.InputText
+              setFunction={setNewCommentState}
+              color="primary"
+              multiline
+              rows={3}
+              disabled={inputDisabled}
+            />
+            <C.ButtonUI
+              setBoolean={commentFunction}
+              text="Comentar"
+              color="primary"
+              variant="contained"
+            />
+            {user && (
+              <div>
+                <label>Comentar</label>
+                <label>Comentar</label>
+                <label>Comentar</label>
+              </div>
+            )}
           </S.ContainerNewComments>
         </section>
 
-        <aside>
-        {vehicle &&
-          <C.Aside vehicle={vehicle} />
-        }
-        </aside>
+        <aside>{vehicle && <C.Aside vehicle={vehicle} />}</aside>
       </S.ProductPageStyled>
 
       <C.Footer />
