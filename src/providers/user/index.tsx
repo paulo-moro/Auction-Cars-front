@@ -10,7 +10,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [userCreate, setUserCreate] = useState({});
   const [getUser, setGetUser] = useState(false);
 
-  const { showModalSucess } = useModal();
+
+  const { hideModalLogin, showModalSucess } = useModal();
 
   useEffect(() => {
     axios

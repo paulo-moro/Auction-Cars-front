@@ -1,6 +1,21 @@
-import { createTheme, TextField } from "@mui/material";
+import { 
+  // createTheme, 
+  TextField } from "@mui/material";
 import { IPlaceholder } from "../../interface/propsComponents";
 import { InputStyled } from "./style";
+
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#4529E6",
+//       contrastText: "#fff",
+//     },
+//     secondary: {
+//       main: "#000000",
+//       contrastText: "#ffffff",
+//     },
+//   },
+// });
 
 const InputText = ({
   label,
@@ -15,18 +30,7 @@ const InputText = ({
   disabled,
   setFunction
 }: IPlaceholder) => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#4529E6",
-        contrastText: "#fff",
-      },
-      secondary: {
-        main: "#000000",
-        contrastText: "#ffffff",
-      },
-    },
-  });
+
 
   return (
     <InputStyled>

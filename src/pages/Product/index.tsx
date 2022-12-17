@@ -29,7 +29,7 @@ const Product = () => {
   const [inputDisabled, setInputDisabled] = useState(true);
   const { id }: any = useParams();
   const { user } = useUser();
-  
+
   useEffect(() => {
     setId && setId(id);
     user.email ? setInputDisabled(false) : setInputDisabled(true);
@@ -111,10 +111,16 @@ const Product = () => {
               variant="contained"
             />
             {user && (
-              <div>
-                <label>Comentar</label>
-                <label>Comentar</label>
-                <label>Comentar</label>
+              <div className="comments-standart">
+                <label onClick={() => setNewComment("Gostei muito!")}>
+                  Gostei muito!
+                </label>
+                <label onClick={() => setNewComment("Incrível!")}>
+                  Incrível!
+                </label>
+                <label onClick={() => setNewComment("Recomendarei para meus amigos!")}>
+                  Recomendarei para meus amigos!
+                </label>
               </div>
             )}
           </S.ContainerNewComments>

@@ -44,7 +44,7 @@ export const timeAuction = (date: string) => {
     paramsDateAuction.getUTCMinutes()
   );
 
-  return timeNow < paramsDateAuction ? "Expirado" : timeUntilAuction;
+  return timeNow > paramsDateAuction ? "Encerrado" : timeUntilAuction;
 };
 
 

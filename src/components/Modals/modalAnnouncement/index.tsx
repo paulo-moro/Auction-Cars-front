@@ -53,6 +53,7 @@ function ModalAnnouncement(){
 
 const createVehicle = () => {
   setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"})
+  hideModalAnnouncement();
 }
 
     
