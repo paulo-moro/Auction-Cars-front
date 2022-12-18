@@ -3,6 +3,7 @@ import { UserIcon } from "../iconUser";
 import ButtonUI from "../buttonUI";
 import { LiCard, DivCard, Span } from "./style";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom"
 
 const Card = ({owner, vehicle }: VehiclesProps) => {
   const [initialsName, setInitialsName] = useState("");
@@ -28,10 +29,15 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
     }
   }, []);
 
+  const history= useHistory();
+  const priceBRL = Number(price).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+  const kmLabel = Number(km).toLocaleString();
+  
+
   return (
     <LiCard>
       <figure>
-        <img src={img} alt="" />
+        <img onClick={()=> history.push(`/product/${id}`)} src={img} alt="" />
       </figure>
 
       <h2>{heading}</h2>
@@ -47,18 +53,16 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
 
       <DivCard>
         <div>
-          <Span>{km} KM</Span>
+          <Span>{kmLabel} KM</Span>
           <Span>{year}</Span>
         </div>
-        <span>R$ {price},00</span>
+        <span>{priceBRL}</span>
       </DivCard>
 
       {owner && 
       <div className="div-buttons">
-        <>
           <ButtonUI text="Editar" color="secondary" variant="outlined" />
           <ButtonUI text="Ver como" color="secondary" variant="outlined" />
-        </>
       </div>
       }
     </LiCard>

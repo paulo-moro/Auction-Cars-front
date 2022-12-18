@@ -16,6 +16,11 @@ const AuctionCard = ({ car }: ActionCardProps) => {
   const [initialsName, setInitialsName] = useState("");
   const [timeForAuction, setTimeForAuction]: any = useState();
 
+  const priceBRL = Number(car?.price).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+  const kmLabel = Number(car?.km).toLocaleString();
+  
+
+
   useEffect(() => {
     
     setInterval(()=>{
@@ -49,9 +54,9 @@ const AuctionCard = ({ car }: ActionCardProps) => {
       <div className="div--info-car">
         <div className="tagets">
           <LabelAgeKm info={car?.year} />
-          <LabelAgeKm info={car?.km} />
+          <LabelAgeKm info={`${kmLabel} KM`} />
         </div>
-        <span className="price">R$ {car?.price}</span>
+        <span>{priceBRL}</span>
       </div>
 
       <button

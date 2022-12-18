@@ -1,10 +1,9 @@
 import { Header } from "../../components/header";
 import ListAuction from "../../components/listAuctionCard";
 import ListCard from "../../components/listCard";
-import WelcomeHome from "../../components/welcomeHome";
 import { useVehicle } from "../../providers/vehicles";
 import Button from '../../components/button';
-import HomePageStyled from './style';
+import { HomePageStyled, ButtonStyled } from './style';
 import { motion } from 'framer-motion';
 
 import * as C from "../../components/index";
@@ -12,6 +11,8 @@ import * as C from "../../components/index";
 const HomePage = () => {
 
     const { listCars, listMotorcycles, listVehicles } = useVehicle();
+
+    const auctionVehicles = listVehicles.filter((car: any) => car.published);
 
     return(
         <HomePageStyled>
@@ -22,12 +23,12 @@ const HomePage = () => {
                 <p>Um ambiente feito para você explorar o seu melhor</p>
 
                 <div className="div--botoes">
-                    <Button theme="none" color="white" name="Leilão" />
-                    <Button theme="none" color="white" name="Carros" />
-                    <Button theme="none" color="white" name="Motos" />
+                    <ButtonStyled>Leilão</ButtonStyled>
+                    <ButtonStyled>Carros</ButtonStyled>
+                    <ButtonStyled>Motos</ButtonStyled>
                 </div>
             </motion.div>
-            <ListAuction listVehicles={listVehicles}/>
+            <ListAuction listVehicles={auctionVehicles}/>
             <ListCard title={"Carros"} listVehicles={listCars}/>
             <ListCard title={"Motos"} listVehicles={listMotorcycles}/>
             <C.Footer/>

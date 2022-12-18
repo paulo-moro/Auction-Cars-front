@@ -16,14 +16,15 @@ export const LiCard = styled.li`
   > figure {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 300px;
     height: 152px;
     margin: 0;
 
   }
 
   > figure > img {
-    max-height: 152px;
+    height: 152px;
+    max-width: 100%;
     margin-top: 1px;
   }
 
@@ -77,28 +78,26 @@ export const DivCard = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0px;
-  width: 95%;
+  width: 90%;
   height: 32px;
   gap: 30px;
   font-size: 13px;
+  justify-content: space-between;
   
   div{
     display: flex;
-    justify-content: space-between;
-    width: 160px;
+    gap: 8px;
   }
-
 
 `;
 
 export const Span = styled.span`
-
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   height: 32px;
-  padding: 5px;
+  padding: 10px;
   background: var(--color-brand-4);
   border-radius: 4px;
   box-sizing: border-box;
@@ -108,6 +107,5 @@ export const Span = styled.span`
   font-weight: 500;
   line-height: 24px;
   color: var(--color-brand-1);
-  
 `;
 

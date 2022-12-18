@@ -1,8 +1,0 @@
-{
-    "recommendations": [
-        "ms-vscode.vscode-typescript-next",
-        "pmneo.tsimporter",
-        "moppitz.vscode-extension-auto-import",
-        "steoates.autoimport"
-    ]
-}

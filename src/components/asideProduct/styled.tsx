@@ -53,7 +53,7 @@ export const ContainerOwnerProduct = styled(motion.div)`
     max-width: 440px;
     align-items: center;
     height: auto;
-    max-height: 480px;
+    /* max-height: 580px; */
     border-radius: 5px;
     padding: 40px 20px;
     gap: 30px;

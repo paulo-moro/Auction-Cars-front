@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from 'framer-motion';
 
-const HomePageStyled = styled(motion.body)`
+export const HomePageStyled = styled(motion.body)`
   @media (min-width: 320px) {
     .welcome {
       display: flex;
@@ -39,6 +39,11 @@ const HomePageStyled = styled(motion.body)`
         max-width: 400px;
         gap: 15px;
       }
+
+      .div--botoes > button :hover {
+          color: black;
+          background-color: white;
+      }
     }
   }
 
@@ -74,4 +79,22 @@ const HomePageStyled = styled(motion.body)`
   }
 `;
 
-export default HomePageStyled;
+export const ButtonStyled = styled.button`
+    max-height: 48px;
+    min-width: 119px;
+    min-height: 38px;
+    width: auto;
+    height: auto;
+    background: var(--color-brand-2);
+    color:  var(--color-gray-10);
+    border-radius: 4px;
+    border: solid 1.5px;
+    padding: 12px 28px;
+    box-sizing: border-box;
+
+    :hover{
+      background: var(--color-gray-10);
+      color: var(--color-brand-2);
+      
+    }
+`
