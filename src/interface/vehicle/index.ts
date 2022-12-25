@@ -14,7 +14,8 @@ export interface Vehicle {
   year?:          string;
   price?:         string;
   photos?:        any;
-  comments?:      IComment[];
+  comments?:       IComment[];
+  offers?:         Object[]
 }
 
 export interface VehiclesProps {
@@ -45,6 +46,7 @@ export interface IVehicleContext {
   listMotorcycles: IVehicle[];
   vehicle: Vehicle;
   newVehicle: Object;
+  setNewOffer: (offer: number) => void;
   setNewVehicle: (vehicle: Object) => void;
   setId: (id: String) => void;
   setListVehicles?: (vehicles: IVehicle[]) => void;

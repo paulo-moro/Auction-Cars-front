@@ -78,6 +78,7 @@ const AuctionCardStyle = styled.div`
 
     div > span {
       font-size: 16px;
+      margin: 15px;
     }
 
     button {

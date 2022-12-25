@@ -19,7 +19,6 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
     price
   }: Vehicle = vehicle;
 
-
   useEffect(() => {
     if (user_name) {
       const splitName = user_name?.split(" ");
@@ -29,7 +28,7 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
     }
   }, []);
 
-  const history= useHistory();
+  const history = useHistory();
   const priceBRL = Number(price).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
   const kmLabel = Number(km).toLocaleString();
   

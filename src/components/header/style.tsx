@@ -37,6 +37,7 @@ export const HeaderStyled = styled.header`
     .nav-menu > button {
       width: auto;
       height: auto;
+      box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     }
 
     .nav-menu > div > div > p {
@@ -138,6 +139,7 @@ export const HeaderStyled = styled.header`
 
     .nav--menu-desktop-button {
       width: 50%;
+      box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     }
 
     .nav--login-register-desktop {
@@ -154,6 +156,7 @@ export const HeaderStyled = styled.header`
       justify-content: center;
       min-width: 50%;
       color: var(--color-gray-2);
+      box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     }
 
     .nav--menu-desktop-button-register {
@@ -280,6 +283,7 @@ export const MenuStyled = styled(motion.div)`
       margin: 20px;
       color: var(--color-gray-2);
       background-color: var(--color-white-fixed);
+      box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     }
 
     .mobile-button-register {

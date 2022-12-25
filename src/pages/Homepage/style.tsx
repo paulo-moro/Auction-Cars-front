@@ -8,7 +8,7 @@ export const HomePageStyled = styled(motion.body)`
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      width: 100%;
+      width: 100vw;
       margin-top: 80px;
       padding: 60px 0px;
       gap: 50px;
@@ -42,7 +42,7 @@ export const HomePageStyled = styled(motion.body)`
 
       .div--botoes > button :hover {
           color: black;
-          background-color: white;
+          background: var(--color-brand-2);
       }
     }
   }

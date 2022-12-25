@@ -23,7 +23,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   useEffect(() => {
     if (sessionStorage.getItem("user")) {
     const token = JSON.parse(sessionStorage.getItem("user") || "");
-    console.log(token)
     axios
       .get("http://localhost:3000/users/vehicles", {
         headers: {

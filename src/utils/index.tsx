@@ -1,6 +1,22 @@
 import { Vehicle } from "../interface/vehicle/index";
 import axios from "axios";
 
+// export const listOffersVehicle = (arrayOffers: any) => {
+
+//   let arrayResult = [];
+
+//   arrayOffers.map((offer: any) => {
+  
+//     for(let i = 0; i < offer.offer.length; i++){
+//       console.log(i)
+//     }
+  
+//   }).reverse()
+
+
+  
+// } 
+
 export const convertInitialsName = (name: any) => {
   if(name){
   const splitName = name?.split(" ");
@@ -14,7 +30,7 @@ export const getVehicle = (id: string) => {
   let vehicle: any;
   axios
     .get(`http://localhost:3000/vehicle/${id}`)
-    .then((res) => (vehicle = { ...res.data }));
+    .then((res) => (vehicle = { ...res.data[0]}));
   return vehicle;
 };
 
@@ -28,8 +44,6 @@ export const postCommentVehicle = (id: string, comment: string) => {
         },
       })
       .then((response) => console.log(response.data));
-  } else {
-    console.log("Comment, não tem token!");
   }
 };
 

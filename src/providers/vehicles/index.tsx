@@ -15,6 +15,8 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
   const [listVehicles, setListVehicles] = useState([]);
   const [listCars, setListCars] = useState([]);
   const [listMotorcycles, setListMotorcycles] = useState([]);
+  const [newOffer, setNewOffer] = useState(0);
+
 
   useEffect(() => {
     if (sessionStorage.getItem("user")) {
@@ -27,20 +29,23 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
       
       axios
         .post(
-          `http://localhost:3000/comment/${id}`,
-          { comment: newComment },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+          `http://localhost:3000/comment/${id}`, { comment: newComment },
+          { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => setNewComment(""));
+
+
+      axios
+      .post(
+        `http://localhost:3000/offers/${id}`, { offer: Number(newOffer) },
+        { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => setNewOffer(0));
+
+        
     }
 
     axios
       .get(`http://localhost:3000/vehicle/${id}`)
-      .then((res) => setVehicle(res.data));
+      .then((res) => setVehicle(res.data[0]));
 
     axios
       .get("http://localhost:3000/vehicle")
@@ -53,7 +58,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
     axios
       .get("http://localhost:3000/categorie/motorCycle")
       .then((response) => setListMotorcycles(response.data.vehicles));
-  }, [id, newComment, newVehicle]);
+  }, [id, newComment, newVehicle, newOffer]);
 
   return (
     <VehicleContext.Provider
@@ -65,7 +70,8 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         setId,
         newVehicle,
         setNewVehicle,
-        setNewComment,
+        setNewComment, 
+        setNewOffer
       }}
     >
       {children}

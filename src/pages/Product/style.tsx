@@ -14,24 +14,24 @@ export const ProductPageStyled = styled(motion.div)`
       #f1f3f5 0
     );
 
-    .div--main{
+    .div--main {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 30px;
     }
 
-    .div--main > .aside--mobile{
+    .div--main > .aside--mobile {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    aside{
+    aside {
       display: none;
     }
 
-    div > button{
+    div > button {
       position: static;
     }
   }
@@ -41,17 +41,17 @@ export const ProductPageStyled = styled(motion.div)`
     justify-content: center;
     flex-direction: row;
     gap: 50px;
-    
 
-    .div--main > .aside--mobile{
+    .div--main > .aside--mobile {
       display: none;
     }
 
-    aside{
+    aside {
       margin-top: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 30px;
     }
   }
 `;
@@ -144,7 +144,6 @@ export const ContainerDescription = styled(motion.div)`
   }
 `;
 
-
 export const ContainerComments = styled(motion.div)`
   @media (min-width: 320px) {
     display: flex;
@@ -156,6 +155,7 @@ export const ContainerComments = styled(motion.div)`
     border-radius: 5px;
     padding: 20px 0;
     gap: 40px;
+
   }
 `;
 
@@ -169,7 +169,7 @@ export const ContainerNewComments = styled(motion.div)`
     gap: 20px;
     background: #ffffff;
     border-radius: 4px;
-    
+
     input {
       width: 90%;
     }
@@ -186,21 +186,20 @@ export const ContainerNewComments = styled(motion.div)`
       flex-wrap: wrap;
       gap: 30px;
     }
-    
-    .comments-standart{
+
+    .comments-standart {
       display: flex;
       flex-wrap: wrap;
     }
 
-    .comments-standart > label{
-      color: #868E96;
-      background: #E9ECEF;
+    .comments-standart > label {
+      color: #868e96;
+      background: #e9ecef;
       border-radius: 24px;
       padding: 5px 12px;
     }
   }
 `;
-
 
 export const ContainerGalery = styled(motion.div)`
   @media (min-width: 320px) {
@@ -230,7 +229,6 @@ export const ContainerGalery = styled(motion.div)`
   }
 `;
 
-
 export const Aside = styled(motion.aside)`
   @media (min-width: 320px) {
     display: flex;
@@ -238,9 +236,8 @@ export const Aside = styled(motion.aside)`
     width: 100%;
     max-width: 450px;
     gap: 30px;
-}
-
-`
+  }
+`;
 
 export const ContainerOwnerProduct = styled(motion.div)`
   @media (min-width: 320px) {
@@ -298,28 +295,74 @@ export const ContainerOwnerProduct = styled(motion.div)`
   }
 `;
 
-
 export const LiCard = styled.li`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  box-sizing: content-box;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.25);
+
+  p {
+    color: #495057;
+    display: flex;
+    text-align: justify;
+    width: 100%;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 13px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+`;
+
+export const ListOffersStyled = styled.div`
+  @media (min-width: 320px) {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    box-sizing: content-box;
-    /* border: solid 1px red; */
-    padding: 10px;
-    font-family: 'Inter', sans-serif;
+    align-items: center;
+    width: 95%;
+    background: #ffffff;
+    padding: 30px;
+    gap: 30px;
+    border-radius: 4px;
 
-    p {
-        color: #495057;
-        display: flex;
-        text-align: justify;
-        width: 100%;
-        margin: 0;
-        margin-top: 10px;
-        font-size: 13px;
-        
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
+    > div{
+      display: flex;
+      width: 95%;
+      align-items: center;
+      gap: 20px;
     }
-`
+
+    > div > button{
+      height: 50px;
+    }
+
+    > ul{
+    display: flex;
+    width: 100%;
+    max-width: 751px;
+    max-height: 700px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    overflow: auto;
+    padding: 10px 0;
+    }
+
+    > ul > li {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-gray-10);
+    width: 95%;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px 0;
+    box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.25);
+  }
+}
+`;
