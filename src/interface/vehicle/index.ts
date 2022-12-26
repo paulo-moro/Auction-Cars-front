@@ -4,18 +4,17 @@ import { ICommentPropsCard, IComment } from "../propsComponents/index"
 
 export interface Vehicle {
   id:             string;
-  user_name?:     string;
-  heading?:       string;
-  name?:          string;
-  img?:           string;
-  title?:         string;
-  description?:   string;
-  km?:            string;
-  year?:          string;
-  price?:         string;
+  username?:     string;
+  heading:       string;
+  img:           string;
+  description:   string;
+  km:            string;
+  year:          string;
+  price:         string;
   photos?:        any;
-  comments?:       IComment[];
-  offers?:         Object[]
+  comments?:      IComment[];
+  offers?:        Object[];
+  dateAuction?:    string;
 }
 
 export interface VehiclesProps {

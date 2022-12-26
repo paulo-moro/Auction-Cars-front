@@ -120,8 +120,47 @@ export const ContainerInfoProduct = styled(motion.div)`
       width: 100px;
       height: 38px;
     }
+
+    .img--time-auction {
+      width: 20px;
+      color: var(--color-grey-0);
+    }
+
+    .auction-time {
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-grey-1);
+      background-color:  var(--color-feeback-sucess2);
+      width: 150px;
+      height: 30px;
+      gap: 10px;
+      border-radius: 32px;
+      font-weight: var(--font-heading-1-700);
+      padding: 5px;
+    }
   }
 `;
+
+export const AuctionTimeStyled = styled.label`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-grey-1);
+      background-color:  var(--color-feeback-sucess2);
+      width: 150px;
+      height: 30px;
+      gap: 10px;
+      border-radius: 32px;
+      font-weight: var(--font-heading-1-700);
+      padding: 5px;
+      
+      .img--time-auction {
+      width: 20px;
+      color: var(--color-grey-0);
+    }
+`
 
 export const ContainerDescription = styled(motion.div)`
   @media (min-width: 320px) {
@@ -330,6 +369,8 @@ export const ListOffersStyled = styled.div`
     padding: 30px;
     gap: 30px;
     border-radius: 4px;
+    /* box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.25); */
+
 
     > div{
       display: flex;

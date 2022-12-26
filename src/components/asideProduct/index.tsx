@@ -13,7 +13,7 @@ import * as C from "../";
 const Aside = ({ vehicle }: IAsideProps) => {
   const [motor, setMotor]: any = useState();
   const { showModalImageGalery, inOnModalGalery } = useModal();
-  const initialsName = convertInitialsName(vehicle?.user_name);
+  const initialsName = convertInitialsName(vehicle?.username);
   const [photo, setPhoto]: any = useState("");
   const history = useHistory();
 
@@ -45,9 +45,9 @@ const Aside = ({ vehicle }: IAsideProps) => {
         </S.ContainerGalery>
 
         <S.ContainerOwnerProduct>
-          <UserIcon name={vehicle?.user_name} initials={initialsName} />
+          <UserIcon name={vehicle?.username} initials={initialsName} />
 
-          <h4>{vehicle?.user_name}</h4>
+          <h4>{vehicle?.username}</h4>
 
           <p className="description">{vehicle?.description}</p>
 

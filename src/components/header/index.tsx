@@ -195,7 +195,9 @@ export const Header = () => {
         animate={{ y }}
         transition={{ type: "spring", duration: 0.5 }}
       >
-        <button>Editar Perfil</button>
+        <button onClick={() => {
+            history.push("/profile");
+          }}>Perfil</button>
         <button>Editar endereço</button>
         <button>Minhas Compras</button>
         <button

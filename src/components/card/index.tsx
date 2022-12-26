@@ -9,8 +9,7 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
   const [initialsName, setInitialsName] = useState("");
   const {
     id,
-    user_name,
-    name,
+    username,
     heading,
     description,
     km,
@@ -20,8 +19,8 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
   }: Vehicle = vehicle;
 
   useEffect(() => {
-    if (user_name) {
-      const splitName = user_name?.split(" ");
+    if (username) {
+      const splitName = username?.split(" ");
       splitName.length > 1
         ? setInitialsName(splitName[0][0] + splitName[1][0])
         : setInitialsName(splitName[0][0]);
@@ -46,7 +45,7 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
       <UserIcon 
         color={""}
         theme={"red"}
-        name={user_name}
+        name={username}
         initials={initialsName}
       />
 

@@ -1,21 +1,6 @@
 import { Vehicle } from "../interface/vehicle/index";
 import axios from "axios";
 
-// export const listOffersVehicle = (arrayOffers: any) => {
-
-//   let arrayResult = [];
-
-//   arrayOffers.map((offer: any) => {
-  
-//     for(let i = 0; i < offer.offer.length; i++){
-//       console.log(i)
-//     }
-  
-//   }).reverse()
-
-
-  
-// } 
 
 export const convertInitialsName = (name: any) => {
   if(name){

@@ -20,15 +20,14 @@ const AuctionCard = ({ car }: ActionCardProps) => {
   const kmLabel = Number(car?.km).toLocaleString();
   
 
-
   useEffect(() => {
     
     setInterval(()=>{
-        car && setTimeForAuction(timeAuction(car.created_at));
+        car && setTimeForAuction(timeAuction(car.dateAuction));
     }, 1000)
 
     if(car){
-      const splitName = car?.user_name.split(" ");
+      const splitName = car?.username.split(" ");
       splitName.length > 1 ? setInitialsName(splitName[0][0] + splitName[1][0]) : setInitialsName(splitName[0][0]);
     }
   }, []);
@@ -46,7 +45,7 @@ const AuctionCard = ({ car }: ActionCardProps) => {
         <UserIcon
           color={""}
           theme={"red"}
-          name={car?.user_name}
+          name={car?.username}
           initials={initialsName}
         />
       </p>

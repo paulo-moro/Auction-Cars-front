@@ -18,7 +18,8 @@ function ModalAnnouncement(){
   const [auction, setAuction] = useState(true);
   const [car, setCar] = useState(true);
   const [motorCycle, setMotorcycle] = useState(false);
-  const [heading, setTitle] = useState("");
+  const [heading, setHeading] = useState("");
+  const [dateAuction, setDateAuction] = useState("");
   const [year, setAge] = useState("");
   const [km, setKm] = useState("");
   const [price, setPrice] = useState("");
@@ -32,7 +33,7 @@ function ModalAnnouncement(){
     if(sale){ 
       setSale(false);
       setAuction(true);
-    }else {
+    } else {
       setSale(true);
       setAuction(false);
     }
@@ -52,7 +53,7 @@ function ModalAnnouncement(){
   }
 
 const createVehicle = () => {
-  setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, categorie: typeVehicle || "car"})
+  setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, dateAuction: dateAuction, categorie: typeVehicle || "car"})
   hideModalAnnouncement();
 }
 
@@ -88,12 +89,20 @@ const createVehicle = () => {
               
               </div>
 
+              <C.InputText setFunction={setDateAuction} 
+              disabled={auction ? false: true}
+              type="date"
+              label="Data do leilão" placeholder="Tipo de anúncio"  color="secondary"/>
+
+
               <p>Informações do veículo</p>
               
-              <C.InputText setFunction={setTitle} label="Título" placeholder="Tipo de anúncio"  color="secondary"/>
+              <C.InputText setFunction={setHeading} label="Título" placeholder="Título do anúncio"  color="secondary"/>
               
               <div className="div--field">
-                <C.InputText setFunction={setAge} label="Ano" rows={1} placeholder="Digitar ano"  color="secondary"/>
+                <C.InputText setFunction={setAge} 
+                type="number"
+                label="Ano" rows={1} placeholder="Digitar ano"  color="secondary"/>
 
                 <C.InputText setFunction={setKm} label="Quilometragem" rows={1}placeholder="0" color="secondary"/> 
                 

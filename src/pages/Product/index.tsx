@@ -12,6 +12,8 @@ import { useUser } from "../../providers/user/index";
 import { useState, useEffect, useRef } from "react";
 import { ICommentPropsCard, IComment } from "../../interface/propsComponents";
 import { Vehicle } from "../../interface/vehicle/index";
+import TimeAuction from "../../img/icons/time.svg";
+import { timeAuction } from "../../utils/index"
 
 const Product = () => {
   const {
@@ -29,27 +31,32 @@ const Product = () => {
   const [offer, setOffer] = useState(0);
   const { id }: any = useParams();
   const { user } = useUser();
+  const [timeForAuction, setTimeForAuction]: any = useState('');
 
   useEffect(() => {
     setId(id);
     user.email ? setInputDisabled(false) : setInputDisabled(true);
+
+    setInterval(()=>{
+      vehicle.dateAuction && setTimeForAuction(timeAuction(vehicle.dateAuction));
+  }, 1000)
+
   }, [id, user]);
   
   const commentFunction = () => {
     setNewComment(newCommentState);
   };
 
-  console.log(offer)
   const newOfferFunction = () => {
     setNewOffer(Number(offer));
     
   };
 
 
-  const initialsName = convertInitialsName(vehicle.user_name);
+  const initialsName = convertInitialsName(vehicle.username);
   const intialsProfile = convertInitialsName(user.name);
   const priceBRL = Number(vehicle.price).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-  const lastesOffers = vehicle.offers ? vehicle.offers.slice(vehicle.offers?.length-6, vehicle.offers.length-1) : [];
+  const lastesOffers = vehicle.offers ? vehicle.offers.slice(vehicle.offers?.length-6, vehicle.offers.length) : [];
 
   return (
     <>
@@ -61,7 +68,7 @@ const Product = () => {
           </S.ContainerIMG>
 
           <S.ContainerInfoProduct>
-            <p>{vehicle.heading}</p>
+            <p>{vehicle.heading}</p> 
 
             <div>
               <C.LabelAgeKm info={vehicle.year} />
@@ -138,8 +145,13 @@ const Product = () => {
           {vehicle && <C.Aside vehicle={vehicle} />}
         
             <S.ListOffersStyled>
-              <h2>Lances </h2>
-                
+              <h2>Lances</h2>
+
+              <S.AuctionTimeStyled className="auction-time">
+                <img src={TimeAuction} className="img--time-auction" alt="" />
+                <p> {timeForAuction} </p>
+              </S.AuctionTimeStyled>
+              
                 <ul>
                   {vehicle &&
                   lastesOffers.map((offer: any, index: number) => {
@@ -149,6 +161,8 @@ const Product = () => {
                   }
                 </ul>
 
+                {
+                !inputDisabled &&
                 <div>
                   <C.InputText
                   setFunction={setOffer}
@@ -156,9 +170,11 @@ const Product = () => {
                   multiline
                   rows={1}
                   disabled={inputDisabled}
+                  type="number" 
                 /> 
-                <C.ButtonUI setBoolean={newOfferFunction} text="Enviar" color="primary" variant="contained" />
+                 <C.ButtonUI setBoolean={newOfferFunction} text="Enviar" color="primary" variant="contained" />
                 </div>
+                }
              
             </S.ListOffersStyled>
           
