@@ -6,7 +6,7 @@ import { useVehicle } from "../../../providers/vehicles";
 
 function ModalAnnouncement(){
 
-  const {setNewVehicle} = useVehicle();
+  const {setNewVehicle, NewVehicleFunction} = useVehicle();
   const { inOnAnnouncement, setInOnAnnouncement, hideModalAnnouncement } = useModal();
 
   const modal = inOnAnnouncement
@@ -57,7 +57,10 @@ const createVehicle = () => {
   const gallery = [{url: imgGalery1}, {url: imgGalery2}, {url: imgGalery3}]
 
   setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale, status: auction, auction: auction, dateAuction: dateAuction, categorie: typeVehicle || "car", gallery})
-  hideModalAnnouncement();
+  
+  setTimeout(() => {
+    NewVehicleFunction();
+  }, 200);
 }
 
     

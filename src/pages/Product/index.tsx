@@ -4,9 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useVehicle } from "../../providers/vehicles";
 import {
-  convertInitialsName,
-  getVehicle,
-  postCommentVehicle,
+  convertInitialsName
 } from "../../utils/index";
 import { useUser } from "../../providers/user/index";
 import { useState, useEffect, useRef } from "react";
@@ -24,9 +22,13 @@ const Product = () => {
     listVehicles,
     vehicle,
     setId,
+
     setNewComment,
     setNewOffer,
-    setNewPhoto
+    setNewPhoto,
+    NewCommentVehicle,
+    NewOfferFunction,
+    NewPhotoFunction
   } = useVehicle();
   const { inOnModalAddPhoto, setInOnModalAddPhoto } = useModal();
 
@@ -53,12 +55,20 @@ const Product = () => {
 
   const commentFunction = () => {
     setNewComment(newCommentState);
+    setTimeout(() => {
+      NewCommentVehicle();
+    }, 200); 
   };
 
   const newOfferFunction = () => {
     setNewOffer(Number(offer));
+    
+    setTimeout(() => {
+      NewOfferFunction();
+    }, 200);
   };
 
+  
   const initialsName = convertInitialsName(vehicle.username);
   const intialsProfile = convertInitialsName(user.name);
   const priceBRL = Number(vehicle.price).toLocaleString("pt-BR", {
@@ -231,7 +241,10 @@ const Product = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   setNewPhoto(urlNewPhoto);
-                  setInOnModalAddPhoto(false);
+
+                  setTimeout(() => {
+                    NewPhotoFunction();
+                  }, 2000);
                 }}
               >
                 Enviar

@@ -53,6 +53,10 @@ export interface IVehicleContext {
   setId: (id: String) => void;
   setListVehicles?: (vehicles: IVehicle[]) => void;
   setNewComment: (comment: String) => void;
+  NewCommentVehicle: () => void;
+  NewVehicleFunction: () => void;
+  NewOfferFunction: () => void;
+  NewPhotoFunction: () => void;
 }
 
 export interface ListVehicleProviderProps {

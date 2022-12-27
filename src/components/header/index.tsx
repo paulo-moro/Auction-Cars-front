@@ -10,7 +10,7 @@ import {UserIcon} from "../iconUser/index";
 import { HeaderStyled, MenuStyled, MenuProfileStyled } from "./style";
 
 export const Header = () => {
-  const { user } = useUser();
+  const { user, GetUser } = useUser();
   const {
     inOnSucess,
     setInOnSucess,
@@ -24,6 +24,7 @@ export const Header = () => {
     setInOnRegister,
   } = useModal();
 
+  const history = useHistory();
   const [yLoginRegister, setYLoginRegister] = useState(0);
   const [y, setY] = useState(-400);
   const [openMenu, setOpenMenu] = useState(false);
@@ -31,13 +32,14 @@ export const Header = () => {
 
   const [initialsName, setInitialsName] = useState("");
 
+  useEffect(() => GetUser())
+
   useEffect(() => {
     if (user.name) {
       setInitialsName(convertInitialsName(user.name));
     }
   }, [user]);
 
-  const history = useHistory();
 
   const openCloseMenuProfile = () => {
     setYLoginRegister(0);

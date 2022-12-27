@@ -11,27 +11,6 @@ export const convertInitialsName = (name: any) => {
   }
 };
 
-export const getVehicle = (id: string) => {
-  let vehicle: any;
-  axios
-    .get(`http://localhost:3000/vehicle/${id}`)
-    .then((res) => (vehicle = { ...res.data[0]}));
-  return vehicle;
-};
-
-export const postCommentVehicle = (id: string, comment: string) => {
-  if (sessionStorage.getItem("user")) {
-    const token = JSON.parse(sessionStorage.getItem("user") || "");
-    axios
-      .post(`http://localhost:3000/comment/${id}`, {comment}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => console.log(response.data));
-  }
-};
-
 //Caso o leilão tenha data menor do que a do momento a função retorna expirado - O ternário está invertido para testes
 export const timeAuction = (date: string) => {
   const paramsDateAuction = new Date(date);
@@ -42,7 +21,6 @@ export const timeAuction = (date: string) => {
     paramsDateAuction.getUTCHours(),
     paramsDateAuction.getUTCMinutes()
   );
-
   return timeNow > paramsDateAuction ? "Encerrado" : timeUntilAuction;
 };
 

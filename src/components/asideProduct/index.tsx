@@ -9,9 +9,12 @@ import { UserIcon } from "../iconUser";
 import { useModal } from "../../providers/modal";
 import ModalGalery from "../Modals/modalImage/index";
 import * as C from "../";
-import { BiImageAdd } from "react-icons/bi"
+import { BiImageAdd } from "react-icons/bi";
+
 
 const Aside = ({ vehicle }: IAsideProps) => {
+
+
   const [motor, setMotor]: any = useState();
   const { showModalImageGalery, inOnModalGalery, setInOnModalAddPhoto } = useModal();
   const initialsName = convertInitialsName(vehicle?.username);

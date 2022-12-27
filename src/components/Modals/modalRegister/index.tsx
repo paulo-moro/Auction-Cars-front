@@ -8,7 +8,7 @@ function ModalRegister() {
 
   const { hideModalRegister, showModalRegister, inOnRegister } = useModal();
 
-  const { setUserCreate } = useUser();
+  const { setUserCreate, UserRegisterFunction } = useUser();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,7 +26,7 @@ function ModalRegister() {
 
   const createUser = () => {
     setUserCreate({ name, email, initialsName, celphone, password });
-    hideModalRegister();
+    UserRegisterFunction();
   };
 
   const isBuyer = () => {

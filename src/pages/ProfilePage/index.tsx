@@ -2,12 +2,14 @@ import * as C from "../../components/index";
 import ListAuction from "../../components/listAuctionCard";
 import ListCard from "../../components/listCard";
 import { useVehicle } from "../../providers/vehicles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "../../providers/user/index";
 import { Redirect, Link } from "react-router-dom";
 
 const ProfilePage = () => {
-  const { user } = useUser();
+  const { user, GetUser } = useUser();
+
+  useEffect(() => GetUser())
 
   const motorCycles = user.vehicles?.filter(
     (vehicle) => vehicle.category === "motorCycle"
