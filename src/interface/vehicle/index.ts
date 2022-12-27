@@ -12,6 +12,7 @@ export interface Vehicle {
   year:          string;
   price:         string;
   photos?:        any;
+  auction:        boolean;
   comments?:      IComment[];
   offers?:        Object[];
   dateAuction?:    string;
@@ -34,6 +35,7 @@ export interface IVehicle {
   img: string;
   created_at: string;
   updated_at: string;
+  auction:    boolean;
   categorieId: string;
   userId: string;
   category: string;
@@ -45,6 +47,7 @@ export interface IVehicleContext {
   listMotorcycles: IVehicle[];
   vehicle: Vehicle;
   newVehicle: Object;
+  setNewPhoto: (url: string) => void;
   setNewOffer: (offer: number) => void;
   setNewVehicle: (vehicle: Object) => void;
   setId: (id: String) => void;

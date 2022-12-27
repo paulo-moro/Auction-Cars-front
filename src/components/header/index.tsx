@@ -109,9 +109,12 @@ export const Header = () => {
             />
           </div>
           )}
-          {yLoginRegister === 0 ? (
-            <>
-              <button
+          {user ? (
+            <div>
+              <button className="menu-mobile-icon" onClick={()=> openCloseMenuProfile()}>
+                <UserIcon name={user.name} />
+              </button>
+              <button 
                 onClick={() => {
                   setOpenMenu(true);
                   openCloseMenuLoginRegister();
@@ -119,7 +122,7 @@ export const Header = () => {
               >
                 <img src={Menu} alt="" />
               </button>
-            </>
+            </div>
           ) : (
             <button
               onClick={() => {
@@ -166,7 +169,7 @@ export const Header = () => {
             </button>
           </nav>
 
-          {!user.initialsName && (
+          {!initialsName && (
             <div className="nav--login-register-mobile">
               <h4
                 className="nav--menu-mobile-h4"

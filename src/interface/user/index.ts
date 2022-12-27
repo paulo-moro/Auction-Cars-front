@@ -8,8 +8,11 @@ export interface UserProviderProps {
 export interface IUserState{
     user: IUser;
     userCreate: Object;
+    setUser: (data: boolean) => void;
     setGetUser: (data: boolean) => void;
     setUserCreate: (data: Object) => void;
+    setUserLogin: (data: Object) => void;
+    LoginFunction: () => void;
 }
 
 export interface ILoginState{

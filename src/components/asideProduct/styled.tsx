@@ -28,7 +28,16 @@ export const ContainerGalery = styled(motion.div)`
     border-radius: 4px;
 
     h3 {
+      display: flex;
+      align-items: center;
       width: 90%;
+      justify-content: space-between;
+    }
+
+    h3 > button {
+      height: 100%;
+      background: none;
+      width: 20px;
     }
 
     ul {
@@ -53,7 +62,6 @@ export const ContainerOwnerProduct = styled(motion.div)`
     max-width: 440px;
     align-items: center;
     height: auto;
-    /* max-height: 580px; */
     border-radius: 5px;
     padding: 40px 20px;
     gap: 30px;
@@ -80,9 +88,9 @@ export const ContainerOwnerProduct = styled(motion.div)`
       gap: 10px;
     }
 
-    .description {
+    p {
       display: flex;
-      width: 95%;
+      width: 90%;
       color: #495057;
       font-size: 15px;
       font-family: "Inter", sans-serif;
@@ -97,3 +105,5 @@ export const ContainerOwnerProduct = styled(motion.div)`
     }
   }
 `;
+
+

@@ -9,7 +9,6 @@ import { LabelAgeKm } from "./labelKmAgeCar";
 import ListAuction from "./listAuctionCard";
 import { ProfileWelcome } from "./ProfileWelcome";
 import { InputText } from "./input";
-import CardComment from "./commentCard";
 import { UserIcon } from "./iconUser";
 
 export {
@@ -21,6 +20,5 @@ export {
   InputText,
   Aside,
   Card,
-  CardComment,
   UserIcon
 };

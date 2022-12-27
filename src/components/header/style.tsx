@@ -34,13 +34,29 @@ export const HeaderStyled = styled.header`
       height: auto;
     }
 
-    .nav-menu > button {
+    .menu-mobile-icon{
+      display: flex;
+      align-items: center;
+      height: 100%;
+      background: none;
+      border-radius: 50%;
+    }
+
+    .nav-menu > div{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 80%;
+      height: 100%;
+    }
+
+    .nav-menu > div > button {
       width: auto;
-      height: auto;
+      height: 100%;
       box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     }
 
-    .nav-menu > div > div > p {
+    .nav-menu > div > button > div > .name-user {
       display: none;
     }
 

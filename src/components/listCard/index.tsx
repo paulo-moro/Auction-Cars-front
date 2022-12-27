@@ -5,6 +5,7 @@ import { ListStyle } from "./style";
 import { useRef } from "react";
 import asset from "../../img/icons/asset.png";
 import styled from "styled-components";
+import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 
 const ListCard = ({ owner, title, listVehicles }: ITitleSection) => {
   const carousel: any = useRef(null);
@@ -23,17 +24,19 @@ const ListCard = ({ owner, title, listVehicles }: ITitleSection) => {
     <ListStyle>
       <h2>{title}</h2>
 
-      <div className="div-carousel" id={`${title}`}>
-        <button className="asset--left" onClick={(e) => handleLeftClick(e)}>
-          <img src={asset} />
+      <div id={`${title}`}>
+        <button onClick={(e) => handleLeftClick(e)}>
+        <BsFillCaretLeftFill className="arrow"/>
         </button>
-        <ul className="carousel-list" ref={carousel}>
+        <ul ref={carousel}>
+
           {listVehicles?.map((vehicle, index) => (
             <Card owner={owner} key={index} vehicle={vehicle} />
           ))}
+          
         </ul>
-        <button className="asset--rigth" onClick={(e) => handleRigthClick(e)}>
-          <img src={asset} />
+        <button onClick={(e) => handleRigthClick(e)}>
+          <BsFillCaretRightFill className="arrow"/>
         </button>
       </div>
     </ListStyle>

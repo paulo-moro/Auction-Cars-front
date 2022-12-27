@@ -15,6 +15,9 @@ export interface IModalState{
     inOnAnnouncement: Boolean;
 
     inOnModalGalery: Boolean;
+
+    inOnModalAddPhoto: Boolean;
+    setInOnModalAddPhoto: (data: boolean) => void;
     
     setOpenModal?: (data: boolean) => void;
     setInOnRegister: (data: boolean) => void;

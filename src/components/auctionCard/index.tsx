@@ -34,9 +34,9 @@ const AuctionCard = ({ car }: ActionCardProps) => {
 
   return (
     <AuctionCardStyle theme={car?.img}>
-      <label className="auction-time">
-        <img src={TimeAuction} className="img--time-auction" alt="" />
-        {timeForAuction}
+      <label>
+        <img src={TimeAuction} alt="" />
+        { car?.auction ? timeForAuction : "Inativo"}
       </label>
       <h3>{car?.heading}</h3>
       <p className="p--descriptionCar">{car?.description}</p>
@@ -50,18 +50,15 @@ const AuctionCard = ({ car }: ActionCardProps) => {
         />
       </p>
 
-      <div className="div--info-car">
-        <div className="tagets">
+      <div>
+        <div>
           <LabelAgeKm info={car?.year} />
           <LabelAgeKm info={`${kmLabel} KM`} />
         </div>
         <span>{priceBRL}</span>
       </div>
 
-      <button
-        onClick={() => history.push(`product/${car?.id}`)}
-        className="ButtonAuction"
-      >
+      <button onClick={() => history.push(`product/${car?.id}`)} >
         <p>Acessar página do leilão</p>
         <img src={ArrowAuctionIcon} alt="" />
       </button>

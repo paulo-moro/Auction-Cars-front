@@ -1,9 +1,8 @@
-import { ContainerStyled } from "./style";
+import * as S from "./style";
 import { useState } from "react";
-import { useVehicle } from "../../../providers/vehicles";
-import { Modalprops } from "../../../interface/modal";
+import * as C from "../../../components/index";
 import { useModal } from "../../../providers/modal";
-import * as C from "../../index";
+import { useVehicle } from "../../../providers/vehicles";
 
 function ModalAnnouncement(){
 
@@ -27,6 +26,7 @@ function ModalAnnouncement(){
   const [img, setImgCape] = useState("");
   const [imgGalery1, setImgGalery1] = useState("");
   const [imgGalery2, setImgGalery2] = useState("");
+  const [imgGalery3, setImgGalery3] = useState("");
   const [typeVehicle, setTypeVehicle] =useState("");
   
   const saleOrAuction = () => {
@@ -53,13 +53,16 @@ function ModalAnnouncement(){
   }
 
 const createVehicle = () => {
-  setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale || true, status: auction || false, dateAuction: dateAuction, categorie: typeVehicle || "car"})
+
+  const gallery = [{url: imgGalery1}, {url: imgGalery2}, {url: imgGalery3}]
+
+  setNewVehicle({heading, year, km, price, description, img, imgGalery1, imgGalery2, published: sale, status: auction, auction: auction, dateAuction: dateAuction, categorie: typeVehicle || "car", gallery})
   hideModalAnnouncement();
 }
 
     
   return (
-    <ContainerStyled>
+    <S.ContainerStyled>
       <section className={modal}>
 
         <div className="modal">
@@ -125,6 +128,8 @@ const createVehicle = () => {
 
               <C.InputText multiline label="2ª Imagem da galeria" setFunction={setImgGalery2} placeholder="https://image.com" color="secondary"/>
 
+              <C.InputText multiline label="3ª Imagem da galeria" setFunction={setImgGalery3} placeholder="https://image.com" color="secondary"/>
+
               <div className="div--field">
                
                 <C.ButtonUI setBoolean={hideModalAnnouncement} type="submit" text="Cancelar" color="primary" variant="outlined" />
@@ -135,7 +140,8 @@ const createVehicle = () => {
           </form>
         </div>
       </section>
-    </ContainerStyled>
+
+    </S.ContainerStyled>
   );
 }
 

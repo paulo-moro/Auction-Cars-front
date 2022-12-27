@@ -9,10 +9,11 @@ import { UserIcon } from "../iconUser";
 import { useModal } from "../../providers/modal";
 import ModalGalery from "../Modals/modalImage/index";
 import * as C from "../";
+import { BiImageAdd } from "react-icons/bi"
 
 const Aside = ({ vehicle }: IAsideProps) => {
   const [motor, setMotor]: any = useState();
-  const { showModalImageGalery, inOnModalGalery } = useModal();
+  const { showModalImageGalery, inOnModalGalery, setInOnModalAddPhoto } = useModal();
   const initialsName = convertInitialsName(vehicle?.username);
   const [photo, setPhoto]: any = useState("");
   const history = useHistory();
@@ -31,7 +32,12 @@ const Aside = ({ vehicle }: IAsideProps) => {
       {inOnModalGalery && <ModalGalery photo={photo} />}
       <S.AsideStyled>
         <S.ContainerGalery>
-          <h3>Fotos</h3>
+          <h3>Fotos  <button
+              onClick={(e) => {
+                e.preventDefault();
+                setInOnModalAddPhoto(true);
+              }}
+          > <BiImageAdd/> </button> </h3>
           <ul>
             {vehicle.photos?.map((photo: any) => {
               return (

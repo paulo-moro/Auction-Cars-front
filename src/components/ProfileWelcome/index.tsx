@@ -1,20 +1,20 @@
 import { ProfileWelcomeStyle } from "./style";
 import { useUser } from "../../providers/user/index";
 import { useState, useEffect } from "react";
-import { useModal } from '../../providers/modal/index';
+import { useModal } from "../../providers/modal/index";
+import { UserIcon } from "../"
 import * as C from "../index";
 
 export const ProfileWelcome = () => {
   const { user } = useUser();
   const { showModalAnnouncement } = useModal();
 
-  
   const statusUser = user?.is_active ? "Anunciante" : "Comprador";
-  
+
   return (
     <ProfileWelcomeStyle>
-      <div className="welcome-profile">
-        <p className="initials">{user?.initialsName}</p>
+      <div>
+      <UserIcon name={user?.name}/>
         <p className="name-profile">
           {user?.name}
           <C.LabelAgeKm info={statusUser} />
@@ -28,7 +28,12 @@ export const ProfileWelcome = () => {
         </p>
 
         {user && (
-          <C.ButtonUI setBoolean={showModalAnnouncement} text="Criar anuncio" variant="outlined" size="large" />
+          <C.ButtonUI
+            setBoolean={showModalAnnouncement}
+            text="Criar anuncio"
+            variant="outlined"
+            size="large"
+          />
         )}
       </div>
     </ProfileWelcomeStyle>

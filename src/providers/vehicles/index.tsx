@@ -16,6 +16,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
   const [listCars, setListCars] = useState([]);
   const [listMotorcycles, setListMotorcycles] = useState([]);
   const [newOffer, setNewOffer] = useState(0);
+  const [newPhoto, setNewPhoto] = useState("");
 
 
   useEffect(() => {
@@ -40,7 +41,14 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => setNewOffer(0));
 
-        
+      
+      
+    axios
+      .post(
+        `http://localhost:3000/gallery/${id}`, { url: newPhoto },
+        { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => setNewPhoto(''));
+
     }
 
     axios
@@ -58,7 +66,9 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
     axios
       .get("http://localhost:3000/categorie/motorCycle")
       .then((response) => setListMotorcycles(response.data.vehicles));
-  }, [id, newComment, newVehicle, newOffer]);
+
+
+  }, [id, newComment, newVehicle, newOffer, newPhoto]);
 
   return (
     <VehicleContext.Provider
@@ -71,7 +81,8 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         newVehicle,
         setNewVehicle,
         setNewComment, 
-        setNewOffer
+        setNewOffer,
+        setNewPhoto
       }}
     >
       {children}

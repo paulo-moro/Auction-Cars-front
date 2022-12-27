@@ -6,12 +6,12 @@ export const ListAuctionStyle = styled.div`
   gap: 20px;
   margin-top: 30px;
 
-  .div-carousel {
+  > div {
     display: flex;
     align-items: center;
   }
 
-  .carousel-list {
+  div > ul {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -20,7 +20,7 @@ export const ListAuctionStyle = styled.div`
     padding: 10px;
   }
 
-  .carousel-list::-webkit-scrollbar {
+  div > ul::-webkit-scrollbar {
     display: none;
   }
 
@@ -29,22 +29,18 @@ export const ListAuctionStyle = styled.div`
     margin: 20px 60px;
   }
 
-  .asset--rigth {
+  > div > button {
     display: flex;
     width: 50px;
-    height: 50px;
-    align-items: center;
-    background: none;
-    /* position: static; */
-  }
-
-  .asset--left {
-    display: flex;
-    width: 50px;
-    height: 50px;
+    padding: 0;
     align-items: center;
     background: none;
     position: static;
-    /* transform: rotate(180deg); */
   }
+
+  div > button > .arrow{
+    width: 50px;
+    height: 50px;
+  }
+
 `;

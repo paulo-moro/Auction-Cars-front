@@ -21,12 +21,12 @@ const AuctionCardStyle = styled.div`
     color: var(--color-white-fixed);
     background-size: cover;
 
-    .img--time-auction {
+    > label > img {
       width: 20px;
       color: var(--color-grey-0);
     }
 
-    .auction-time {
+    > label {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,7 +47,7 @@ const AuctionCardStyle = styled.div`
       margin: 50px 15px 10px 15px;
     }
 
-    .tagets {
+    >div > div {
       display: flex;
       width: 90%;
       gap: 10px;
@@ -62,7 +62,7 @@ const AuctionCardStyle = styled.div`
       font-weight: var(--font-heading-3-500);
       margin: 10px 15px;
     }
-
+    
     .p--descriptionCar{
       height: 50%;
     }
@@ -73,7 +73,6 @@ const AuctionCardStyle = styled.div`
 
     p > div > .icon-user{
       width: 70px;
-      height: 50px;
     }
 
     div > span {
@@ -114,7 +113,7 @@ const AuctionCardStyle = styled.div`
       margin-left: 30px;
     }
 
-    .div--info-car{
+    > div {
       display: flex;
       width: 100%;
       justify-content: space-between;

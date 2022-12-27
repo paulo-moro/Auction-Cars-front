@@ -4,12 +4,11 @@ export const LiCard = styled.li`
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 20px;
   font-family: 'Lexend';
   font-style: normal;
-  width: 312px;
-  height: 460px;
+  width: 300px;
+  height: 480px;
   padding: 0 10px;
   cursor: pointer;
 
@@ -28,22 +27,20 @@ export const LiCard = styled.li`
     margin-top: 1px;
   }
 
-  > h2 {
+  > h3 {
     display: flex;
     flex-wrap: nowrap;
     font-style: normal;
-    width: 100%;
     font-weight: 600;
     font-size: 16px;
-    overflow: hidden;
-    margin: 0;
-    height: 20px;
+    margin: 10px;
+    height: 30px;
   }
 
   > p {
-    width: 95%;
-    height: 48px;
-    margin: 0;
+    width: 100%;
+    height: 60px;
+    margin: 0px;
     overflow: hidden;
     font-family: 'Lexend';
     font-style: normal;
@@ -52,7 +49,12 @@ export const LiCard = styled.li`
     line-height: 24px;
   }
 
-  label{
+  > div > .icon-user{
+    width: 30px;
+    height: 30px;
+  }
+
+  > label{
     font-size: 13px;
   }
   
@@ -78,7 +80,7 @@ export const DivCard = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0px;
-  width: 90%;
+  width: 100%;
   height: 32px;
   gap: 30px;
   font-size: 13px;

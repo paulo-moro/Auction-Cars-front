@@ -2,7 +2,7 @@ import { IUser } from "../../interface/propsComponents";
 import { UserIconStyle } from "./styled";
 import { convertInitialsName } from "../../utils/index"
 
-const UserIcon = ({ name, initials, color }: IUser) => {
+const UserIcon = ({ name, color }: IUser) => {
   const initialColor = [
     ["A", "#191970"],
     ["B", "#00008B"],
@@ -42,7 +42,7 @@ const UserIcon = ({ name, initials, color }: IUser) => {
 });
 
   return (
-    <UserIconStyle color={color} theme={theme}>
+    <UserIconStyle theme={theme}>
       <label className="icon-user"> {iconInitial}</label>
 
       {name && <p className="name-user">{name}</p>}

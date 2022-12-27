@@ -2,6 +2,7 @@ import { useContext, createContext, useEffect, useState } from "react";
 import { UserProviderProps } from "../../interface/user";
 import { IModalState } from "../../interface/modal";
 
+
 export const ModalContext = createContext({} as IModalState);
 
 export const ModalUserProvider = ({ children }: UserProviderProps) => {
@@ -9,7 +10,8 @@ export const ModalUserProvider = ({ children }: UserProviderProps) => {
   const [inOnSucess, setInOnSucess] = useState(false);
   const [inOnLogin, setInOnLogin] = useState(false);
   const [inOnAnnouncement, setInOnAnnouncement] = useState(false);
-  const [inOnModalGalery, setInOnModalGalery] = useState( false);
+  const [inOnModalGalery, setInOnModalGalery] = useState(false);
+  const [inOnModalAddPhoto, setInOnModalAddPhoto] = useState(false);
 
   const showModalImageGalery = () => {
     setInOnModalGalery(true);
@@ -59,37 +61,38 @@ export const ModalUserProvider = ({ children }: UserProviderProps) => {
   const hideModalSucess = () => {
     setInOnSucess(false);
     return false;
-};
+  };
 
-return (
+  return (
     <ModalContext.Provider
-    value={{
-        
+      value={{
+        inOnModalAddPhoto,
+        setInOnModalAddPhoto,
+
         inOnLogin,
         setInOnLogin,
         hideModalLogin,
         showModalLogin,
-        
+
         inOnAnnouncement,
         setInOnAnnouncement,
         hideModalAnnouncement,
         showModalAnnouncement,
-        
+
         inOnRegister,
         setInOnRegister,
         showModalRegister,
         hideModalRegister,
-        
+
         inOnSucess,
         setInOnSucess,
         showModalSucess,
         hideModalSucess,
 
-        inOnModalGalery, 
-        setInOnModalGalery, 
+        inOnModalGalery,
+        setInOnModalGalery,
         showModalImageGalery,
-        hidenModalImageGalery
-        
+        hidenModalImageGalery,
       }}
     >
       {children}
@@ -98,4 +101,3 @@ return (
 };
 
 export const useModal = () => useContext(ModalContext);
-

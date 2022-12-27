@@ -2,8 +2,8 @@ import { Modalprops } from "../../../interface/modal";
 import { ContainerStyled } from "./style";
 import { useState } from "react";
 import { FormContainer } from "react-hook-form-mui";
-import { useLogin } from "../../../providers/userLogin";
 import { useModal } from "../../../providers/modal";
+import { useUser } from "../../../providers/user";
 import { motion } from 'framer-motion';
 import * as C from "../../index";
 
@@ -17,17 +17,19 @@ function ModalLogin() {
     showModalRegister
  } = useModal();
 
+
   const modal = inOnLogin
     ? "modal containerModal"
     : "modal containerModal hidden";
 
-    const { user, setUser} = useLogin();
+    const { user, setUserLogin, LoginFunction} = useUser();
 
-    const [email, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const loginFunction = () => {
-      setUser({email, password});
+      setUserLogin({email, password});
+      LoginFunction()
     }
 
     const registerFunction = () => {
@@ -48,7 +50,7 @@ function ModalLogin() {
           <motion.form>
             <div className="modalBody">
             
-              <C.InputText setFunction={setUsername} label="Usuário" placeholder="Usuário"  color="secondary"/>
+              <C.InputText setFunction={setEmail} label="Usuário" placeholder="Usuário"  color="secondary"/>
               <C.InputText setFunction={setPassword} label="Senha" placeholder="Senha"  color="secondary"/>
             
               <a href=" ">Esqueci minha senha</a>

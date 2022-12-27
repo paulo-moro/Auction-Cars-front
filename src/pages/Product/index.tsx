@@ -13,7 +13,9 @@ import { useState, useEffect, useRef } from "react";
 import { ICommentPropsCard, IComment } from "../../interface/propsComponents";
 import { Vehicle } from "../../interface/vehicle/index";
 import TimeAuction from "../../img/icons/time.svg";
-import { timeAuction } from "../../utils/index"
+import { timeAuction } from "../../utils/index";
+import { IoIosClose } from "react-icons/io";
+import { useModal } from "../../providers/modal";
 
 const Product = () => {
   const {
@@ -23,40 +25,46 @@ const Product = () => {
     vehicle,
     setId,
     setNewComment,
-    setNewOffer
+    setNewOffer,
+    setNewPhoto
   } = useVehicle();
+  const { inOnModalAddPhoto, setInOnModalAddPhoto } = useModal();
 
   const [newCommentState, setNewCommentState] = useState("");
   const [inputDisabled, setInputDisabled] = useState(true);
   const [offer, setOffer] = useState(0);
   const { id }: any = useParams();
   const { user } = useUser();
-  const [timeForAuction, setTimeForAuction]: any = useState('');
+  const [timeForAuction, setTimeForAuction]: any = useState();
+  const [urlNewPhoto, setUrlNewPhoto] = useState('');
+  
 
   useEffect(() => {
     setId(id);
     user.email ? setInputDisabled(false) : setInputDisabled(true);
 
-    setInterval(()=>{
-      vehicle.dateAuction && setTimeForAuction(timeAuction(vehicle.dateAuction));
-  }, 1000)
-
+    if (vehicle.auction) {
+      setInterval(() => {
+        vehicle.dateAuction &&
+          setTimeForAuction(timeAuction(vehicle.dateAuction));
+      }, 1000);
+    }
   }, [id, user]);
-  
+
   const commentFunction = () => {
     setNewComment(newCommentState);
   };
 
   const newOfferFunction = () => {
     setNewOffer(Number(offer));
-    
   };
-
 
   const initialsName = convertInitialsName(vehicle.username);
   const intialsProfile = convertInitialsName(user.name);
-  const priceBRL = Number(vehicle.price).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-  const lastesOffers = vehicle.offers ? vehicle.offers.slice(vehicle.offers?.length-6, vehicle.offers.length) : [];
+  const priceBRL = Number(vehicle.price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   return (
     <>
@@ -68,7 +76,7 @@ const Product = () => {
           </S.ContainerIMG>
 
           <S.ContainerInfoProduct>
-            <p>{vehicle.heading}</p> 
+            <p>{vehicle.heading}</p>
 
             <div>
               <C.LabelAgeKm info={vehicle.year} />
@@ -80,7 +88,7 @@ const Product = () => {
           </S.ContainerInfoProduct>
 
           <S.ContainerDescription>
-           <h3>Descrição</h3>
+            <h3>Descrição</h3>
             <p>{vehicle.description}</p>
           </S.ContainerDescription>
 
@@ -133,7 +141,11 @@ const Product = () => {
                 <label onClick={() => setNewComment("Incrível!")}>
                   Incrível!
                 </label>
-                <label onClick={() => setNewComment("Recomendarei para meus amigos!")}>
+                <label
+                  onClick={() =>
+                    setNewComment("Recomendarei para meus amigos!")
+                  }
+                >
                   Recomendarei para meus amigos!
                 </label>
               </div>
@@ -143,45 +155,91 @@ const Product = () => {
 
         <aside>
           {vehicle && <C.Aside vehicle={vehicle} />}
-        
-            <S.ListOffersStyled>
-              <h2>Lances</h2>
 
-              <S.AuctionTimeStyled className="auction-time">
-                <img src={TimeAuction} className="img--time-auction" alt="" />
-                <p> {timeForAuction} </p>
-              </S.AuctionTimeStyled>
-              
-                <ul>
-                  {vehicle &&
-                  lastesOffers.map((offer: any, index: number) => {
-                    const priceOffer = Number(offer.offer).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-                    return (<li><p>{priceOffer}</p></li>);
-                  }).reverse()
-                  }
-                </ul>
+          <S.ListOffersStyled>
+            <h2>Lances</h2>
 
-                {
-                !inputDisabled &&
-                <div>
-                  <C.InputText
+            <S.AuctionTimeStyled className="auction-time">
+              <img src={TimeAuction} className="img--time-auction" alt="" />
+              <p> {vehicle.auction ? timeForAuction : "Inativo"} </p>
+            </S.AuctionTimeStyled>
+
+            <ul>
+              {vehicle &&
+                vehicle.offers
+                  ?.map((offer: any, index: number) => {
+                    const priceOffer = Number(offer.offer).toLocaleString(
+                      "pt-BR",
+                      { style: "currency", currency: "BRL" }
+                    );
+                    return (
+                      <li>
+                        <p>{priceOffer}</p>
+                      </li>
+                    );
+                  })
+                  .reverse()}
+            </ul>
+
+            {!inputDisabled && timeForAuction != "Encerrado" && (
+              <div>
+                <C.InputText
                   setFunction={setOffer}
                   color="primary"
                   multiline
                   rows={1}
                   disabled={inputDisabled}
-                  type="number" 
-                /> 
-                 <C.ButtonUI setBoolean={newOfferFunction} text="Enviar" color="primary" variant="contained" />
-                </div>
-                }
-             
-            </S.ListOffersStyled>
-          
+                  type="number"
+                />
+                <C.ButtonUI
+                  setBoolean={newOfferFunction}
+                  text="Enviar"
+                  color="primary"
+                  variant="contained"
+                />
+              </div>
+            )}
+          </S.ListOffersStyled>
         </aside>
       </S.ProductPageStyled>
 
       <C.Footer />
+
+      {inOnModalAddPhoto && (
+        <S.ModalAddPhotoStyled className="modal--add-Photo">
+          <form className="form--add-photo">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setInOnModalAddPhoto(false);
+              }}
+            >
+              <IoIosClose className="close--Modal" />
+            </button>
+            <p>
+              {" "}
+              <input
+                type="text"
+                placeholder="Insira o endereço da imagem"
+                onChange={(e) => {
+                  setUrlNewPhoto(e.target.value)
+                }}
+
+              />{" "}
+              <button
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setNewPhoto(urlNewPhoto);
+                  setInOnModalAddPhoto(false);
+                }}
+              >
+                Enviar
+              </button>
+            </p>
+          </form>
+        </S.ModalAddPhotoStyled>
+      )}
     </>
   );
 };

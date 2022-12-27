@@ -4,7 +4,7 @@ export interface ActionCardProps
     extends React.HTMLAttributes<HTMLOptionElement> {
     car?: {
       id: string, name: string, username: string, heading: string, description: string, user: string, color: string, year: string, km: string, price: string, auctionTime: string, published: boolean, createdAt: string, updatedAt: string, userId: string,
-        img: string, dateAuction: string;
+        img: string, dateAuction: string, auction: boolean;
     }
 }
 

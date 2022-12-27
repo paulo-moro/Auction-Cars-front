@@ -5,16 +5,19 @@ import { useRef } from "react";
 import asset from "../../img/icons/asset.png";
 import styled from "styled-components";
 import { ITitleSection } from "../../interface/propsComponents/index";
+import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
+
+
 
 
 const ListAuction = ({ listVehicles }: ITitleSection) => {
   const carousel: any = useRef(null);
-
+  
   const handleLeftClick = (e: any) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth / 1.3;
   };
-
+  
   const handleRigthClick = (e: any) => {
     e.preventDefault();
     carousel.current.scrollLeft += carousel.current.offsetWidth / 1.3;
@@ -25,17 +28,17 @@ const ListAuction = ({ listVehicles }: ITitleSection) => {
   return (
     <ListAuctionStyle>
       <h2>Leilão</h2>
-      <div className="div-carousel" id="leilao">
-        <button className="asset--left" onClick={(e) => handleLeftClick(e)}>
-          <img src={asset} />
+      <div id="leilao">
+        <button onClick={(e) => handleLeftClick(e)}>
+          <BsFillCaretLeftFill className="arrow"/>
         </button>
-        <ul className="carousel-list" ref={carousel}>
+        <ul ref={carousel}>
           {listVehicles?.map((car: any, index: number) => {
             return <AuctionCard key={index} car={car} />;
           })}
         </ul>
-        <button className="asset--rigth" onClick={(e) => handleRigthClick(e)}>
-          <img src={asset} />
+        <button  onClick={(e) => handleRigthClick(e)}>
+          <BsFillCaretRightFill className="arrow"/>
         </button>
       </div>
     </ListAuctionStyle>

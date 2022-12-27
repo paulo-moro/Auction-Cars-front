@@ -1,22 +1,19 @@
 import styled from "styled-components";
 
-export const ListStyle = styled.div`
+export const ListCommentsStyle = styled.div`
 
     width: 751px;
     height: 557px;
     margin-top: 30px;
     padding: 36px 44px;
     gap: 24px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
     background: #FDFDFD;
     border-radius: 4px;
 
-
-    .ul--list-comments{
+    ul{
         display: flex;
         flex-direction: column;
         height: 420px;
@@ -33,8 +30,33 @@ export const ListStyle = styled.div`
         font-weight: 600;
         font-size: 20px;
         line-height: 25px;
-
         color: #212529;
     }
 
+`
+
+
+export const LiCard = styled.li`
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    box-sizing: content-box;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+
+    
+    p {
+        color: #495057;
+        display: flex;
+        text-align: justify;
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+        font-size: 13px;
+        
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+    }
 `

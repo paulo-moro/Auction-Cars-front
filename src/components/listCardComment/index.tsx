@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { ICommentProps } from "../../interface/propsComponents";
-import CardComment from "../commentCard";
-import { ListStyle } from "./style";
+import * as S from "./style";
+import { UserIcon } from "../iconUser";
 
-const ListCardComment = ({title, listComments}: ICommentProps) => {
-
-
+const ListCardComment = ({ title, listComments }: ICommentProps) => {
   return (
-
-        <ListStyle>
-            <h2>
-                {title}
-            </h2>
-            <ul className="ul--list-comments">
-            {listComments?.map((comment, index) => (
-                <CardComment  key={index} comments={comment} />
-            ))}
-            </ul>
-        </ListStyle>
+    <S.ListCommentsStyle>
+      <h2>{title}</h2>
+      <ul>
+        {listComments?.map((comment, index) => (
+          <S.LiCard>
+            <UserIcon name={comment.user_name} />
+            <p>{comment.comment}</p>
+          </S.LiCard>
+        ))}
+      </ul>
+    </S.ListCommentsStyle>
   );
 };
 

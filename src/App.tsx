@@ -1,12 +1,12 @@
-import GlobalStyle from './styles/global';
-import Pages from './pages/index';
+import GlobalStyle from "./styles/global";
+import Pages from "./pages/index";
 
 function App() {
-  
+
   return (
-    <div className="App">
-      <GlobalStyle />
-      <Pages/>
+      <div className="App">
+        <GlobalStyle />
+        <Pages />
       </div>
   );
 }

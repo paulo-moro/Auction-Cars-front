@@ -1,9 +1,8 @@
-import { Modalprops } from "../../../interface/modal";
-import { ContainerStyled } from "./style";
-import { useState, useEffect } from 'react';
-import { useUser } from "../../../providers/user";
-import { useModal } from "../../../providers/modal";
+import * as S from "./style"
 import * as C from "../../index";
+import { useEffect, useState} from "react";
+import { useUser } from "../../../providers/user/index"
+import { useModal } from "../../../providers/modal";
 
 function ModalRegister() {
 
@@ -43,7 +42,7 @@ function ModalRegister() {
     : "modal containerModal hidden";
 
   return (
-    <ContainerStyled>
+    <S.ContainerStyled>
       <section className={modal}>
         <div className="modal">
           <div className="modalHeader">
@@ -218,7 +217,7 @@ function ModalRegister() {
           </form>
         </div>
       </section>
-    </ContainerStyled>
+    </S.ContainerStyled>
   );
 }
 

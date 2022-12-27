@@ -38,7 +38,7 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
         <img onClick={()=> history.push(`/product/${id}`)} src={img} alt="" />
       </figure>
 
-      <h2>{heading}</h2>
+      <h3>{heading}</h3>
 
       <p>{description}</p>
 
