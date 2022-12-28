@@ -93,43 +93,21 @@ export const HeaderStyled = styled.header`
       align-items: center;
       gap: 10px;
     }
-/* 
-    
-  .teste-frame{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background: var(--color-white-fixed);
-    width: 25%;
-    min-width: 200px;
-    max-width: 300px;
-    height: 252px;
-    border-radius: 4px;
-    right: 20px;
-    margin-top: 80px;
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
 
-      div{
-        width: 80%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-      }
-
-      button {
-        display: flex;
-        align-items: center;
-        width: 80%;
-        font-family: "Inter", sans-serif;
-        color: var(--color-gray-2);
-        font-weight: 400;
-      }
-    } */
-  
+    @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
   }
+
+  .loading-user {
+    width: 20%;
+    height: auto;
+    color: var(--color-brand-2);
+    animation: spinner infinite 1s linear;
+  }
+  
+}
 
 
   @media (min-width: 640px) {

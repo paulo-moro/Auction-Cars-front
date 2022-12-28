@@ -5,13 +5,27 @@ export const AsideStyled = styled(motion.section)`
   @media (min-width: 320px) {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
+    max-width: 760px;
     gap: 30px;
     align-items: center;
   }
 
   @media (min-width: 740px) {
     max-width: 440px;
+  }
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-photo {
+    width: 30%;
+    height: auto;
+    color: var(--color-brand-2);
+    animation: spinner infinite 1s linear;
   }
 `;
 
@@ -22,10 +36,14 @@ export const ContainerGalery = styled(motion.div)`
     gap: 10px;
     flex-wrap: wrap;
     background: var(--color-gray-10);
-    width: 95%;
+    width: 100%;
     max-width: 751px;
     padding: 30px 15px;
     border-radius: 4px;
+
+    .loading-photo {
+      padding: 10%;
+    }
 
     h3 {
       display: flex;
@@ -44,7 +62,24 @@ export const ContainerGalery = styled(motion.div)`
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      width: 100%;
     }
+
+@keyframes img-animation {
+  
+  0%{
+    transform: translate;
+  }
+
+  100%{
+    
+  }
+  
+  to {
+      transform: rotate(360deg);
+    }
+  }
+
 
     img {
       width: 30%;
@@ -58,7 +93,7 @@ export const ContainerOwnerProduct = styled(motion.div)`
     display: flex;
     flex-direction: column;
     background: var(--color-gray-10);
-    width: 95%;
+    width: 100%;
     max-width: 440px;
     align-items: center;
     height: auto;
@@ -66,11 +101,15 @@ export const ContainerOwnerProduct = styled(motion.div)`
     padding: 40px 20px;
     gap: 30px;
 
-    div > .name-user{
+    .loading-photo {
+      padding: 5%;
+    }
+
+    div > .name-user {
       display: none;
     }
 
-    div > .icon-user{
+    div > .icon-user {
       width: 70px;
       height: 70px;
       font-size: 25px;
@@ -105,5 +144,3 @@ export const ContainerOwnerProduct = styled(motion.div)`
     }
   }
 `;
-
-

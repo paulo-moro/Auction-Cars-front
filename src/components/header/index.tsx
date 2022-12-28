@@ -9,8 +9,10 @@ import { convertInitialsName } from "../../utils/index";
 import {UserIcon} from "../iconUser/index";
 import { HeaderStyled, MenuStyled, MenuProfileStyled } from "./style";
 
+import { AiOutlineLoading } from "react-icons/ai";
+
 export const Header = () => {
-  const { user, GetUser } = useUser();
+  const { user } = useUser();
   const {
     inOnSucess,
     setInOnSucess,
@@ -29,10 +31,14 @@ export const Header = () => {
   const [y, setY] = useState(-400);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
-
   const [initialsName, setInitialsName] = useState("");
+  // const [userExistis, setUserExists] = useState(false);
 
-  useEffect(() => GetUser())
+  useEffect(() => {
+    setInterval(() => {
+      // setUserExists(true);
+    }, 2000);
+  }, [user]);
 
   useEffect(() => {
     if (user.name) {
@@ -77,13 +83,14 @@ export const Header = () => {
           <div className="nav--login-register-desktop">
             <div id="div-line"></div>
 
-            {initialsName ? (
+            {initialsName ? 
+            (
               <div onClick={() => openCloseMenuProfile()}>
                 <UserIcon 
                   name={user.name}
                   initials={initialsName}
                 />
-              </div>
+              </div> 
             ) : (
               <>
                 <h4

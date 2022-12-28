@@ -29,7 +29,9 @@ function ModalLogin() {
 
     const loginFunction = () => {
       setUserLogin({email, password});
-      LoginFunction()
+      setTimeout(() => {
+        LoginFunction()
+      }, 500);
     }
 
     const registerFunction = () => {

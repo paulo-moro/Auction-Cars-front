@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const AuctionCardStyle = styled.div`
+const AuctionCardStyle = styled(motion.div)`
   @media (min-width: 320px) {
     min-width: 312px;
     min-height: 490px;

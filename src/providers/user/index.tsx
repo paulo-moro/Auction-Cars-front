@@ -13,18 +13,20 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   const { hideModalLogin, showModalSucess, hideModalRegister } = useModal();
 
-  const LoginFunction = () => {
-    axios
-      .post("http://localhost:3000/login", userLogin)
-      .then((response) => {
-        hideModalLogin();
-        toast.success("Login realizado com sucesso!");
-        sessionStorage.setItem("user", JSON.stringify(response.data.token));
-      })
-      .catch(() => toast.error("Ops! Algo deu errado!"));
-  };
+  useEffect(() => GetUser());
 
-const UserRegisterFunction = () => {
+  const LoginFunction = () => {
+      axios
+        .post("http://localhost:3000/login", userLogin)
+        .then((response) => {
+          sessionStorage.setItem("user", JSON.stringify(response.data.token));
+          hideModalLogin();
+          toast.success("Login realizado com sucesso!");
+        })
+        .catch(() => toast.error("Ops! O login falhou!"));
+ };
+
+  const UserRegisterFunction = () => {
     axios
       .post("http://localhost:3000/users/register", userCreate)
       .then(() => {
@@ -41,11 +43,14 @@ const UserRegisterFunction = () => {
         hideModalRegister();
         showModalSucess();
       })
-      .catch(() => toast.error("Ops! Algo deu errado!"));
-};
+      .catch(() =>
+        toast.error(
+          "Ops! O usuário não pode ser criado com os dados informados!"
+        )
+      );
+  };
 
-
-const GetUser = () => {
+  const GetUser = () => {
     if (sessionStorage.getItem("user")) {
       const token = JSON.parse(sessionStorage.getItem("user") || "");
       axios
@@ -56,8 +61,7 @@ const GetUser = () => {
         })
         .then((response) => {
           setUser(response.data);
-        })
-        .catch(() => toast.error("Ops! Algo deu errado!"));
+        });
     }
   };
 
@@ -71,7 +75,7 @@ const GetUser = () => {
         setUserLogin,
         LoginFunction,
         UserRegisterFunction,
-        GetUser
+        GetUser,
       }}
     >
       {children}

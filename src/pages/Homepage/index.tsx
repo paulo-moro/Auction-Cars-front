@@ -5,7 +5,6 @@ import { useVehicle } from "../../providers/vehicles";
 import Button from '../../components/button';
 import { HomePageStyled, ButtonStyled } from './style';
 import { motion } from 'framer-motion';
-
 import * as C from "../../components/index";
 
 const HomePage = () => {
@@ -14,8 +13,6 @@ const HomePage = () => {
 
     const auctionVehicles = listVehicles.filter((car: any) => {
         return car.status});
-
-    
 
     return(
         <HomePageStyled>

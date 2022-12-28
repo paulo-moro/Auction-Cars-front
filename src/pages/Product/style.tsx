@@ -34,6 +34,21 @@ export const ProductPageStyled = styled(motion.div)`
     div > button {
       position: static;
     }
+
+    @keyframes spinner {
+      to {
+          transform: rotate(360deg);
+      }
+    }
+
+    .loading-icon{
+      width: 50%;
+      padding: 10%;
+      height: auto;
+      color: var(--color-brand-2);
+      animation: spinner infinite 1s linear;
+    }
+
   }
 
   @media (min-width: 740px) {
@@ -76,6 +91,7 @@ export const ContainerIMG = styled(motion.div)`
       max-height: 441px;
       max-width: 441px;
     }
+
   }
 `;
 
@@ -83,6 +99,7 @@ export const ContainerInfoProduct = styled(motion.div)`
   @media (min-width: 320px) {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     background: var(--color-gray-10);
     width: 95%;
@@ -96,14 +113,15 @@ export const ContainerInfoProduct = styled(motion.div)`
     p {
       font-weight: var(--font-heading-3-600);
       font-size: 16px;
+      width: 100%;
     }
 
     div {
-      width: 150px;
+      width: 100%;
       height: 50px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 40px;
     }
 
     div > label {
@@ -113,6 +131,7 @@ export const ContainerInfoProduct = styled(motion.div)`
     }
 
     label {
+      width: 100%;
       font-size: 13px;
     }
 
