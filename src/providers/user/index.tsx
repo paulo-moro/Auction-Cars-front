@@ -9,15 +9,15 @@ export const UserContext = createContext({} as IUserState);
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState({});
   const [userCreate, setUserCreate] = useState({});
-  const [userLogin, setUserLogin] = useState({});
-
+  const [userLoginEmail, setUserLoginEmail] = useState("");
+  const [userLoginPassword, setUserLoginPassword] = useState("");
   const { hideModalLogin, showModalSucess, hideModalRegister } = useModal();
 
   useEffect(() => GetUser());
 
   const LoginFunction = () => {
       axios
-        .post("http://localhost:3000/login", userLogin)
+        .post("http://localhost:3000/login", {email: userLoginEmail, password: userLoginPassword})
         .then((response) => {
           sessionStorage.setItem("user", JSON.stringify(response.data.token));
           hideModalLogin();
@@ -72,7 +72,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         setUserCreate,
         user,
         setUser,
-        setUserLogin,
+        setUserLoginEmail,
+        setUserLoginPassword,
         LoginFunction,
         UserRegisterFunction,
         GetUser,

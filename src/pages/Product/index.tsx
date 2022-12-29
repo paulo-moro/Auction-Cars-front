@@ -31,21 +31,30 @@ const Product = () => {
     NewPhotoFunction,
   } = useVehicle();
   const { inOnModalAddPhoto, setInOnModalAddPhoto } = useModal();
-
-  const [newCommentState, setNewCommentState] = useState("");
-  const [inputDisabled, setInputDisabled] = useState(true);
-  const [offer, setOffer] = useState(0);
-  const { id }: any = useParams();
   const { user } = useUser();
+  const { id }: any = useParams();
+
+  const [inputDisabled, setInputDisabled] = useState(true);
   const [timeForAuction, setTimeForAuction]: any = useState();
-  const [urlNewPhoto, setUrlNewPhoto] = useState("");
   const [vehicleExistis, setVehicleExists] = useState(false);
 
   useEffect(() => {
     setInterval(() => {
       setVehicleExists(true);
-    }, 2000);
+    }, 200);
   });
+
+  const newOfferFunction = () => {
+    setTimeout(() => {
+      NewOfferFunction();
+    }, 1000);
+  };
+
+  const commentFunction = () => {
+    setTimeout(() => {
+      NewCommentVehicle();
+    }, 1000);
+  };
 
   useEffect(() => {
     setId(id);
@@ -57,21 +66,6 @@ const Product = () => {
       }, 1000);
     }
   }, [id, user]);
-
-  const commentFunction = () => {
-    setNewComment(newCommentState);
-    setTimeout(() => {
-      NewCommentVehicle();
-    }, 1000);
-  };
-
-  const newOfferFunction = () => {
-    setNewOffer(Number(offer));
-
-    setTimeout(() => {
-      NewOfferFunction();
-    }, 200);
-  };
 
   const initialsName = convertInitialsName(vehicle.username);
   const intialsProfile = convertInitialsName(user.name);
@@ -156,8 +150,9 @@ const Product = () => {
                 <C.UserIcon name={user.name} initials={intialsProfile} />
               )}
               <C.InputText
-                setFunction={setNewCommentState}
+                setFunction={setNewComment}
                 color="primary"
+                placeholder={"Digite seu comentário"}
                 multiline
                 rows={3}
                 disabled={inputDisabled}
@@ -168,9 +163,10 @@ const Product = () => {
                 color="primary"
                 variant="contained"
               />
-              {user && (
+              {/* {user && (
                 <div className="comments-standart">
-                  <label onClick={() => setNewComment("Gostei muito!")}>
+                  <label 
+                  onClick={() => { setNewComment("Gostei muito!")}}>
                     Gostei muito!
                   </label>
                   <label onClick={() => setNewComment("Incrível!")}>
@@ -184,7 +180,7 @@ const Product = () => {
                     Recomendarei para meus amigos!
                   </label>
                 </div>
-              )}
+              )} */}
             </S.ContainerNewComments>
           )}
         </section>
@@ -221,7 +217,7 @@ const Product = () => {
               {!inputDisabled && timeForAuction != "Encerrado" && (
                 <div>
                   <C.InputText
-                    setFunction={setOffer}
+                    setFunction={setNewOffer}
                     color="primary"
                     multiline
                     rows={1}
@@ -260,18 +256,14 @@ const Product = () => {
                 type="text"
                 placeholder="Insira o endereço da imagem"
                 onChange={(e) => {
-                  setUrlNewPhoto(e.target.value);
+                  setNewPhoto(e.target.value);
                 }}
               />{" "}
               <button
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();
-                  setNewPhoto(urlNewPhoto);
-
-                  setTimeout(() => {
                     NewPhotoFunction();
-                  }, 2000);
                 }}
               >
                 Enviar

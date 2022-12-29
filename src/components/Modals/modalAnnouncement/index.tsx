@@ -5,29 +5,33 @@ import { useModal } from "../../../providers/modal";
 import { useVehicle } from "../../../providers/vehicles";
 
 function ModalAnnouncement() {
-  const { setNewVehicle, NewVehicleFunction } = useVehicle();
   const { inOnAnnouncement, setInOnAnnouncement, hideModalAnnouncement } =
-    useModal();
+  useModal();
+  const { setNewVehicle, 
+    NewVehicleFunction,  
+    sale,
+    car,
+    auction,
+    motorCycle,
+    setSale,
+    setAuction,
+    setCar,
+    setMotorcycle,
+    setHeading,
+    setDateAuction,
+    setAge,
+    setKm,
+    setPrice,
+    setDescription,
+    setImgCape,
+    setImgGalery1,
+    setImgGalery2,
+    setImgGalery3,
+    setTypeVehicle } = useVehicle();
 
   const modal = inOnAnnouncement
     ? "modal containerModal"
     : "modal containerModal hidden";
-
-  const [sale, setSale] = useState(false);
-  const [auction, setAuction] = useState(true);
-  const [car, setCar] = useState(true);
-  const [motorCycle, setMotorcycle] = useState(false);
-  const [heading, setHeading] = useState("");
-  const [dateAuction, setDateAuction] = useState("");
-  const [year, setAge] = useState("");
-  const [km, setKm] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [img, setImgCape] = useState("");
-  const [imgGalery1, setImgGalery1] = useState("");
-  const [imgGalery2, setImgGalery2] = useState("");
-  const [imgGalery3, setImgGalery3] = useState("");
-  const [typeVehicle, setTypeVehicle] = useState("");
 
   const saleOrAuction = () => {
     if (sale) {
@@ -52,32 +56,27 @@ function ModalAnnouncement() {
   };
 
   const createVehicle = () => {
-    const gallery = [
-      { url: imgGalery1 },
-      { url: imgGalery2 },
-      { url: imgGalery3 },
-    ];
 
-    setNewVehicle({
-      heading,
-      year,
-      km,
-      price,
-      description,
-      img,
-      imgGalery1,
-      imgGalery2,
-      published: sale,
-      status: auction,
-      auction: auction,
-      dateAuction: dateAuction,
-      categorie: typeVehicle || "car",
-      gallery,
-    });
+    // setNewVehicle({
+    //   heading,
+    //   year,
+    //   km,
+    //   price,
+    //   description,
+    //   img,
+    //   imgGalery1,
+    //   imgGalery2,
+    //   published: sale,
+    //   status: auction,
+    //   auction: auction,
+    //   dateAuction: dateAuction,
+    //   categorie: typeVehicle || "car",
+    //   gallery,
+    // });
 
     setTimeout(() => {
       NewVehicleFunction();
-    }, 200);
+    }, 1000);
   };
 
   return (

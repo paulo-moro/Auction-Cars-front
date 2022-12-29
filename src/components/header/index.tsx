@@ -8,7 +8,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { convertInitialsName } from "../../utils/index";
 import {UserIcon} from "../iconUser/index";
 import { HeaderStyled, MenuStyled, MenuProfileStyled } from "./style";
-
+import { motion } from "framer-motion"
 import { AiOutlineLoading } from "react-icons/ai";
 
 export const Header = () => {
@@ -32,11 +32,11 @@ export const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
   const [initialsName, setInitialsName] = useState("");
-  // const [userExistis, setUserExists] = useState(false);
+  const [userExistis, setUserExists] = useState(false);
 
   useEffect(() => {
     setInterval(() => {
-      // setUserExists(true);
+      setUserExists(true);
     }, 2000);
   }, [user]);
 
@@ -92,7 +92,10 @@ export const Header = () => {
                 />
               </div> 
             ) : (
-              <>
+              !userExistis ?
+              (<AiOutlineLoading className="loading-user"/>)
+                :
+              (<form>
                 <h4
                   onClick={() => setInOnLogin(true)}
                   className="nav--menu-desktop-h4"
@@ -105,7 +108,7 @@ export const Header = () => {
                 >
                   Cadastrar
                 </button>
-              </>
+              </form>)
             )}
           </div>
         </nav>
