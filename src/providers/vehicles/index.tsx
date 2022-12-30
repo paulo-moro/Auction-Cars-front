@@ -52,7 +52,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
           setNewComment("");
           toast.success("Comentário registrado com sucesso!");
         })
-        .catch(() => toast.error("Ops! Comentário não enviado!"));
+        .catch((error) => toast.error(error.response.data.message));
     }
   };
 
@@ -88,7 +88,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
           toast.success("Veículo registrado com sucesso!");
           hideModalAnnouncement();
         })
-        .catch(() => toast.error("Ops! Veículo não registrado!"));
+        .catch((error) => toast.error(error.response.data.message));
     }
   };
 
@@ -106,9 +106,9 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
           setNewOffer(0)
           toast.success("Lance registrado com sucesso!");
         })
-        .catch(() => {
+        .catch((error) => {
           setNewOffer(0)
-          toast.error("Ops! O lance não foi registrado")
+          toast.error(error.response.data.message);
         });
     }
   }
@@ -127,7 +127,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
           setInOnModalAddPhoto(false);
           setNewPhoto('')
         })
-        .catch(() => toast.error("Ops! A imagem não foi registrada!"));
+        .catch((error) => toast.error(error.response.data.message));
     }
   }
 

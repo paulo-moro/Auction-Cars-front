@@ -23,7 +23,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
           hideModalLogin();
           toast.success("Login realizado com sucesso!");
         })
-        .catch(() => toast.error("Ops! O login falhou!"));
+        .catch((error) => toast.error(error.response.data.message));
  };
 
   const UserRegisterFunction = () => {
@@ -43,11 +43,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         hideModalRegister();
         showModalSucess();
       })
-      .catch(() =>
-        toast.error(
-          "Ops! O usuário não pode ser criado com os dados informados!"
-        )
-      );
+      .catch((error) => toast.error(error.response.data.message));
   };
 
   const GetUser = () => {
