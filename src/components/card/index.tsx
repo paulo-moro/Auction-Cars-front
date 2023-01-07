@@ -5,6 +5,8 @@ import { LiCard, DivCard, Span } from "./style";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AiOutlineLoading } from "react-icons/ai";
+import { useModal } from "../../providers/modal/index";
+import { useVehicle } from "../../providers/vehicles/index";
 
 const Card = ({owner, vehicle }: VehiclesProps) => {
   const [initialsName, setInitialsName] = useState("");
@@ -20,6 +22,13 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
     price
   }: Vehicle = vehicle;
 
+  const { setId } = useVehicle();
+
+
+  const {
+    showModalEditAnnouncement
+  } = useModal();
+
   useEffect(() => {
     if (username) {
       const splitName = username?.split(" ");
@@ -33,6 +42,11 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
   const priceBRL = Number(price).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
   const kmLabel = Number(km).toLocaleString();
   
+  const openEditModal = () => {
+    setId(vehicle.id)
+    showModalEditAnnouncement();
+  }
+
 
   return (
     <LiCard
@@ -46,7 +60,12 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
     >
     
       <figure>
-        <span>{auction? "Ativo" : "Inativo"}</span>
+        {auction? 
+        <span className="auction  Active">Ativo</span>
+          :
+        <span className="auction  Inactive">Inativo</span>
+
+      }
 
         <img onClick={()=> history.push(`/product/${id}`)} src={img} alt="" />
       </figure>
@@ -72,7 +91,9 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
 
       {owner && 
       <div className="div-buttons">
-          <ButtonUI text="Editar" color="secondary" variant="outlined" />
+          <ButtonUI text="Editar" color="secondary" variant="outlined" 
+          setBoolean={openEditModal} 
+          />
           <ButtonUI text="Ver como" color="secondary" variant="outlined" />
       </div>
       }

@@ -10,7 +10,7 @@ import { useModal } from "../modal";
 export const VehicleContext = createContext({} as IVehicleContext);
 
 export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
-  const { hideModalAnnouncement, setInOnModalAddPhoto } = useModal();
+  const { hideModalAnnouncement, setInOnModalAddPhoto, hideModalEditAnnouncement } = useModal();
 
   const [id, setId]: any = useState("");
   const [newComment, setNewComment]: any = useState("");
@@ -21,7 +21,6 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
   const [listMotorcycles, setListMotorcycles] = useState([]);
   const [newOffer, setNewOffer] = useState(0);
   const [newPhoto, setNewPhoto] = useState("");
-
 
   const [sale, setSale] = useState(false);
   const [auction, setAuction] = useState(true);
@@ -39,6 +38,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
   const [imgGalery3, setImgGalery3] = useState("");
   const [typeVehicle, setTypeVehicle] = useState("");
 
+
   const NewCommentVehicle = () => {
     if (sessionStorage.getItem("user")) {
       const token = JSON.parse(sessionStorage.getItem("user") || "");
@@ -50,6 +50,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         )
         .then((response) => {
           setNewComment("");
+          getVehicleId();
           toast.success("Comentário registrado com sucesso!");
         })
         .catch((error) => toast.error(error.response.data.message));
@@ -60,10 +61,8 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
     if (sessionStorage.getItem("user")) {
       const token = JSON.parse(sessionStorage.getItem("user") || "");
 
-      console.log({heading, year, km, price, description, img, published: sale, status: auction, auction: auction, dateAuction: dateAuction, categorie: typeVehicle || "car", gallery:[{ url: imgGalery1 }, { url: imgGalery2 }, { url: imgGalery3 }]})
-
       axios
-        .post("http://localhost:3000/vehicle", {
+        .post("http://localhost:3000/vehicles", {
           heading,
           year,
           km,
@@ -87,6 +86,59 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         .then(() => {
           toast.success("Veículo registrado com sucesso!");
           hideModalAnnouncement();
+          getVehicleId();
+        })
+        .catch((error) => toast.error(error.response.data.message));
+    }
+  };
+
+  const VehicleUpdateFunction = () => {
+    if (sessionStorage.getItem("user")) {
+      const token = JSON.parse(sessionStorage.getItem("user") || "");
+
+      axios
+        .patch(`http://localhost:3000/vehicles/${id}`, {
+          heading,
+          year,
+          km,
+          price,
+          description,
+          img,
+          imgGalery1,
+          imgGalery2,
+          published: sale,
+          status: auction,
+          auction: auction,
+          dateAuction: dateAuction,
+          categorie: typeVehicle || "car"
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(() => {
+          toast.success("Veículo atualizado com sucesso!");
+          hideModalEditAnnouncement();
+          getVehicleId();
+        })
+        .catch((error) => toast.error(error.response.data.message));
+    }
+  };
+
+  const DeleteVehicleFunction = () => {
+    if (sessionStorage.getItem("user")) {
+      const token = JSON.parse(sessionStorage.getItem("user") || "");
+
+      axios
+        .delete(`http://localhost:3000/vehicles/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(() => {
+          toast.success("Veículo excluído com sucesso!");
+          hideModalEditAnnouncement();
+          getVehicleId();
         })
         .catch((error) => toast.error(error.response.data.message));
     }
@@ -105,6 +157,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         .then(() => {
           setNewOffer(0)
           toast.success("Lance registrado com sucesso!");
+          getVehicleId();
         })
         .catch((error) => {
           setNewOffer(0)
@@ -125,31 +178,46 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         .then(() => {
           toast.success("Imagem registrada com sucesso!");
           setInOnModalAddPhoto(false);
-          setNewPhoto('')
+          setNewPhoto('');
+          getVehicleId();
         })
         .catch((error) => toast.error(error.response.data.message));
     }
   }
 
+  const getVehicleId = () => {
+    axios
+    .get(`http://localhost:3000/vehicles/${id}`)
+    .then((res) => setVehicle(res.data[0]));
+  }
 
   useEffect(() => {
 
-    axios
-      .get(`http://localhost:3000/vehicle/${id}`)
-      .then((res) => setVehicle(res.data[0]));
+    getVehicleId();
 
     axios
-      .get("http://localhost:3000/vehicle")
-      .then((response) => setListVehicles(response.data));
+    .get("http://localhost:3000/vehicles")
+    .then((response) => {
+      const vehiclesActive = response.data.vehicles.filter((vehicle: any) => vehicle.status === true)
+      setListCars(vehiclesActive)
+    });
+
+
 
     axios
       .get("http://localhost:3000/categorie/car")
-      .then((response) => setListCars(response.data.vehicles));
-
+      .then((response) => {
+        const carsActive = response.data.vehicles.filter((motors: any) => motors.status === true)
+        setListCars(carsActive)
+      })
+      
     axios
       .get("http://localhost:3000/categorie/motorCycle")
-      .then((response) => setListMotorcycles(response.data.vehicles));
-  }, [id, newComment, newVehicle, newPhoto, setNewOffer, vehicle]);
+      .then((response) => {
+        const motorCycleActive = response.data.vehicles.filter((motors: any) => motors.status === true)
+        setListMotorcycles(motorCycleActive)
+      });
+  }, [id, newComment, newVehicle, newPhoto, setNewOffer]);
 
   return (
     <VehicleContext.Provider
@@ -188,6 +256,8 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         setImgGalery2,
         setImgGalery3,
         setTypeVehicle,
+
+        DeleteVehicleFunction
       }}
     >
       {children}

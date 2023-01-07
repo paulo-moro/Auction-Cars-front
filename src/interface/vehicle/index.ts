@@ -15,7 +15,8 @@ export interface Vehicle {
   auction:        boolean;
   comments?:      IComment[];
   offers?:        Object[];
-  dateAuction?:    string;
+  dateAuction?:   string;
+  userId:        string;
 }
 
 export interface VehiclesProps {
@@ -57,6 +58,8 @@ export interface IVehicleContext {
   NewVehicleFunction: () => void;
   NewOfferFunction: () => void;
   NewPhotoFunction: () => void;
+  DeleteVehicleFunction: () => void;
+
 
   sale: boolean;
   car: boolean;

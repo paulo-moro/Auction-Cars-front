@@ -61,15 +61,15 @@ const Product = () => {
     user.email ? setInputDisabled(false) : setInputDisabled(true);
     if (vehicle) {
       setInterval(() => {
-        vehicle.dateAuction &&
+        vehicle?.dateAuction &&
           setTimeForAuction(timeAuction(vehicle.dateAuction));
       }, 1000);
     }
   }, [id, user]);
 
-  const initialsName = convertInitialsName(vehicle.username);
+  const initialsName = convertInitialsName(vehicle?.username);
   const intialsProfile = convertInitialsName(user.name);
-  const priceBRL = Number(vehicle.price).toLocaleString("pt-BR", {
+  const priceBRL = Number(vehicle?.price).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
   });
@@ -88,7 +88,7 @@ const Product = () => {
               ease: [0, 0.71, 0.2, 1.01],
             }}
           >
-            <img src={vehicle.img} />
+            <img src={vehicle?.img} />
           </S.ContainerIMG>
 
           <S.ContainerInfoProduct
@@ -100,11 +100,11 @@ const Product = () => {
               ease: [0, 0.71, 0.2, 1.01],
             }}
           >
-            <p>{vehicle.heading}</p>
+            <p>{vehicle?.heading}</p>
 
             <div>
-              <C.LabelAgeKm info={vehicle.year} />
-              <C.LabelAgeKm info={vehicle.km} />
+              <C.LabelAgeKm info={vehicle?.year} />
+              <C.LabelAgeKm info={vehicle?.km} />
             </div>
             <label>{priceBRL}</label>
             <div>
@@ -114,7 +114,7 @@ const Product = () => {
 
           <S.ContainerDescription>
             <h3>Descrição</h3>
-            <p>{vehicle.description}</p>
+            <p>{vehicle?.description}</p>
           </S.ContainerDescription>
 
           <section className="aside--mobile">
@@ -124,7 +124,7 @@ const Product = () => {
           {vehicleExistis && (
             <S.ContainerComments>
               {vehicle &&
-                vehicle.comments?.map((comment: any, index: number) => {
+                vehicle?.comments?.map((comment: any, index: number) => {
                   const initialsNameComment = convertInitialsName(
                     comment.user_name
                   );
@@ -163,24 +163,7 @@ const Product = () => {
                 color="primary"
                 variant="contained"
               />
-              {/* {user && (
-                <div className="comments-standart">
-                  <label 
-                  onClick={() => { setNewComment("Gostei muito!")}}>
-                    Gostei muito!
-                  </label>
-                  <label onClick={() => setNewComment("Incrível!")}>
-                    Incrível!
-                  </label>
-                  <label
-                    onClick={() =>
-                      setNewComment("Recomendarei para meus amigos!")
-                    }
-                  >
-                    Recomendarei para meus amigos!
-                  </label>
-                </div>
-              )} */}
+             
             </S.ContainerNewComments>
           )}
         </section>
@@ -194,12 +177,12 @@ const Product = () => {
 
               <S.AuctionTimeStyled className="auction-time">
                 <img src={TimeAuction} className="img--time-auction" alt="" />
-                <p> {vehicle.auction ? timeForAuction : "Inativo"} </p>
+                <p> {vehicle?.auction ? timeForAuction : "Inativo"} </p>
               </S.AuctionTimeStyled>
 
               <ul>
-                {vehicle &&
-                  vehicle.offers
+                {vehicle.auction &&
+                  vehicle?.offers
                     ?.map((offer: any, index: number) => {
                       const priceOffer = Number(offer.offer).toLocaleString(
                         "pt-BR",

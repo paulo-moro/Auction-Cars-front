@@ -103,7 +103,10 @@ export const Header = () => {
                   Fazer Login
                 </h4>
                 <button
-                  onClick={() => setInOnRegister(true)}
+                  onClick={(e) => { 
+                    e.preventDefault()
+                    setInOnRegister(true) 
+                  }}
                   className="nav--menu-desktop-button-register"
                 >
                   Cadastrar
@@ -186,17 +189,18 @@ export const Header = () => {
               <h4
                 className="nav--menu-mobile-h4"
                 onClick={() => {
-                  setInOnLogin(true);
                   setOpenMenu(false);
+                  setInOnLogin(true);
                 }}
               >
                 Fazer Login
               </h4>
               <button
                 className="mobile-button-register"
-                onClick={() => {
-                  setInOnRegister(true);
+                onClick={(e) => {
+                  e.preventDefault();
                   setOpenMenu(false);
+                  setInOnRegister(true);
                 }}
               >
                 Cadastrar

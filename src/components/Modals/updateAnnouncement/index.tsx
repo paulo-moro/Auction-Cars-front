@@ -4,10 +4,12 @@ import * as C from "../../../components/index";
 import { useModal } from "../../../providers/modal";
 import { useVehicle } from "../../../providers/vehicles";
 
-function ModalAnnouncement() {
-  const { inOnAnnouncement, setInOnAnnouncement, hideModalAnnouncement } =
+function ModalEditAnnouncement() {
+  const { inOnEditAnnouncement, setInOnEditAnnouncement, hideModalEditAnnouncement } =
   useModal();
-  const { setNewVehicle, 
+  const { 
+    vehicle,
+    setNewVehicle, 
     NewVehicleFunction,  
     sale,
     car,
@@ -27,9 +29,12 @@ function ModalAnnouncement() {
     setImgGalery1,
     setImgGalery2,
     setImgGalery3,
-    setTypeVehicle } = useVehicle();
+    setTypeVehicle,
+    DeleteVehicleFunction
+  } = useVehicle();
 
-  const modal = inOnAnnouncement
+
+  const modal = inOnEditAnnouncement
     ? "modal containerModal"
     : "modal containerModal hidden";
 
@@ -43,20 +48,20 @@ function ModalAnnouncement() {
     }
   };
 
-  const carOrMotorcycle = () => {
-    if (car) {
-      setCar(false);
-      setMotorcycle(true);
-      setTypeVehicle("motorCycle");
-    } else {
-      setCar(true);
-      setMotorcycle(false);
-      setTypeVehicle("car");
-    }
+  const carTrue = () => {
+    setCar(true);
+    setMotorcycle(false);
+    setTypeVehicle("car");
+  }
+  
+  const motorcycleTrue = () => {
+    setMotorcycle(true);
+    setCar(false);
+    setTypeVehicle("motorCycle");
+    
   };
 
   const createVehicle = () => {
-
 
     setTimeout(() => {
       NewVehicleFunction();
@@ -68,10 +73,10 @@ function ModalAnnouncement() {
       <section className={modal}>
         <div className="modal">
           <div className="modalHeader">
-            <h1>Criar anúncio</h1>
+            <h1>Editar anúncio</h1>
             <button
               className="removedModal"
-              onClick={() => hideModalAnnouncement()}
+              onClick={() => hideModalEditAnnouncement()}
             >
               x
             </button>
@@ -118,7 +123,7 @@ function ModalAnnouncement() {
             <C.InputText
               setFunction={setHeading}
               label="Título"
-              placeholder="Título do anúncio"
+              placeholder={vehicle?.heading}
               color="secondary"
             />
 
@@ -128,7 +133,7 @@ function ModalAnnouncement() {
                 type="number"
                 label="Ano"
                 rows={1}
-                placeholder="Digitar ano"
+                placeholder={vehicle?.year}
                 color="secondary"
               />
 
@@ -136,7 +141,7 @@ function ModalAnnouncement() {
                 setFunction={setKm}
                 label="Quilometragem"
                 rows={1}
-                placeholder="0"
+                placeholder={vehicle?.km}
                 color="secondary"
               />
 
@@ -154,13 +159,13 @@ function ModalAnnouncement() {
               rows={3}
               setFunction={setDescription}
               label="Descrição"
-              placeholder="Digitar descrição"
+              placeholder={vehicle?.description}
               color="secondary"
             />
 
             <div className="div--field">
               <C.ButtonUI
-                setBoolean={carOrMotorcycle}
+                setBoolean={carTrue}
                 type="submit"
                 text="Carro"
                 color="primary"
@@ -168,7 +173,7 @@ function ModalAnnouncement() {
               />
 
               <C.ButtonUI
-                setBoolean={carOrMotorcycle}
+                setBoolean={motorcycleTrue}
                 type="submit"
                 text="Moto"
                 color="primary"
@@ -176,52 +181,20 @@ function ModalAnnouncement() {
               />
             </div>
 
-            <C.InputText
-              multiline
-              label="Imagem da capa"
-              setFunction={setImgCape}
-              placeholder="https://image.com"
-              color="secondary"
-            />
-
-            <C.InputText
-              multiline
-              label="1ª Imagem da galeria"
-              setFunction={setImgGalery1}
-              placeholder="https://image.com"
-              color="secondary"
-            />
-
-            <C.InputText
-              multiline
-              label="2ª Imagem da galeria"
-              setFunction={setImgGalery2}
-              placeholder="https://image.com"
-              color="secondary"
-            />
-
-            <C.InputText
-              multiline
-              label="3ª Imagem da galeria"
-              setFunction={setImgGalery3}
-              placeholder="https://image.com"
-              color="secondary"
-            />
-
             <div className="div--field">
               <C.ButtonUI
-                setBoolean={hideModalAnnouncement}
+                // setBoolean={hideModalEditAnnouncement}
                 type="submit"
-                text="Cancelar"
+                text="Salvar"
                 color="primary"
                 variant="outlined"
               />
               <C.ButtonUI
-                setBoolean={createVehicle}
+                setBoolean={DeleteVehicleFunction}
                 type="submit"
-                text="Criar anúncio"
+                text="Excluir anúncio"
                 color="primary"
-                variant="contained"
+                variant="outlined"
               />
             </div>
           </form>
@@ -231,4 +204,4 @@ function ModalAnnouncement() {
   );
 }
 
-export default ModalAnnouncement;
+export default ModalEditAnnouncement;

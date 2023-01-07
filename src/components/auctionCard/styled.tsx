@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const AuctionCardStyle = styled(motion.div)`
   @media (min-width: 320px) {
     min-width: 312px;
+    max-width: 412px;
     min-height: 490px;
     display: flex;
     flex-direction: column;
