@@ -7,8 +7,9 @@ import { useHistory } from "react-router-dom";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useModal } from "../../providers/modal/index";
 import { useVehicle } from "../../providers/vehicles/index";
+import { useUser } from "../../providers/user/index";
 
-const Card = ({owner, vehicle }: VehiclesProps) => {
+const Card = ({ vehicle }: VehiclesProps) => {
   const [initialsName, setInitialsName] = useState("");
   const {
     id,
@@ -19,11 +20,12 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
     img,
     year,
     auction,
-    price
+    price,
+    userId
   }: Vehicle = vehicle;
 
   const { setId } = useVehicle();
-
+  const { user } = useUser();
 
   const {
     showModalEditAnnouncement
@@ -89,7 +91,7 @@ const Card = ({owner, vehicle }: VehiclesProps) => {
         <span>{priceBRL}</span>
       </DivCard>
 
-      {owner && 
+      {user.id == userId && 
       <div className="div-buttons">
           <ButtonUI text="Editar" color="secondary" variant="outlined" 
           setBoolean={openEditModal} 

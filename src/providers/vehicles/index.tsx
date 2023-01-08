@@ -198,8 +198,8 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
     axios
     .get("http://localhost:3000/vehicles")
     .then((response) => {
-      const vehiclesActive = response.data.vehicles.filter((vehicle: any) => vehicle.status === true)
-      setListCars(vehiclesActive)
+      const vehiclesActive = response.data.filter((vehicle: any) => vehicle.status === true)
+      setListVehicles(vehiclesActive)
     });
 
 
@@ -207,14 +207,15 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
     axios
       .get("http://localhost:3000/categorie/car")
       .then((response) => {
-        const carsActive = response.data.vehicles.filter((motors: any) => motors.status === true)
+        console.log(response.data[0])
+        const carsActive = response.data[0].vehicles.filter((motors: any) => motors.status === true)
         setListCars(carsActive)
       })
       
     axios
-      .get("http://localhost:3000/categorie/motorCycle")
+      .get("http://localhost:3000/categorie/motorcycle")
       .then((response) => {
-        const motorCycleActive = response.data.vehicles.filter((motors: any) => motors.status === true)
+        const motorCycleActive = response.data[0].vehicles.filter((motors: any) => motors.status === true)
         setListMotorcycles(motorCycleActive)
       });
   }, [id, newComment, newVehicle, newPhoto, setNewOffer]);
@@ -257,6 +258,7 @@ export const VehicleProvider = ({ children }: ListVehicleProviderProps) => {
         setImgGalery3,
         setTypeVehicle,
 
+        VehicleUpdateFunction,
         DeleteVehicleFunction
       }}
     >

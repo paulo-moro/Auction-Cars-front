@@ -9,24 +9,25 @@ export const LiCard = styled(motion.li)`
   font-family: 'Lexend';
   font-style: normal;
   width: 300px;
-  height: 490px;
-  padding: 10px;
+  height: 450px;
+  padding: 15px;
   cursor: pointer;
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.5);
+
 
   > figure {
     position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 152px;
+    height: 140px;
     margin: 0;
+    
 
   }
 
   > figure > .auction {
     position: absolute;
-    z-index: 1;
     left: 35px;
     display: flex;
     color: var(--color-white-fixed);
@@ -48,6 +49,7 @@ export const LiCard = styled(motion.li)`
     height: 152px;
     max-width: 100%;
     margin-top: 1px;
+    position: static;
   }
 
   > h3 {
@@ -62,7 +64,7 @@ export const LiCard = styled(motion.li)`
 
   > p {
     width: 100%;
-    height: 80px;
+    height: 20px;
     margin: 0px;
     overflow: hidden;
     font-family: 'Lexend';
@@ -122,7 +124,7 @@ export const Span = styled.span`
   justify-content: center;
   align-items: center;
   height: 32px;
-  padding: 10px;
+  padding: 5px;
   background: var(--color-brand-4);
   border-radius: 4px;
   box-sizing: border-box;

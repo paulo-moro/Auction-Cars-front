@@ -47,7 +47,7 @@ function ModalAnnouncement() {
     if (car) {
       setCar(false);
       setMotorcycle(true);
-      setTypeVehicle("motorCycle");
+      setTypeVehicle("motorcycle");
     } else {
       setCar(true);
       setMotorcycle(false);

@@ -59,6 +59,7 @@ export interface IVehicleContext {
   NewOfferFunction: () => void;
   NewPhotoFunction: () => void;
   DeleteVehicleFunction: () => void;
+  VehicleUpdateFunction: () => void;
 
 
   sale: boolean;

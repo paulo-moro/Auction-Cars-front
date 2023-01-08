@@ -30,6 +30,7 @@ function ModalEditAnnouncement() {
     setImgGalery2,
     setImgGalery3,
     setTypeVehicle,
+    VehicleUpdateFunction,
     DeleteVehicleFunction
   } = useVehicle();
 
@@ -57,7 +58,7 @@ function ModalEditAnnouncement() {
   const motorcycleTrue = () => {
     setMotorcycle(true);
     setCar(false);
-    setTypeVehicle("motorCycle");
+    setTypeVehicle("motorcycle");
     
   };
 
@@ -183,7 +184,7 @@ function ModalEditAnnouncement() {
 
             <div className="div--field">
               <C.ButtonUI
-                // setBoolean={hideModalEditAnnouncement}
+                setBoolean={VehicleUpdateFunction}
                 type="submit"
                 text="Salvar"
                 color="primary"
